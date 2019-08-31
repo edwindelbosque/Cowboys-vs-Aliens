@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Cowboys vs Aliens</title>
-  </head>
-  <body>
-    <nav>
-      <p>x</p>
-      <h5 role="timer">Timer</h5>
-    </nav>
-    <header>
-      <h1 class="header__h1--display"></h1>
-    </header>
-    <section class="section__scoreboard">
-      <div class="section__div--pts-cowboy">
-        <h2><span>250</span>pts</h2>
-      </div>
-      <div>
-        <section class="div__section--answer-row">
-          <div>
-            <p>1</p>
-          </div>
-          <div class="section__div--answer">
-            <h4 id="answer-1"></h4>
-          </div>
-          <div>
-            <h2><span id="answer-pts-1">00</span>pts</h2>
-          </div>
-        </section>
-        <section class="div__section--answer-row">
-          <div>
-            <p>2</p>
-          </div>
-          <div class="section__div--answer">
-            <h4 id="answer-2"></h4>
-          </div>
-          <div>
-            <h2><span id="answer-pts-2">00</span>pts</h2>
-          </div>
-        </section>
-        <section class="div__section--answer-row">
-          <div>
-            <p>3</p>
-          </div>
-          <div class="section__div--answer">
-            <h4 id="answer-3"></h4>
-          </div>
-          <div>
-            <h2><span id="answer-pts-3">00</span>pts</h2>
-          </div>
-        </section>
-      </div>
-      <div class="section__div--pts-alien">
-        <h2><span>275</span>pts</h2>
-      </div>
-    </section>
-    <section class="section--players">
-      <div class="section__div--player-info">
-        <img>
-        <h3 id="cowboy-name"></h3>
-      </div>
-      <div>
-        <h5><span id="players-turn"></span>, it's Your Turn</h5>
-        <input type="text" id="guess-input" placeholder="Enter Guess">
-        <button>Submit Guess</button>
-      </div>
-      <div class="section__div--player-info">
-        <img>
-        <h3 id="alien-name"></h3>
-      </div>
-    </section>
 
-    
+<head>
+  <title>Cowboys vs Aliens</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
 
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
-  </body>
+<body>
+  <nav>
+    <p>x</p>
+    <h5 role="timer">Timer</h5>
+  </nav>
+  <header>
+    <h1 class="header__h1--display"></h1>
+  </header>
+  <section class="section__scoreboard">
+    <div class="section__div--pts-cowboy">
+      <h2><span>250</span>pts</h2>
+    </div>
+    <div>
+      <section class="div__section--answer-row">
+        <div>
+          <p>1</p>
+        </div>
+        <div class="section__div--answer">
+          <h4 id="answer-1"></h4>
+        </div>
+        <div>
+          <h2><span id="answer-pts-1">00</span>pts</h2>
+        </div>
+      </section>
+      <section class="div__section--answer-row">
+        <div>
+          <p>2</p>
+        </div>
+        <div class="section__div--answer">
+          <h4 id="answer-2"></h4>
+        </div>
+        <div>
+          <h2><span id="answer-pts-2">00</span>pts</h2>
+        </div>
+      </section>
+      <section class="div__section--answer-row">
+        <div>
+          <p>3</p>
+        </div>
+        <div class="section__div--answer">
+          <h4 id="answer-3"></h4>
+        </div>
+        <div>
+          <h2><span id="answer-pts-3">00</span>pts</h2>
+        </div>
+      </section>
+    </div>
+    <div class="section__div--pts-alien">
+      <h2><span>275</span>pts</h2>
+    </div>
+  </section>
+  <section class="section--players">
+    <div class="section__div--player-info">
+      <img>
+      <h3 id="cowboy-name"></h3>
+    </div>
+    <div>
+      <h5><span id="players-turn"></span>, it's Your Turn</h5>
+      <input type="text" id="guess-input" placeholder="Enter Guess">
+      <button>Submit Guess</button>
+    </div>
+    <div class="section__div--player-info">
+      <img>
+      <h3 id="alien-name"></h3>
+    </div>
+  </section>
+  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+</body>
+
 </html>
