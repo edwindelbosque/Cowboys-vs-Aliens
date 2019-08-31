@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-
+    this.roundCount = 0;
   }
 }
 
