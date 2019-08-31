@@ -8,6 +8,12 @@ class Player {
 
 
 
+  // Keeps track of score
+  // Update names
+ 
+
+
+
 
 } //<----- end of Player block
 
