@@ -1,9 +1,14 @@
 class Player {
-  constructor(id, name, score) {
+  constructor(id, name) {
     this.id = id;
     this.name = name;
-    this.score = score;
+    this.score = 0;
   }
-}
+
+
+
+
+
+} //<----- end of Player block
 
 export default Player;
