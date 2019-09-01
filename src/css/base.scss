@@ -1,7 +1,136 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
+$alien-accent: #91D631;
+$cowboy-accent: #6F584B;
+$cowboy-dark: #423127;
+$alien-dark: #002D00;
+$neutral: #BABABA;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: $primary-background;
   font-family: 'Press Start 2P', cursive;
+}
+
+.body--startpage {
+  height: 100vh;
+  background-image: url('/images/start-page.gif');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 100px 0;
+
+  h1 {
+    font-size: 60px;
+    background: -webkit-linear-gradient(rgb(18, 159, 219), $alien-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  span {
+    font-size: 40px;
+  }
+
+  p {
+    color: $cowboy-accent;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+  }
+}
+
+.startpage--players--container {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.startpage--character--icon {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 20px;
+  animation-name: floating;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-top: 5px;
+}
+
+.startpage__input--player {
+  width: 285px;
+  height: 60px;
+  border: 5px solid #BA38C4;
+  border-radius: 10px;
+  font-size: 30px;
+  margin-top: 15px;
+  padding-left: 20px;
+  padding-top: 4px;
+  background-color: #00000000;
+  color: white;
+  box-shadow: 10px 10px 10px black;
+  font-family: 'Press Start 2P';
+  &:focus {
+    outline: none;
+    border-color: white;
+  }
+  &:active {
+    border-color: white;
+    color: white;
+  }
+}
+
+.startpage__footer--button {
+  width: 240px;
+  height: 125px;
+  border: 5px solid $alien-accent;
+  border-radius: 10px;
+  background-color: #00000000;
+  font-size: 35px;
+  color: $alien-accent;
+  font-family: 'Press Start 2P';
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    border-color: white;
+  }
+}
+
+footer button span {
+  width: 500px;
+  color: white;
+  line-height: 1.2;
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes floating {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 15px); }
+  to   { transform: translate(0, -0px); }    
 }
