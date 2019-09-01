@@ -6,11 +6,18 @@ class Game {
     this.roundCount = 0;
   }
 
+  startGame() {
+    this.selectSurvey()
+  }
+
+ // Not sure how to test these handler functions
+
   startRound() {
-    // currentRound = new Round
-    // New file for round where normal round and domination round both inherit from?
+    this.currentSurvey = []
+    this.selectSurvey();
 
   }
+
 
   generateRandomId() {
     return Math.floor(Math.random() * (this.data.surveys.length - 1 + 1)) + 1;
@@ -27,6 +34,8 @@ class Game {
 
     }
   }
+
+ 
 
 
 
