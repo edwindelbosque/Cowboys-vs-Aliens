@@ -28,7 +28,7 @@ describe('Game', () => {
   });
 
   it.only('should sort the answers from highest respondents to lowest', () => {
-    game.chooseSurvey()
+    game.chooseSurvey(3)
     expect(game.currentSurvey).to.eql([   
       { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
       { answer: 'Watch', respondents: 58, surveyId: 3 },

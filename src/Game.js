@@ -26,19 +26,18 @@ class Game {
 
 
   
-  chooseSurvey() {
-    let randomId = Math.floor(Math.random() * (15 - 1 + 1)) + 1;
-    if (!this.usedSurveys.includes(randomId)) {
-      console.log('random id -->', randomId)
-      this.currentSurvey.push(this.data.surveys.find(survey => survey.id === randomId));
-      this.usedSurveys.push(randomId);
-      let answers = this.data.answers.filter(answer => answer.surveyId === randomId).sort((a, b) => b.respondents - a.respondents);
+  chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1){
+    if (!this.usedSurveys.includes(id)) {
+      console.log('random id -->', id)
+      this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
+      this.usedSurveys.push(id);
+      let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
       console.log('current survey --->', this.currentSurvey)
-    } else {
-      this.chooseSurvey();
-    }
+  } else {
+    this.chooseSurvey();
   }
+}
 
   chooseRound() {
     if(this.roundCount < 3) {
