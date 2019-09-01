@@ -5,6 +5,9 @@ class Player {
     this.score = 0;
   }
 
+  updateScore() {
+    return this.score += this.score +1;
+  }
 
 
 // assigns players id

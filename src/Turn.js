@@ -1,3 +1,5 @@
+import Player from "./Player";
+
 class Turn {
   constructor(currentRound) {
     this.currentRound = currentRound;
@@ -21,15 +23,24 @@ class Turn {
     })
   }
 
-
   capitalizeGuess(guess) {
     let capitalizedWords = guess.toLowerCase().split(' ').map(word => {
       return (word.charAt(0).toUpperCase() + word.slice(1));
-    })
+    });
+
     return capitalizedWords.join(' ') 
   }
 
-  // checkGuess()
+  checkGuess(guess) {
+    return this.identifyCorrectAnswers().includes(guess) ? true : false;
+  }
+
+
+  // displayCorrectAnser(guess) {
+
+  // }
+
+
 
   // ?constructor(currentRound, currentSurvey, currentPlayer)
   //checks if guess is correct
