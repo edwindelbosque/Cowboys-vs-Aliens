@@ -23,30 +23,33 @@ describe('Game', () => {
   });
 
   it('should select a random survey', () => {
-    game.pickSurvey(3)
+    game.chooseSurvey(3)
     expect(game.currentSurvey.length).to.equal(4);
   });
 
-  it('should sort the answers from highest respondents to lowest', () => {
-    game.pickSurvey(3)
-    expect(game.currentSurvey).to.eql([   
-      { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
-      { answer: 'Watch', respondents: 58, surveyId: 3 },
-      { answer: 'Alarm Clock', respondents: 34, surveyId: 3 },
-      { answer: 'Calendar', respondents: 3, surveyId: 3 },
-    ])
-  });
+  // it.only('should sort the answers from highest respondents to lowest', () => {
+  //   game.chooseSurvey(3)
+  //   expect(game.currentSurvey).to.eql([   
+  //     { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
+  //     { answer: 'Watch', respondents: 58, surveyId: 3 },
+  //     { answer: 'Alarm Clock', respondents: 34, surveyId: 3 },
+  //     { answer: 'Calendar', respondents: 3, surveyId: 3 },
+  //   ]) 
+  // });
 
-  it.only('should keep track of the previous surveys', () => {
-    game.pickSurvey();
-    expect(game.usedSurveys.length).to.equal(1);
-  });
+  // it.only('should keep track of the previous surveys', () => {
+  //   game.chooseSurvey(3);
+  //   expect(game.usedSurveys.length).to.equal(1);
+  // });
 
-  // it('should choose which round to start', () => {
-  //   game.chooseRound() {
-  //     expect(game.current)
-  //   }
-  // })
+it.only('should asdfa', () => {
+  game.usedSurveys = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+  game.chooseSurvey();
+ 
+  expect(game.currentSurvey).to.deep.equal(15)
+
+});
+
 
 
 
