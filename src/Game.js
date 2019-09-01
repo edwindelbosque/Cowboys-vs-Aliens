@@ -1,9 +1,15 @@
+import Round from "./Round";
+
 class Game {
   constructor(data) {
     this.data = data
     this.currentSurvey = [];
     this.usedSurveys = [];
     this.roundCount = 0;
+    this.roundType = "";
+    this.player1 = new Player("");
+    this.player2 = new Player("")
+
   }
 
   startGame() {
@@ -14,24 +20,22 @@ class Game {
 
   startRound() {
     this.currentSurvey = []
-    this.selectSurvey();
+    this.chooseSurvey();
 
   }
-
 
   generateRandomId() {
     return Math.floor(Math.random() * (this.data.surveys.length - 1 + 1)) + 1;
   }
 
-  pickSurvey(randomId) {
+  chooseSurvey(randomId) {
     if (!this.usedSurveys.includes(randomId)) {
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === randomId));
       this.usedSurveys.push(randomId);
       let answers = this.data.answers.filter(answer => answer.surveyId === randomId).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
     } else {
-      this.selectSurvey();
-
+      this.chooseSurvey();
     }
   }
 
@@ -40,6 +44,16 @@ class Game {
       this.startRound()
     }
   }
+
+  getStartingPlayer() {
+    if(this.roundCounter % 2 === 0) {
+      return this.player2
+    } else {
+      return this.player1
+    }
+  }
+
+
 
 
 
