@@ -7,7 +7,7 @@ class Player {
 
 
 
-
+// assigns players id
   // Keeps track of score
   // Update names
 
