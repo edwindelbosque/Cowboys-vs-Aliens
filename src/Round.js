@@ -1,7 +1,6 @@
 class Round {
-  constructor(surveyQuestion, answers) {
-    this.surveyQuestion = surveyQuestion;
-    this.answers = answers;
+  constructor(game) {
+   this.game = game
   }
 
   endRound(game) {
