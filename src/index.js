@@ -12,8 +12,9 @@ import './images/turing-logo.png';
 import './images/start-page.gif';
 import './images/alien-icon.png';
 import './images/cowboy-icon.png';
-import './images/apple-touch-icon.png';
 import './images/favicon-32x32.png';
 import './images/favicon-16x16.png';
+import './images/grainy-filter.jpg'
+import './images/grainy-filter-2.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
