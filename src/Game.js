@@ -1,10 +1,34 @@
 import Player from "./Player";
 
 class Game {
-  constructor() {
+  constructor(data) {
+    this.data = data
+    this.currentSurvey = [];
+    this.usedSurveys = [];
     this.roundCount = 0;
   }
 
+  startRound() {
+    // currentRound = new Round
+    // New file for round where normal round and domination round both inherit from?
+
+  }
+
+  generateRandomId() {
+     return Math.floor(Math.random() * (this.data.surveys.length - 1 + 1)) + 1;
+  }
+
+  selectSurvey(randomId) {
+    if (!this.usedSurveys.includes(randomId)) {
+      this.currentSurvey.push(this.data.surveys.find(survey => survey.id === randomId)); 
+      this.usedSurveys.push(randomId);
+      let answers = this.data.answers.filter(answer => answer.surveyId === randomId).sort((a, b) => b.respondents - a.respondents);
+      this.currentSurvey = this.currentSurvey.concat(answers);
+    } else { 
+      this.selectSurvey();
+      
+    } 
+  } 
 
 
 
