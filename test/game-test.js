@@ -23,12 +23,12 @@ describe('Game', () => {
   });
 
   it('should select a random survey', () => {
-    game.selectSurvey(3)
+    game.pickSurvey(3)
     expect(game.currentSurvey.length).to.equal(4);
   });
 
   it('should sort the answers from highest respondents to lowest', () => {
-    game.selectSurvey(3)
+    game.pickSurvey(3)
     expect(game.currentSurvey).to.eql([   
       { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
       { answer: 'Watch', respondents: 58, surveyId: 3 },
@@ -36,6 +36,17 @@ describe('Game', () => {
       { answer: 'Calendar', respondents: 3, surveyId: 3 },
     ])
   });
+
+  it.only('should keep track of the previous surveys', () => {
+    game.pickSurvey();
+    expect(game.usedSurveys.length).to.equal(1);
+  });
+
+  // it('should choose which round to start', () => {
+  //   game.chooseRound() {
+  //     expect(game.current)
+  //   }
+  // })
 
 
 

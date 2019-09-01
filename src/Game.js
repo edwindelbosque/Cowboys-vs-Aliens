@@ -23,7 +23,7 @@ class Game {
     return Math.floor(Math.random() * (this.data.surveys.length - 1 + 1)) + 1;
   }
 
-  selectSurvey(randomId) {
+  pickSurvey(randomId) {
     if (!this.usedSurveys.includes(randomId)) {
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === randomId));
       this.usedSurveys.push(randomId);
@@ -35,7 +35,11 @@ class Game {
     }
   }
 
- 
+  chooseRound() {
+    if(this.roundCount < 3) {
+      this.startRound()
+    }
+  }
 
 
 
