@@ -1,13 +1,15 @@
+import Turn from '../src/Turn';
+
 class Player {
-  constructor(id, name) {
-    this.id = id;
+  constructor(name) {
     this.name = name;
     this.score = 0;
   }
 
-  updateScore() {
-    return this.score += this.score +1;
-  }
+
+  // updateScore(guess) {
+  //   return this.score += this.score + (Turn.countRespondents(guess));
+  // }
 
 
 // assigns players id
