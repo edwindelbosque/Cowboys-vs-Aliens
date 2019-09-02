@@ -27,7 +27,7 @@ describe('Game', () => {
     expect(game.currentSurvey.length).to.equal(4);
   });
 
-  it.only('should sort the answers from highest respondents to lowest', () => {
+  it('should sort the answers from highest respondents to lowest', () => {
     game.chooseSurvey(3)
     expect(game.currentSurvey).to.eql([   
       { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
@@ -37,12 +37,12 @@ describe('Game', () => {
     ]) 
   });
 
-  it.only('should keep track of the previous surveys', () => {
+  it('should keep track of the previous surveys', () => {
     game.chooseSurvey();
     expect(game.usedSurveys.length).to.equal(1);
   });
 
-it.only('should only pick a survey that has not been used', () => {
+it('should only pick a survey that has not been used', () => {
   game.usedSurveys = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
   game.chooseSurvey();
   expect(game.currentSurvey).to.deep.equal([ { id: 15,
@@ -52,7 +52,7 @@ it.only('should only pick a survey that has not been used', () => {
   { answer: 'Oatmeal', respondents: 3, surveyId: 15 } ])
 });
 
-it.only('should only pick a survey taht has not been used', () => {
+it('should only pick a survey taht has not been used', () => {
   game.usedSurveys = [1,2,3,4,5,6,7,9,10,11,12,13,14,15];
   game.chooseSurvey();
   expect(game.currentSurvey).to.deep.equal([{ id: 8,
@@ -61,8 +61,13 @@ it.only('should only pick a survey taht has not been used', () => {
   { answer: 'Detergent', respondents: 69, surveyId: 8 },
   { answer: 'Change', respondents: 24, surveyId: 8 },
   { answer: 'Dryer Sheets', respondents: 6, surveyId: 8}])
-
 })
+
+it.only('should increase the round counter', () => {  
+  game.chooseRound() 
+  game.chooseRound()
+  expect(game.roundCount).to.equal(3)
+});
 
 
 
