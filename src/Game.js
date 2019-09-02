@@ -2,19 +2,17 @@ import Round from "./Round";
 import Player from "./Player";
 
 class Game {
-  constructor(data) {
+  constructor(data, playerOne, playerTwo) {
     this.data = data
     this.currentSurvey = [];
     this.usedSurveys = [];
     this.roundCount = 1;
-    this.roundType = "";
-    this.player1 = new Player("");
-    this.player2 = new Player("")
-
+    this.player1 = new Player(playerOne);
+    this.player2 = new Player(playerTwo);
   }
 
   startGame() {
-    this.selectSurvey()
+    this.chooseSurvey()
   }
 
  // Not sure how to test these handler functions
@@ -24,16 +22,13 @@ class Game {
     this.chooseSurvey();
   }
 
-
-  
   chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1) {
     if (!this.usedSurveys.includes(id)) {
-      console.log('random id -->', id)
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
-      console.log('current survey --->', this.currentSurvey)
+      return this.currentSurvey
   } else {
     this.chooseSurvey();
   }
@@ -56,22 +51,15 @@ class Game {
     }
   }
 
-  // startRound() {
-  //   this.currentSurvey = [];
-  //   this.chooseSurvey();
-  //   this.chooseRound()
-  // }
-
-  //Not sure what we'll end up passing through Round, but this will instantiate it
   startRegularRound() {
-    this.currentSurvey =[]
-    this.currentRound = new Round(this);
+    new Round(this.currentSurvey)
+    this.currentSurvey = []
     this.roundCount++
   }
 
   startDominationRound() {
     this.currentSurvey = []
-
+    this.roundCount++
   }
 
 
