@@ -39,7 +39,7 @@ describe('Turn', () => {
     expect(turn.identifyQuestion()).to.eql(1)
   });
 
-  it.skip('should find answers for prompted question', () => {
+  it('should find answers for prompted question', () => {
     let turn = new Turn(round, player1);
     expect(turn.identifyAnswerInfo()).to.eql(
       [
@@ -49,22 +49,22 @@ describe('Turn', () => {
       ])
   });
 
-  it.skip('should return correct answers from answer info', () => {
+  it('should return correct answers from answer info', () => {
     let turn = new Turn(round, player1);
     expect(turn.identifyCorrectAnswers()).to.eql(['Beer', 'Bowling Ball', 'Donuts'])
   });
 
-  it.skip('should capitalize guesses', () => {
+  it('should capitalize guesses', () => {
     let turn = new Turn(round, player1);
     expect(turn.capitalizeGuess('bOwLiNg BaLL')).to.equal('Bowling Ball')
   });
 
-  it.skip('should check to see if guess was correct', () => {
+  it('should check to see if guess was correct', () => {
     let turn = new Turn(round, player1);
     expect(turn.checkGuess('bOwLiNg BaLL')).to.equal(true);
   });
 
-  it.skip('should find number of respondents', () => {
+  it('should find number of respondents', () => {
     let turn = new Turn(round, player1);
     turn.checkGuess('bOwLiNg BaLL');
     expect(turn.countRespondents('bowling ball')).to.equal(5)
