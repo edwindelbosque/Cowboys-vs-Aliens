@@ -1,12 +1,18 @@
 class Round {
-  constructor(surveyQuestion, answers) {
-    this.surveyQuestion = surveyQuestion;
-    this.answers = answers;
+  constructor(survey) {
+   this.survey = survey
+   this.answers = [];
+   this.question = {};
+  }
+
+  getAnswers() {
+    this.question = this.survey.shift()
+    this.answers = this.survey
   }
 
   endRound(game) {
     if (!this.answers.length) {
-      game.roundCounter++;
+      game.roundCount++;
       // game.roundHandler();
     }
   }

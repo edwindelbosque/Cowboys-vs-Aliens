@@ -1,45 +1,84 @@
+import Round from "./Round";
+import Player from "./Player";
+
 class Game {
-  constructor(data) {
+  constructor(data, playerOne, playerTwo) {
     this.data = data
     this.currentSurvey = [];
     this.usedSurveys = [];
-    this.roundCount = 0;
+    this.roundCount = 1;
+    this.player1 = new Player(playerOne);
+    this.player2 = new Player(playerTwo);
   }
+
+  startGame() {
+    this.chooseSurvey()
+  }
+
+ // Not sure how to test these handler functions
 
   startRound() {
-    // currentRound = new Round
-    // New file for round where normal round and domination round both inherit from?
-
+    this.currentSurvey = []
+    this.chooseSurvey();
   }
 
-  generateRandomId() {
-    return Math.floor(Math.random() * (this.data.surveys.length - 1 + 1)) + 1;
-  }
-
-  selectSurvey(randomId) {
-    if (!this.usedSurveys.includes(randomId)) {
-      this.currentSurvey.push(this.data.surveys.find(survey => survey.id === randomId));
-      this.usedSurveys.push(randomId);
-      let answers = this.data.answers.filter(answer => answer.surveyId === randomId).sort((a, b) => b.respondents - a.respondents);
+  chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1) {
+    if (!this.usedSurveys.includes(id)) {
+      this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
+      this.usedSurveys.push(id);
+      let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
-    } else {
-      this.selectSurvey();
+      console.log('current survey -->', this.currentSurvey)
+      return this.currentSurvey
+  } else {
+    this.chooseSurvey();
+    
+  }
+  console.log('currennnnt -- >',this.currentSurvey)
+}
 
+  chooseRound() {
+    if(this.roundCount < 3) {
+      this.startRegularRound()
+    }
+    if(this.roundCount === 3) {
+      this.startDominationRound()
+    } 
+  }
+
+  getStartingPlayer() {
+    if(this.roundCounter % 2 === 0) {
+      return this.player1
+    } else {
+      return this.player2
     }
   }
+
+  startRegularRound() {
+    new Round(this.currentSurvey)
+    this.currentSurvey = []
+  }
+
+  startDominationRound() {
+    this.currentSurvey = []
+  }
+
 
 
 
   // On start game:
   // Instantiate players REQUIRES 2 players to start
+
+  //Set players to property and that's where we instantiate the 2?
   // Player1 = Player(1, name, score)
   // Player2 = Player(2, name, score)
 
-  // Instantiate a Round(question)
+  // Instantiate a Round(pass in the whole game class?)
 
   // Method to keep track of 2 rounds and 1 domination round to then end game
   // roundCount++
   // Instantiates new round 
+
   // If(roundCount < 2) then instantiate Round
   // If(roundCount > 2) then instantiate Domination Round
   // If(roundCount >= 3) then Display Winner, don't instantiate anything so that the game is "over"

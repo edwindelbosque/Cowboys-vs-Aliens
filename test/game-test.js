@@ -23,19 +23,52 @@ describe('Game', () => {
   });
 
   it('should select a random survey', () => {
-    game.selectSurvey(3)
+    game.chooseSurvey(3)
     expect(game.currentSurvey.length).to.equal(4);
   });
 
   it('should sort the answers from highest respondents to lowest', () => {
-    game.selectSurvey(3)
+    game.chooseSurvey(3)
     expect(game.currentSurvey).to.eql([   
       { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
       { answer: 'Watch', respondents: 58, surveyId: 3 },
       { answer: 'Alarm Clock', respondents: 34, surveyId: 3 },
       { answer: 'Calendar', respondents: 3, surveyId: 3 },
-    ])
+    ]) 
   });
+
+  it('should keep track of the previous surveys', () => {
+    game.chooseSurvey();
+    expect(game.usedSurveys.length).to.equal(1);
+  });
+
+it('should only pick a survey that has not been used', () => {
+  game.usedSurveys = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+  game.chooseSurvey();
+  expect(game.currentSurvey).to.deep.equal([ { id: 15,
+    question: 'Name Something You Might Add Milk To In The Morning.' },
+  { answer: 'Cold Cereal', respondents: 67, surveyId: 15 },
+  { answer: 'Coffee', respondents: 17, surveyId: 15 },
+  { answer: 'Oatmeal', respondents: 3, surveyId: 15 } ])
+});
+
+it('should only pick a survey that has not been used', () => {
+  game.usedSurveys = [1,2,3,4,5,6,7,9,10,11,12,13,14,15];
+  game.chooseSurvey();
+  expect(game.currentSurvey).to.deep.equal([{ id: 8,
+    question:
+     'What Might You Ask To Borrow From Someone At The Laundromat?' },
+  { answer: 'Detergent', respondents: 69, surveyId: 8 },
+  { answer: 'Change', respondents: 24, surveyId: 8 },
+  { answer: 'Dryer Sheets', respondents: 6, surveyId: 8}])
+})
+
+// it.only('should increase the round counter', () => {  
+//   game.chooseRound() 
+//   game.chooseRound()
+//   expect(game.roundCount).to.equal(3)
+// });
+
 
 
 
