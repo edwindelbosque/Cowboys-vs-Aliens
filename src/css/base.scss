@@ -1,7 +1,223 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+$alien-accent: #91D631;
+$cowboy-accent: #6F584B;
+$cowboy-dark: #423127;
+$alien-dark: #002D00;
+$primary-background: #000000;
+$neutral: #BABABA;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: $primary-background;
   font-family: 'Press Start 2P', cursive;
+}
+
+.body--startpage {
+
+  &:after {
+    animation: grain 15s ease-in-out infinite;
+    background-image: url('/images/grainy-filter.jpg');
+    content: "";
+    height: 300%;
+    left: -50%;
+    opacity: 0.25;
+    position: fixed;
+    top: -100%;
+    width: 300%;
+  }
+
+  height: 100vh;
+  background-image: url('/images/start-page.gif');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 0 100px 0;
+  margin: 0;
+
+  h1 {
+    font-size: 60px;
+    background: -webkit-linear-gradient(rgb(18, 159, 219), $alien-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  span {
+    font-size: 40px;
+  }
+
+  p {
+    color: $cowboy-accent;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+  }
+}
+
+.startpage__header {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: flex-end;
+  padding-bottom: 90px;
+}
+
+.startpage--players--container {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.startpage--character--icon {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 20px;
+  animation-name: floating;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-top: 5px;
+}
+
+.startpage__input--player {
+  z-index: 1;
+  width: 285px;
+  height: 60px;
+  border: 5px solid #BA38C4;
+  border-radius: 10px;
+  font-size: 30px;
+  margin-top: 15px;
+  padding-left: 20px;
+  padding-top: 4px;
+  background-color: #00000000;
+  color: white;
+  box-shadow: 0px 0px 20px black;
+  font-family: 'Press Start 2P';
+  &:focus {
+    outline: none;
+    border-color: white;
+  }
+  &:active {
+    border-color: white;
+    color: white;
+  }
+}
+
+.startpage__footer--button {
+  z-index: 1;
+  width: 240px;
+  height: 125px;
+  border: 5px solid $alien-accent;
+  border-radius: 10px;
+  background-color: #00000000;
+  font-size: 35px;
+  color: $alien-accent;
+  font-family: 'Press Start 2P';
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    border-color: white;
+  }
+}
+
+footer button span {
+  z-index: 1;
+  width: 500px;
+  color: white;
+  line-height: 1.2;
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+
+footer {
+  z-index: 3;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes floating {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 15px); }
+  to   { transform: translate(0, -0px); }    
+}
+
+main {
+  height: 100vh;
+  border: 10px solid black;
+  color: white;
+}
+
+header,
+nav,
+.section--scoreboard,
+.section--players,
+// .section__div--answer-board,
+.div__section--answer-row,
+.section__div--turn {
+  display: flex;
+}
+
+nav {
+  justify-content: space-between;
+  margin: 1%;
+}
+
+header {
+  padding: 5%;
+  text-align: center;
+}
+
+.section--scoreboard {
+  min-height: 175px;
+  justify-content: space-evenly;
+}
+
+.section__div--answer-board {
+  max-width: 45%;
+}
+
+// .div__section--answer-row {
+//   flex-direction: columns;
+// }
+
+.section--players {
+  min-height: 180px;
+  justify-content: space-evenly;
+}
+
+.section__div--turn {
+  font-size: 25px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 14px;
+}
+
+@keyframes grain {
+  0% { transform:translate(5%, -18%) }
+  33% { transform:translate(3.5%, -19%) }
+  66% { transform:translate(3.5%, -22%) }
+  100% { transform:translate(5%, -18%) }
 }
