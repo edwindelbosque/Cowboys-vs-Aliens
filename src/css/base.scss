@@ -1,9 +1,10 @@
 $alien-accent: #91D631;
+$alien-dark: #002D00;
 $cowboy-accent: #6F584B;
 $cowboy-dark: #423127;
-$alien-dark: #002D00;
-$primary-background: #000000;
 $neutral: #BABABA;
+$primary-background: #000000;
+$cowboy-name: #f54747;
 
 * {
   box-sizing: border-box;
@@ -24,27 +25,28 @@ body {
     content: "";
     height: 300%;
     left: -50%;
-    opacity: 0.25;
+    opacity: 0.35;
     position: fixed;
     top: -100%;
     width: 300%;
   }
 
-  height: 100vh;
+  align-items: center;
   background-image: url('/images/start-page.gif');
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 20px 0 100px 0;
+  height: 100vh;
+  justify-content: space-between;
   margin: 0;
+  padding: 10px 0 107px 0;
 
   h1 {
     font-size: 60px;
-    background: -webkit-linear-gradient(rgb(18, 159, 219), $alien-accent);
+    z-index: 1;
+    background: -webkit-linear-gradient(#d85151, rgb(87, 210, 54));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -54,10 +56,10 @@ body {
   }
 
   p {
-    color: $cowboy-accent;
-    text-align: center;
-    margin-top: 10px;
+    color: white;
     font-size: 30px;
+    margin-top: 10px;
+    text-align: center;
   }
 }
 
@@ -67,6 +69,7 @@ body {
   height: 200px;
   justify-content: flex-end;
   padding-bottom: 90px;
+  width: 100%;
 }
 
 .startpage--players--container {
@@ -75,76 +78,89 @@ body {
   width: 75%;
 
   div {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 }
 
 .startpage--character--icon {
-  height: 200px;
-  width: 200px;
-  margin-bottom: 20px;
-  animation-name: floating;
   animation-duration: 5s;
   animation-iteration-count: infinite;
+  animation-name: floating;
   animation-timing-function: ease-in-out;
+  height: 200px;
+  margin-bottom: 20px;
   margin-top: 5px;
+  width: 200px;
 }
 
 .startpage__input--player {
-  z-index: 1;
-  width: 285px;
-  height: 60px;
-  border: 5px solid #BA38C4;
-  border-radius: 10px;
-  font-size: 30px;
-  margin-top: 15px;
-  padding-left: 20px;
-  padding-top: 4px;
   background-color: #00000000;
-  color: white;
+  border-radius: 10px;
+  border: 5px solid #BA38C4;
   box-shadow: 0px 0px 20px black;
+  color: white;
   font-family: 'Press Start 2P';
+  font-size: 30px;
+  height: 60px;
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-top: 4px;
+  text-align: center;
+  width: 285px;
+  z-index: 1;
+
   &:focus {
-    outline: none;
     border-color: white;
+    outline: none;
   }
+
   &:active {
     border-color: white;
     color: white;
   }
 }
 
+#alien-name-input {
+  color: $alien-accent;
+}
+
+#cowboy-name-input {
+  color: $cowboy-name;
+}
+
 .startpage__footer--button {
-  z-index: 1;
-  width: 240px;
-  height: 125px;
-  border: 5px solid $alien-accent;
-  border-radius: 10px;
   background-color: #00000000;
-  font-size: 35px;
+  border-radius: 10px;
+  border: 5px solid #BA38C4;
   color: $alien-accent;
   font-family: 'Press Start 2P';
+  font-size: 35px;
+  height: 125px;
+  margin-top: 50px;
+  width: 240px;
+
   &:focus {
     outline: none;
   }
+
   &:active {
     border-color: white;
   }
 }
 
 footer button span {
-  z-index: 1;
-  width: 500px;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  animation: blink-animation 1s steps(5, start) infinite;
   color: white;
   line-height: 1.2;
-  animation: blink-animation 1s steps(5, start) infinite;
-  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  width: 500px;
+  z-index: 1;
 }
 
 footer {
-  z-index: 3;
+  z-index: 1;
 }
 
 @keyframes blink-animation {
@@ -152,6 +168,7 @@ footer {
     visibility: hidden;
   }
 }
+
 @-webkit-keyframes blink-animation {
   to {
     visibility: hidden;
@@ -159,15 +176,25 @@ footer {
 }
 
 @keyframes floating {
-  from { transform: translate(0,  0px); }
-  65%  { transform: translate(0, 15px); }
-  to   { transform: translate(0, -0px); }    
+  from {
+    transform: translate(0, 0px);
+  }
+
+  65% {
+    transform: translate(0, 15px);
+  }
+
+  to {
+    transform: translate(0, -0px);
+  }
 }
 
 main {
-  height: 100vh;
-  border: 10px solid black;
+  background-image: url(../images/grainy-filter-2.png);
+  background-position: center;
+  background-size: cover;
   color: white;
+  height: 100vh;
 }
 
 header,
@@ -185,39 +212,50 @@ nav {
   margin: 1%;
 }
 
+nav p {
+  z-index: 1;
+}
+
 header {
   padding: 5%;
   text-align: center;
 }
 
 .section--scoreboard {
-  min-height: 175px;
   justify-content: space-evenly;
+  min-height: 175px;
 }
 
 .section__div--answer-board {
   max-width: 45%;
 }
 
-// .div__section--answer-row {
-//   flex-direction: columns;
-// }
-
 .section--players {
-  min-height: 180px;
   justify-content: space-evenly;
+  min-height: 180px;
 }
 
 .section__div--turn {
-  font-size: 25px;
   flex-direction: column;
+  font-size: 25px;
   justify-content: space-evenly;
   margin-top: 14px;
 }
 
 @keyframes grain {
-  0% { transform:translate(5%, -18%) }
-  33% { transform:translate(3.5%, -19%) }
-  66% { transform:translate(3.5%, -22%) }
-  100% { transform:translate(5%, -18%) }
+  0% {
+    transform: translate(5%, -18%)
+  }
+
+  33% {
+    transform: translate(3.5%, -19%)
+  }
+
+  66% {
+    transform: translate(3.5%, -22%)
+  }
+
+  100% {
+    transform: translate(5%, -18%)
+  }
 }

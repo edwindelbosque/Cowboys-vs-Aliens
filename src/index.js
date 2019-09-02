@@ -17,4 +17,18 @@ import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+const main = $('main');
+const startGameButton = $('#start-game-button');
+const exitButton = $('#exit-button');
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
+startGameButton.on('click', () => {
+  $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000);
+})
+
+exitButton.on('click', () => {
+  $("html").delay(250).animate({ scrollTop: 0 }, 1000);
+})
