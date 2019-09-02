@@ -1,8 +1,17 @@
+import Game from '../src/Game';
+import Turn from "./Turn";
+
 class Round {
-  constructor(survey) {
-   this.survey = survey
+  constructor(game) {
+    console.log(game)
+   this.survey = game.currentSurvey;
+   this.currentPlayer = game.getStartingPlayer();
    this.answers = [];
    this.question = {};
+  }
+
+  beginTurn() {
+    let turn = new Turn(this)
   }
 
   organizeSurvey() {
