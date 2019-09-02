@@ -6,7 +6,7 @@ class Game {
     this.data = data
     this.currentSurvey = [];
     this.usedSurveys = [];
-    this.roundCount = 0;
+    this.roundCount = 1;
     this.roundType = "";
     this.player1 = new Player("");
     this.player2 = new Player("")
@@ -26,7 +26,7 @@ class Game {
 
 
   
-  chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1){
+  chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1) {
     if (!this.usedSurveys.includes(id)) {
       console.log('random id -->', id)
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
@@ -42,6 +42,9 @@ class Game {
   chooseRound() {
     if(this.roundCount < 3) {
       this.startRegularRound()
+    }
+    if(this.roundCount === 3) {
+      this.startDominationRound()
     } 
   }
 
@@ -53,19 +56,21 @@ class Game {
     }
   }
 
-  startRound() {
-    this.currentSurvey = [];
-    this.chooseSurvey();
-    this.chooseRound()
-  }
+  // startRound() {
+  //   this.currentSurvey = [];
+  //   this.chooseSurvey();
+  //   this.chooseRound()
+  // }
 
   //Not sure what we'll end up passing through Round, but this will instantiate it
   startRegularRound() {
+    this.currentSurvey =[]
     this.currentRound = new Round(this);
-    roundCount++
+    this.roundCount++
   }
 
   startDominationRound() {
+    this.currentSurvey = []
 
   }
 
