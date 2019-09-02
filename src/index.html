@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
-<body>
-  <div class="body--startpage">
+<body scroll="no" style="overflow: hidden">
+  <div class="body--startpage" id="start-page">
     <header class="startpage__header">
       <h1>COWBOYS <span>VS</span> ALIENS</h1>
       <p>-The Feud-</p>
@@ -17,21 +17,23 @@
     <div class="startpage--players--container">
       <div>
         <img src="images/cowboy-icon.png" class="startpage--character--icon">
-        <input placeholder="Yosemite" style="text-transform:uppercase" class="startpage__input--player">
+        <input placeholder="Yosemite" style="text-transform:uppercase" class="startpage__input--player"
+          id="cowboy-name-input">
       </div>
       <div>
         <img src="images/alien-icon.png" class="startpage--character--icon">
-        <input placeholder="Marvin" style="text-transform:uppercase" class="startpage__input--player">
+        <input placeholder="Marvin" style="text-transform:uppercase" class="startpage__input--player"
+          id="alien-name-input">
       </div>
     </div>
     <footer>
-      <button class="startpage__footer--button"><span>START GAME</span></button>
+      <button class="startpage__footer--button" id="start-game-button"><span>START GAME</span></button>
     </footer>
   </div>
   <main>
-    <nav>
-      <p>x</p>
-      <h5 role="timer">Timer</h5>
+    <nav id="exit-button">
+      <p>X</p>
+      <h5 role=" timer">Timer</h5>
     </nav>
     <header>
       <h1 class="header__h1--display">Question/Winner Placeholder...yeeehawww pewpew!</h1>
