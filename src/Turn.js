@@ -3,7 +3,7 @@ import Player from "./Player";
 class Turn {
   constructor(currentRound, currentPlayer) {
     this.currentRound = currentRound;
-    this.currentAnswers = currentRound.answers
+    // this.currentAnswers = currentRound.answers
     this.currentPlayer = currentPlayer;
     // this.pointsAlloted = 0; <----can probably delte this****
     // this.correctGuesses = []; <--- for domination turn?
@@ -14,7 +14,9 @@ class Turn {
   }
 
   identifyAnswerInfo() {
-    return this.currentRound.answers
+    return this.currentRound.survey.filter(survey => {
+      return survey.answer;
+    });
   }
 
   identifyCorrectAnswers() {
