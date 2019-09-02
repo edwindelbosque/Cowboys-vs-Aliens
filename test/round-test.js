@@ -25,7 +25,8 @@ beforeEach(() => {
   });
 
   it('should have the instantiated arguments as properties', () => {
-    expect(round.surveyQuestion).to.deep.equal({ id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' });
+    round.organizeSurvey()
+    expect(round.question).to.deep.equal({ id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' });
     expect(round.answers).to.deep.equal([
       { answer: 'Beer', respondents: 67, surveyId: 1 },
       { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
@@ -41,8 +42,8 @@ beforeEach(() => {
     expect(game.roundCount).to.equal(3);
   });
 
-  it.only('should get just the answers from the survey array', () => {
-    round.getAnswers()
+  it('should get just the answers from the survey array', () => {
+    round.organizeSurvey()
     expect(round.answers).to.eql([
       { answer: 'Beer', respondents: 67, surveyId: 1 },
       { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },

@@ -5,7 +5,7 @@ class Round {
    this.question = {};
   }
 
-  getAnswers() {
+  organizeSurvey() {
     this.question = this.survey.shift()
     this.answers = this.survey
   }
