@@ -11,15 +11,8 @@ beforeEach(() => {
   // turn = new Turn(round, player1);
   player1 = new Player('Cowboy');
   player2 = new Player('Alien');
-  round = new Round(
-    [
-      { id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' },
-      { answer: 'Beer', respondents: 67, surveyId: 1 },
-      { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
-      { answer: 'Donuts', respondents: 24, surveyId: 1 }
-    ]
-  );
-  // game = new Game(surveys);
+  game = new Game(data);
+  round = new Round(game);
 });
 
 describe('Turn', () => {
@@ -70,16 +63,17 @@ describe('Turn', () => {
     expect(turn.countRespondents('bowling ball')).to.equal(5)
   });
 
-  // it('should allot appropriate number of points', () => {
-  //   let turn = new Turn(round, player1);
-  //   turn.allotPoints('bowling ball');
-  //   expect(turn.pointsAlloted).to.equal(5)
-  // });  <----can probably delte this****
+  it('should allot appropriate number of points', () => {
+    let turn = new Turn(round, player1);
+    turn.updateScore('bowling ball');
+    expect(player1.score).to.equal(5)
+  });
 
   // it('should update score', () => {
   //   let turn = new Turn(round, player1);
   //   turn.checkGuess('Bowling Ball');
-  //   expect(player1.updateScore()).to.equal(5)
+  //   player1.updateScore('Bowling Ball');
+  //   expect(player1.score).to.equal(5)
   // });
 
   // it('should give feedback', () => {

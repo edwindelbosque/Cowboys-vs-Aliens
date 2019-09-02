@@ -7,10 +7,6 @@ class Player {
   }
 
 
-  // updateScore(guess) {
-  //   return this.score += this.score + (Turn.countRespondents(guess));
-  // }
-
 
 // assigns players id
   // Keeps track of score

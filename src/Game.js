@@ -9,6 +9,8 @@ class Game {
     this.roundCount = 1;
     this.player1 = new Player(playerOne);
     this.player2 = new Player(playerTwo);
+    this.player1Score = 0;
+    this.player2Score = 0;
   }
 
   startGame() {
@@ -28,13 +30,12 @@ class Game {
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
-      console.log('current survey -->', this.currentSurvey)
       return this.currentSurvey
   } else {
     this.chooseSurvey();
     
   }
-  console.log('currennnnt -- >',this.currentSurvey)
+
 }
 
   chooseRound() {

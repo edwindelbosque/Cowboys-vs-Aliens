@@ -55,6 +55,7 @@ it('should only pick a survey that has not been used', () => {
 it('should only pick a survey that has not been used', () => {
   game.usedSurveys = [1,2,3,4,5,6,7,9,10,11,12,13,14,15];
   game.chooseSurvey();
+  console.log('current survey*****', game.currentSurvey)
   expect(game.currentSurvey).to.deep.equal([{ id: 8,
     question:
      'What Might You Ask To Borrow From Someone At The Laundromat?' },
