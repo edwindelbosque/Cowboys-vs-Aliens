@@ -5,19 +5,16 @@ import surveys from '../data/surveys'
 const expect = chai.expect;
 
 let round, game;
+describe('Round', () => {
 beforeEach(() => {
+  game = new Game(surveys);
   round = new Round(
-    { id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' },
-    [
+    [ { id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' },
       { answer: 'Beer', respondents: 67, surveyId: 1 },
       { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
-      { answer: 'Donuts', respondents: 24, surveyId: 1 }
-    ]
+      { answer: 'Donuts', respondents: 24, surveyId: 1 } ]
   );
-  game = new Game(surveys);
 });
-
-describe('Round', () => {
 
   it('should be a function', () => {
     expect(Round).to.be.a('function');
@@ -39,10 +36,20 @@ describe('Round', () => {
   it('should update roundCounter in game class', () => {
     round.answers = [];
     round.endRound(game);
-    expect(game.roundCounter).to.equal(2);
+    expect(game.roundCount).to.equal(2);
     round.endRound(game);
-    expect(game.roundCounter).to.equal(3);
+    expect(game.roundCount).to.equal(3);
   });
+
+  it.only('should get just the answers from the survey array', () => {
+    round.getAnswers()
+    expect(round.answers).to.eql([
+      { answer: 'Beer', respondents: 67, surveyId: 1 },
+      { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
+      { answer: 'Donuts', respondents: 24, surveyId: 1 }
+    ])
+    
+  })
 
 
 })

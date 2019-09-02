@@ -52,7 +52,7 @@ it('should only pick a survey that has not been used', () => {
   { answer: 'Oatmeal', respondents: 3, surveyId: 15 } ])
 });
 
-it('should only pick a survey taht has not been used', () => {
+it('should only pick a survey that has not been used', () => {
   game.usedSurveys = [1,2,3,4,5,6,7,9,10,11,12,13,14,15];
   game.chooseSurvey();
   expect(game.currentSurvey).to.deep.equal([{ id: 8,
@@ -63,11 +63,11 @@ it('should only pick a survey taht has not been used', () => {
   { answer: 'Dryer Sheets', respondents: 6, surveyId: 8}])
 })
 
-it.only('should increase the round counter', () => {  
-  game.chooseRound() 
-  game.chooseRound()
-  expect(game.roundCount).to.equal(3)
-});
+// it.only('should increase the round counter', () => {  
+//   game.chooseRound() 
+//   game.chooseRound()
+//   expect(game.roundCount).to.equal(3)
+// });
 
 
 

@@ -28,10 +28,13 @@ class Game {
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
+      console.log('current survey -->', this.currentSurvey)
       return this.currentSurvey
   } else {
     this.chooseSurvey();
+    
   }
+  console.log('currennnnt -- >',this.currentSurvey)
 }
 
   chooseRound() {
@@ -54,12 +57,10 @@ class Game {
   startRegularRound() {
     new Round(this.currentSurvey)
     this.currentSurvey = []
-    this.roundCount++
   }
 
   startDominationRound() {
     this.currentSurvey = []
-    this.roundCount++
   }
 
 
