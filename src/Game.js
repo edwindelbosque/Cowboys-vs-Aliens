@@ -1,5 +1,7 @@
 import Round from "./Round";
 import Player from "./Player";
+import DominationRound from "./DominationRound";
+import DOMupdates from "./DOMupdates";
 
 class Game {
   constructor(data) {
@@ -53,14 +55,25 @@ class Game {
   }
 
   startRegularRound() {
-    new Round(this.currentSurvey)
+    new Round(this)
     this.currentSurvey = []
   }
 
   startDominationRound() {
+    new DominationRound(this)
     this.currentSurvey = []
   }
 
+  getWinner() {
+    if(player1.score > player2.score) {
+      DOMupdates.showWinner(player1)
+    }
+    if(player1.score < player2.score) {
+      DOMupdates.showWinner(player2)
+    }
+  }
+
+  
 
 
 
