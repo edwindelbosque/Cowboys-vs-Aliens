@@ -58,7 +58,7 @@ body {
   }
 
   p {
-    color: white;
+    color: #ffffffc1;
     font-size: 30px;
     margin-top: 10px;
     text-align: center;
@@ -70,6 +70,7 @@ body {
   flex-direction: column;
   height: 200px;
   justify-content: flex-end;
+  margin-top: 30px;
   padding-bottom: 90px;
   width: 100%;
 }
@@ -220,6 +221,9 @@ main {
   background-position: center;
   background-size: cover;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
 
   p {
@@ -242,6 +246,12 @@ nav,
   display: flex;
   position: relative;
   z-index: 5;
+}
+
+header {
+  h1 {
+    color: rgba(129, 255, 213, 0.733);
+  }
 }
 
 .div__section--answer-row {
@@ -278,12 +288,13 @@ nav {
     height: 60px;
     width: 130px;
     padding-top: 8px;
+    font-size: 38px;
     border-radius: 6px;
   }
 }
 
 h5 {
-  font-size: 40px;
+  font-size: 25px;
 }
 
 nav p {
@@ -299,6 +310,13 @@ header {
 
 h4 {
   font-size: 40px;
+  color: #ffff84;
+}
+
+.card--points {
+  width: 155px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .section--scoreboard {
@@ -342,6 +360,7 @@ h4 {
   margin-top: 14px;
   width: 100%;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 h2 {
@@ -366,7 +385,7 @@ h3 {
   color: white;
   font-family: 'Press Start 2P', cursive;
   text-align: center;
-  box-shadow: 0 0 5px #f877ff;
+  box-shadow: 0 0 10px #f877ff;
   transition: 1s;
 
   &:focus {
@@ -396,7 +415,7 @@ h3 {
   color: white;
   font-family: 'Press Start 2P', cursive;
   text-align: center;
-  box-shadow: 0 0 5px #f877ff;
+  box-shadow: 0 0 10px #f877ff;
   transition: 1.5s;
 
   &:focus {
