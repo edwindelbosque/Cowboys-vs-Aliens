@@ -4,21 +4,19 @@ import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
 
 class Game {
-  constructor(data) {
+  constructor(data, nameOne, nameTwo) {
     this.data = data
     this.currentSurvey = [];
     this.currentSurveyId = 0
     this.usedSurveys = [];
     this.roundCount = 1;
-    this.player1 = new Player('');
-    this.player2 = new Player('');
+    this.player1 = new Player(nameOne);
+    this.player2 = new Player(nameTwo);
   }
 
   startGame() {
     this.chooseSurvey()
   }
-
- // Not sure how to test these handler functions
 
   startRound() {
     this.currentSurvey = []
@@ -32,25 +30,25 @@ class Game {
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
       return this.currentSurvey
-  } else {
-    this.chooseSurvey();
+    } else {
+      this.chooseSurvey();
+    }
   }
-}
 
   chooseRound() {
-    if(this.roundCount < 3) {
+    if (this.roundCount < 3) {
       this.startRegularRound()
     }
-    if(this.roundCount === 3) {
+    if (this.roundCount === 3) {
       this.startDominationRound()
-    } 
+    }
   }
 
   getStartingPlayer() {
-    if(this.roundCounter % 2 === 0) {
-      return this.player1
-    } else {
+    if (this.roundCounter % 2 === 0) {
       return this.player2
+    } else {
+      return this.player1
     }
   }
 
@@ -79,7 +77,6 @@ class Game {
 
   // On start game:
   // Instantiate players REQUIRES 2 players to start
-
   //Set players to property and that's where we instantiate the 2?
   // Player1 = Player(1, name, score)
   // Player2 = Player(2, name, score)
@@ -97,12 +94,6 @@ class Game {
   //End game 
   // On click, end the game and go back to the title/start page
 
-
-
-
-
-
-
-} //<------ end of Game block
+}
 
 export default Game;

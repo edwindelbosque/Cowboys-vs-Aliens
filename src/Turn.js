@@ -1,12 +1,7 @@
-import Player from "./Player";
-
 class Turn {
   constructor(currentRound) {
     this.currentRound = currentRound;
-    // this.currentAnswers = currentRound.answers
-    this.currentPlayer = round.currentPlayer;
-    // this.pointsAlloted = 0; <----can probably delte this****
-    // this.correctGuesses = []; <--- for domination turn?
+    this.currentPlayer = currentRound.currentPlayer;
   }
 
   identifyQuestion() {
@@ -39,40 +34,26 @@ class Turn {
 
   countRespondents(guess) {
     let answerInfo = this.identifyAnswerInfo().find(answer => {
-     return answer.answer.includes(this.capitalizeGuess(guess))
+      return answer.answer.includes(this.capitalizeGuess(guess))
     })
     return answerInfo.respondents;
   }
 
   updateScore(guess) {
-    if(this.checkGuess(guess)) {
+    if (this.checkGuess(guess)) {
       this.currentPlayer.score += this.countRespondents(guess);
     }
   }
 
-
-  // giveFeedback(guess) {
-  //   // console.log(this.checkGuess(guess))
-  //   return this.checkGuess(guess)? 'Correct!' : 'X'
-  // }
-
-  togglePlayer() {
-    if(this.currentPlayer === player1) {
-      this.currentPlayer = player2
-    } else if (this.currentPlayer === player2) {
-      this.currentPlayer = player1
-    }
+  giveFeedback(guess) {
+    return this.checkGuess(guess) ? 'Correct!' : 'Incorrect!'
   }
 
-//helper function to toggle players
-//make it happen ^^^ depending on correct/incorrect guess
-
-
-} //<---- end of Turn class
-
-
-
-
-
+  togglePlayer() {
+    this.currentPlayer === this.currentRound.game.player1
+      ? this.currentPlayer = this.currentRound.game.player2
+      : this.currentPlayer = this.currentRound.game.player1
+  }
+}
 
 export default Turn;
