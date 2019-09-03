@@ -16,8 +16,6 @@ class Game {
     this.chooseSurvey()
   }
 
-  // Not sure how to test these handler functions
-
   startRound() {
     this.currentSurvey = []
     this.chooseSurvey();
@@ -46,9 +44,9 @@ class Game {
 
   getStartingPlayer() {
     if (this.roundCounter % 2 === 0) {
-      return this.player1
-    } else {
       return this.player2
+    } else {
+      return this.player1
     }
   }
 
@@ -60,12 +58,6 @@ class Game {
   startDominationRound() {
     this.currentSurvey = []
   }
-
-
-
-
-  // On start game:
-  // Instantiate players REQUIRES 2 players to start
 
   //Set players to property and that's where we instantiate the 2?
   // Player1 = Player(1, name, score)
@@ -84,12 +76,6 @@ class Game {
   //End game 
   // On click, end the game and go back to the title/start page
 
-
-
-
-
-
-
-} //<------ end of Game block
+}
 
 export default Game;

@@ -1,16 +1,12 @@
 import chai from 'chai';
 import Turn from '../src/Turn';
-import Player from '../src/Player';
 import Round from '../src/Round';
 import Game from '../src/Game';
 import data from '../data/surveys.js'
 const expect = chai.expect;
 
-let player1, player2, round, game, turn;
+let round, game, turn;
 beforeEach(() => {
-  // turn = new Turn(round, player1);
-  // player1 = new Player('Cowboy');
-  // player2 = new Player('Alien');
   game = new Game(data, 'Erick', 'Jeannie');
   game.startGame();
   round = new Round(game);
@@ -60,6 +56,14 @@ describe('Turn', () => {
     expect(turn.currentPlayer.score).to.equal(round.answers[0].respondents)
   });
 
+  it('should do sumthin', () => {
+    expect(turn.currentPlayer).to.equal(game.player1);
+    turn.togglePlayer();
+    expect(turn.currentPlayer).to.equal(game.player2);
+    turn.togglePlayer();
+    expect(turn.currentPlayer).to.equal(game.player1);
+  })
+
   // it('should update score', () => {
   //   let turn = new Turn(round, player1);
   //   turn.checkGuess('Bowling Ball');
@@ -67,10 +71,10 @@ describe('Turn', () => {
   //   expect(player1.score).to.equal(5)
   // });
 
-  // it('should give feedback', () => {
-  //   let turn = new Turn(round, player1);
-  //   expect(turn.giveFeedback()).to.equal('Correct!')
-  // });
+  it('should give feedback', () => {
+    expect(turn.giveFeedback('wrong guess')).to.equal('Incorrect!')
+    expect(turn.giveFeedback(round.answers[0].answer)).to.equal('Correct!')
+  });
 
   // it('should switch player after a turn is complete', () => {
   //   let turn = new Turn(round, player1);
