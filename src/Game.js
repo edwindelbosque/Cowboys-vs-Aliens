@@ -4,14 +4,14 @@ import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
 
 class Game {
-  constructor(data) {
+  constructor(data, playerOne, playerTwo) {
     this.data = data
     this.currentSurvey = [];
     this.currentSurveyId = 0
     this.usedSurveys = [];
     this.roundCount = 1;
-    this.player1 = new Player('');
-    this.player2 = new Player('');
+    this.player1 = new Player(playerOne);
+    this.player2 = new Player(playerTwo);
   }
 
   startGame() {
@@ -65,11 +65,13 @@ class Game {
   }
 
   getWinner() {
-    if(player1.score > player2.score) {
-      DOMupdates.showWinner(player1)
-    }
-    if(player1.score < player2.score) {
-      DOMupdates.showWinner(player2)
+    console.log(DOMupdates)
+    if(this.player1.score > this.player2.score) {
+      DOMupdates.showWinner(this.player1)
+    } else if(this.player1.score < this.player2.score) {
+      DOMupdates.showWinner(this.player2)
+    } else {
+      DOMupdates.showWinner('TIE!')
     }
   }
 

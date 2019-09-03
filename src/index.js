@@ -15,6 +15,9 @@ import './images/favicon-32x32.png';
 import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
+import Game from './Game';
+
+const game = new Game()
 
 const main = $('main');
 const startGameButton = $('#start-game-button');

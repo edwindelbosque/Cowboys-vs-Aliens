@@ -7,6 +7,7 @@ const DOMupdates = {
     $('').text(player.score)
   }
 
+  
  
 
 }

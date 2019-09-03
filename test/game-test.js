@@ -2,15 +2,15 @@ import chai from 'chai';
 import Game from '../src/Game';
 import data from '../data/surveys.js'
 import DOMupdates from '../src/DOMupdates.js'
-import spies from 'chai-spies';
+import Player from '../src/Player';
+const spies = require('chai-spies');
 const expect = chai.expect;
 chai.use(spies);
-chai.spy.on(DOMupdates, ['showWinners'], () => {});
-
+chai.spy.on(DOMupdates, ['showWinner'], () => {});
 
 let game;
 beforeEach(() => {
-  game = new Game(data);
+  game = new Game(data, 'playerone', 'playertwo');
 });
 
 describe('Game', () => {
@@ -68,6 +68,8 @@ it('should only pick a survey that has not been used', () => {
   { answer: 'Dryer Sheets', respondents: 6, surveyId: 8}])
 })
 
+
+
 // it.only('should increase the round counter', () => {  
 //   game.chooseRound() 
 //   game.chooseRound()
@@ -79,6 +81,13 @@ it('should only pick a survey that has not been used', () => {
 
 
 }); // <------ end of describe block
+
+describe('getWinner', function() {
+  it.only('should call something', () => {
+    game.getWinner()
+    expect(DOMupdates.showWinner).to.have.been.called(1)
+  })
+})
 
 
 
