@@ -3,7 +3,6 @@ import Turn from "./Turn";
 
 class Round {
   constructor(game) {
-    console.log(game)
    this.survey = game.currentSurvey;
    this.currentPlayer = game.getStartingPlayer();
    this.answers = [];
@@ -15,8 +14,10 @@ class Round {
   }
 
   organizeSurvey() {
-    this.question = this.survey.shift()
+    this.question = this.survey.shift();
+   
     this.answers = this.survey
+  
   }
 
   endRound(game) {
