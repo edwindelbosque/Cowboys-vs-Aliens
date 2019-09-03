@@ -1,7 +1,12 @@
 import chai from 'chai';
 import Game from '../src/Game';
 import data from '../data/surveys.js'
+import DOMupdates from '../src/DOMupdates.js'
+import spies from 'chai-spies';
 const expect = chai.expect;
+chai.use(spies);
+chai.spy.on(DOMupdates, ['showWinners'], () => {});
+
 
 let game;
 beforeEach(() => {
