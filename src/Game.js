@@ -2,15 +2,14 @@ import Round from "./Round";
 import Player from "./Player";
 
 class Game {
-  constructor(data, playerOne, playerTwo) {
+  constructor(data) {
     this.data = data
     this.currentSurvey = [];
+    this.currentSurveyId = 0
     this.usedSurveys = [];
     this.roundCount = 1;
-    this.player1 = new Player(playerOne);
-    this.player2 = new Player(playerTwo);
-    this.player1Score = 0;
-    this.player2Score = 0;
+    this.player1 = new Player('');
+    this.player2 = new Player('');
   }
 
   startGame() {
@@ -33,9 +32,7 @@ class Game {
       return this.currentSurvey
   } else {
     this.chooseSurvey();
-    
   }
-
 }
 
   chooseRound() {
