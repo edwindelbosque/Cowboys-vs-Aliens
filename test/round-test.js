@@ -6,19 +6,19 @@ const expect = chai.expect;
 
 let round, game;
 describe('Round', () => {
-beforeEach(() => {
-  // testData = { 
-  //   surveys: [
-  //     { id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' } ],
-  //   answers: [
-  //     { answer: 'Beer', respondents: 67, surveyId: 1 },
-  //     { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
-  //     { answer: 'Donuts', respondents: 24, surveyId: 1 } ]
-  //   }
-  game = new Game(data);
-  game.startRound();
-  round = new Round(game);
-});
+  beforeEach(() => {
+    // testData = { 
+    //   surveys: [
+    //     { id: 1, question: 'If You Drew Homer Simpson’s Name In A Secret Santa Exchange, What Would You Buy Him?' } ],
+    //   answers: [
+    //     { answer: 'Beer', respondents: 67, surveyId: 1 },
+    //     { answer: 'Bowling Ball', respondents: 5, surveyId: 1 },
+    //     { answer: 'Donuts', respondents: 24, surveyId: 1 } ]
+    //   }
+    game = new Game(data);
+    game.startRound();
+    round = new Round(game);
+  });
 
   it('should be a function', () => {
     expect(Round).to.be.a('function');

@@ -2,21 +2,21 @@ import Round from "./Round";
 import Player from "./Player";
 
 class Game {
-  constructor(data) {
+  constructor(data, nameOne, nameTwo) {
     this.data = data
     this.currentSurvey = [];
     this.currentSurveyId = 0
     this.usedSurveys = [];
     this.roundCount = 1;
-    this.player1 = new Player('');
-    this.player2 = new Player('');
+    this.player1 = new Player(nameOne);
+    this.player2 = new Player(nameTwo);
   }
 
   startGame() {
     this.chooseSurvey()
   }
 
- // Not sure how to test these handler functions
+  // Not sure how to test these handler functions
 
   startRound() {
     this.currentSurvey = []
@@ -30,22 +30,22 @@ class Game {
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
       return this.currentSurvey
-  } else {
-    this.chooseSurvey();
+    } else {
+      this.chooseSurvey();
+    }
   }
-}
 
   chooseRound() {
-    if(this.roundCount < 3) {
+    if (this.roundCount < 3) {
       this.startRegularRound()
     }
-    if(this.roundCount === 3) {
+    if (this.roundCount === 3) {
       this.startDominationRound()
-    } 
+    }
   }
 
   getStartingPlayer() {
-    if(this.roundCounter % 2 === 0) {
+    if (this.roundCounter % 2 === 0) {
       return this.player1
     } else {
       return this.player2

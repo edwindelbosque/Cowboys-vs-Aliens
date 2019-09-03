@@ -3,19 +3,20 @@ import Turn from "./Turn";
 
 class Round {
   constructor(game) {
-   this.survey = game.currentSurvey;
-   this.currentPlayer = game.getStartingPlayer();
-   this.answers = [];
-   this.question = {};
+    this.survey = game.currentSurvey;
+    this.currentPlayer = game.getStartingPlayer();
+    this.answers = [];
+    this.question = {};
   }
 
   beginTurn() {
     let turn = new Turn(this)
+    return turn;
   }
 
   organizeSurvey() {
     this.question = this.survey.shift();
-   
+
     this.answers = this.survey
   }
 
@@ -26,7 +27,6 @@ class Round {
     }
   }
 }
-
 
 
 
