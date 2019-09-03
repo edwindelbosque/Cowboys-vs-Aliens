@@ -5,6 +5,7 @@ $cowboy-dark: #423127;
 $neutral: #BABABA;
 $primary-background: #000000;
 $cowboy-name: #f54747;
+$pink-border: #BA38C4;
 
 * {
   box-sizing: border-box;
@@ -25,7 +26,7 @@ body {
     content: "";
     height: 300%;
     left: -50%;
-    opacity: 0.35;
+    opacity: 0.4;
     position: fixed;
     top: -100%;
     width: 300%;
@@ -45,6 +46,7 @@ body {
 
   h1 {
     font-size: 60px;
+    text-align: center;
     z-index: 1;
     background: -webkit-linear-gradient(#d85151, rgb(87, 210, 54));
     -webkit-background-clip: text;
@@ -56,7 +58,7 @@ body {
   }
 
   p {
-    color: white;
+    color: #ffffffc1;
     font-size: 30px;
     margin-top: 10px;
     text-align: center;
@@ -68,6 +70,7 @@ body {
   flex-direction: column;
   height: 200px;
   justify-content: flex-end;
+  margin-top: 30px;
   padding-bottom: 90px;
   width: 100%;
 }
@@ -110,8 +113,34 @@ body {
   text-align: center;
   width: 285px;
   z-index: 1;
+  box-shadow: 0 0 2px #f877ff;
+  transition: 0.25s;
+}
+
+#alien-name-input {
+  color: $alien-accent;
 
   &:focus {
+    box-shadow: 0 0 20px #0bff3c;
+    transition: 0.25s;
+    border-color: rgb(191, 191, 191);
+    outline: none;
+  }
+
+  &:active {
+    border-color: rgb(255, 255, 255);
+    color: white;
+    box-shadow: 0 0 50px #75dfff;
+    transition: 0.25s;
+  }
+}
+
+#cowboy-name-input {
+  color: $cowboy-name;
+
+  &:focus {
+    box-shadow: 0 0 20px #ff2a26;
+    transition: 0.25s;
     border-color: white;
     outline: none;
   }
@@ -119,15 +148,9 @@ body {
   &:active {
     border-color: white;
     color: white;
+    box-shadow: 0 0 50px #75dfff;
+    transition: 0.25s;
   }
-}
-
-#alien-name-input {
-  color: $alien-accent;
-}
-
-#cowboy-name-input {
-  color: $cowboy-name;
 }
 
 .startpage__footer--button {
@@ -140,6 +163,8 @@ body {
   height: 125px;
   margin-top: 50px;
   width: 240px;
+  box-shadow: 0 0 5px #f877ff;
+  transition: .25s;
 
   &:focus {
     outline: none;
@@ -147,6 +172,8 @@ body {
 
   &:active {
     border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
   }
 }
 
@@ -194,7 +221,18 @@ main {
   background-position: center;
   background-size: cover;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
+
+  p {
+    font-size: 40px;
+  }
+
+  header {
+    height: 80px;
+  }
 }
 
 header,
@@ -205,11 +243,57 @@ nav,
 .div__section--answer-row,
 .section__div--turn {
   display: flex;
+  position: relative;
+  z-index: 5;
+}
+
+header {
+  h1 {
+    color: rgba(129, 255, 213, 0.733);
+  }
+}
+
+.div__section--answer-row {
+  width: 700px;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
 }
 
 nav {
   justify-content: space-between;
-  margin: 1%;
+  padding: 15px 25px 0 25px;
+
+  p {
+    border: 4px solid #6d00007b;
+    color: rgba(255, 255, 255, 0.479);
+    height: 60px;
+    width: 60px;
+    padding-top: 8px;
+    padding-left: 8px;
+    border-radius: 6px;
+    transition: .25s;
+
+    &:active {
+      transition: .25s;
+      box-shadow: 0 0 30px #75dfff;
+      border-color: white;
+    }
+  }
+
+  h5 {
+    border: 4px solid white;
+    height: 60px;
+    width: 130px;
+    padding-top: 8px;
+    font-size: 38px;
+    border-radius: 6px;
+  }
+}
+
+h5 {
+  font-size: 25px;
 }
 
 nav p {
@@ -217,17 +301,49 @@ nav p {
 }
 
 header {
-  padding: 5%;
+  padding: 2% 8%;
   text-align: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+h4 {
+  font-size: 40px;
+  color: #ffff84;
+}
+
+.card--points {
+  width: 155px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .section--scoreboard {
   justify-content: space-evenly;
+  align-items: center;
   min-height: 175px;
 }
 
 .section__div--answer-board {
-  max-width: 45%;
+  max-width: 50%;
+  border: 8px dashed white;
+  outline: none;
+  box-shadow: 0 0 30px #75dfff;
+  border-radius: 10px;
+}
+
+.div__section--middle-row {
+  border-top: 8px dashed white;
+  border-bottom: 8px dashed white;
+  height: 90px;
+}
+
+.section__div--answer {
+  width: 400px;
+
+  h5 {
+    text-align: left;
+  }
 }
 
 .section--players {
@@ -238,8 +354,78 @@ header {
 .section__div--turn {
   flex-direction: column;
   font-size: 25px;
-  justify-content: space-evenly;
+  padding-top: 30px;
+  justify-content: space-around;
   margin-top: 14px;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 30px;
+  width: 300px;
+  text-align: center;
+}
+
+#guess-input {
+  width: 550px;
+  height: 80px;
+  border: 6px solid $pink-border;
+  border-radius: 10px;
+  margin-top: 40px;
+  background-color: #00000000;
+  font-size: 40px;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  box-shadow: 0 0 10px #f877ff;
+  transition: 1s;
+
+  &:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
+  }
+
+  &:active {
+    border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
+  }
+}
+
+#guess-button {
+  width: 280px;
+  padding-top: 8px;
+  padding-left: 5px;
+  height: 80px;
+  border: 6px solid $pink-border;
+  border-radius: 10px;
+  margin-top: 40px;
+  background-color: #00000000;
+  font-size: 40px;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  box-shadow: 0 0 10px #f877ff;
+  transition: 1.5s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
+  }
 }
 
 @keyframes grain {
@@ -258,4 +444,16 @@ header {
   100% {
     transform: translate(5%, -18%)
   }
+}
+
+.bring-front {
+  z-index: 1;
+}
+
+#cowboy-name {
+  color: $cowboy-name;
+}
+
+#alien-name {
+  color: $alien-accent;
 }
