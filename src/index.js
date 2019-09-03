@@ -19,13 +19,17 @@ import './images/grainy-filter-2.png'
 const main = $('main');
 const startGameButton = $('#start-game-button');
 const exitButton = $('#exit-button');
+const cowboyInput = $('#cowboy-name-input');
+const alienInput = $('#alien-name-input');
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
 startGameButton.on('click', () => {
-  $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000);
+  $('#cowboy-name').text(cowboyInput.val());
+  $('#alien-name').text(alienInput.val());
+  $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 })
 
 exitButton.on('click', () => {
