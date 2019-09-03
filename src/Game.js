@@ -1,15 +1,17 @@
 import Round from "./Round";
 import Player from "./Player";
+import DominationRound from "./DominationRound";
+import DOMupdates from "./DOMupdates";
 
 class Game {
-  constructor(data, nameOne, nameTwo) {
+  constructor(data, playerOne, playerTwo) {
     this.data = data
     this.currentSurvey = [];
     this.currentSurveyId = 0
     this.usedSurveys = [];
     this.roundCount = 1;
-    this.player1 = new Player(nameOne);
-    this.player2 = new Player(nameTwo);
+    this.player1 = new Player(playerOne);
+    this.player2 = new Player(playerTwo);
   }
 
   startGame() {
@@ -51,14 +53,32 @@ class Game {
   }
 
   startRegularRound() {
-    new Round(this.currentSurvey)
+    new Round(this)
     this.currentSurvey = []
   }
 
   startDominationRound() {
+    new DominationRound(this)
     this.currentSurvey = []
   }
 
+  getWinner() {
+    console.log(DOMupdates)
+    if(this.player1.score > this.player2.score) {
+      DOMupdates.showWinner(this.player1)
+    } else if(this.player1.score < this.player2.score) {
+      DOMupdates.showWinner(this.player2)
+    } else {
+      DOMupdates.showWinner('TIE!')
+    }
+  }
+
+  
+
+
+
+  // On start game:
+  // Instantiate players REQUIRES 2 players to start
   //Set players to property and that's where we instantiate the 2?
   // Player1 = Player(1, name, score)
   // Player2 = Player(2, name, score)
