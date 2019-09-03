@@ -17,7 +17,6 @@ class Round {
     this.question = this.survey.shift();
    
     this.answers = this.survey
-  
   }
 
   endRound(game) {
