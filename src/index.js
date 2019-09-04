@@ -20,23 +20,63 @@ import Game from './Game';
 
 let game;
 
+
 const main = $('main');
 const startGameButton = $('#start-game-button');
 const exitButton = $('#exit-button');
 const cowboyInput = $('#cowboy-name-input');
 const alienInput = $('#alien-name-input');
+const guessInput = $('#guess-input');
+const guessButton = $('#guess-button');
+const cowboyImage = $('#cowboy-image');
+const alienImage = $('#alien-image');
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
+cowboyInput.on('keyup', () => {
+  displayStartButton();
+}).on('focus', () => {
+  cowboyImage.css('z-index', '1').animate({ height: '210px', width: '210px', marginBottom: '12px' }, 300);
+}).on('focusout', () => {
+  cowboyImage.css('z-index', '0').animate({ height: '200px', width: '200px', marginBottom: '12px' }, 300);
+})
+
+alienInput.on('keyup', () => {
+  displayStartButton();
+}).on('focus', () => {
+  alienImage.css('z-index', '1').animate({ height: '210px', width: '210px', marginBottom: '12px' }, 300);
+}).on('focusout', () => {
+  alienImage.css('z-index', '0').animate({ height: '200px', width: '200px', marginBottom: '12px' }, 300);
+})
+
 startGameButton.on('click', () => {
-  $('#cowboy-name').text(cowboyInput.val());
-  $('#alien-name').text(alienInput.val());
+  $('#cowboy-name').text(cowboyInput.val().toUpperCase());
+  $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
+
   // game = new Game(data, cowboyInput.val(), alienInput.val())
 })
 
+  setTimeout(function () {
+    cowboyInput.val('');
+    alienInput.val('');
+    startGameButton.css('opacity', '0');
+  }, 2000);
+});
+
+
 exitButton.on('click', () => {
   $("html").delay(250).animate({ scrollTop: 0 }, 1000);
-})
+});
+
+function displayStartButton() {
+  alienInput.val() === '' || cowboyInput.val() === ''
+    ? startGameButton.animate({ opacity: '0' }, 100)
+    : startGameButton.animate({ opacity: '1' }, 100)
+}
+
+guessButton.on('click', () => {
+  guessInput.val('');
+});
