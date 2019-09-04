@@ -64,9 +64,9 @@ class Game {
 
   getWinner() {
     console.log(DOMupdates)
-    if(this.player1.score > this.player2.score) {
+    if (this.player1.score > this.player2.score) {
       DOMupdates.showWinner(this.player1)
-    } else if(this.player1.score < this.player2.score) {
+    } else if (this.player1.score < this.player2.score) {
       DOMupdates.showWinner(this.player2)
     } else {
       DOMupdates.showWinner('TIE!')

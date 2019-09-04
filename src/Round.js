@@ -11,7 +11,7 @@ class Round {
   }
 
   beginTurn() {
-    let turn = new Turn(this.answers, this.currentPlayer)
+    let turn = new Turn(this)
   }
 
   organizeSurvey() {

@@ -1,9 +1,9 @@
-
+import Turn from './Turn.js';
 
 
 class DominationTurn extends Turn {
-  constructor(currentRound, currentPlayer, currentSurvey) {
-    super(currentRound, currentPlayer, currentSurvey)
+  constructor(currentRound) {
+    super(currentRound)
       this.seconds = 30;
       this.guesses = [];
   }
@@ -40,5 +40,5 @@ class DominationTurn extends Turn {
 
 
 export default DominationTurn;
-import Turn from './Round.js';
+
 import Game from './Game.js';
