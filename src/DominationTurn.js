@@ -11,6 +11,10 @@ class DominationTurn extends Turn {
   decreaseTimer() {
 
   }
+
+  multiplyScores(multiplier) {
+    
+  }
   
   calculateScores() {
 

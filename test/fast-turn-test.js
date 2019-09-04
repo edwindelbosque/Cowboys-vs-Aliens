@@ -26,6 +26,10 @@ describe('DominationTurn', () => {
     expect(dominationTurn).to.be.an.instanceOf(DominationTurn);
   });
 
+  it.only('should multiply scores based on users multiplier', () => {
+    expect(dominationTurn.calculateScores())
+  })
+
 
   
 
