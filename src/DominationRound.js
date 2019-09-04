@@ -1,16 +1,28 @@
-// class DominationRound extends Round {
-//   constructor(survey, answers, multiplier) {
-//     // super(survey, answers);
-//     // this.multiplier = multiplier;
-//   }
+import Round from './Round.js';
+import DominationTurn from './DominationTurn.js';
+
+
+class DominationRound extends Round {
+  constructor(game, multiplier) {
+    super(game);
+    this.multiplier = multiplier;
+  }
 
 
 
-  // Keeps track of timer
-  // Instantiates domination turn
+  startDominationRound() {
+    let dominationTurn = new DominationTurn()
+  }
 
 
-// } //<-------end of DominationRound block
 
-// export default DominationRound;
-// import Round from './Round.js';
+  endDominationRound() {
+
+  }
+
+
+}
+
+
+
+export default DominationRound;
