@@ -2,6 +2,7 @@ class Turn {
   constructor(currentRound) {
     this.currentRound = currentRound;
     this.currentPlayer = currentRound.currentPlayer;
+    this.correctGuesses = [];
   }
 
   identifyQuestion() {
@@ -9,9 +10,7 @@ class Turn {
   }
 
   identifyAnswerInfo() {
-    return this.currentRound.survey.filter(survey => {
-      return survey.answer;
-    });
+    return this.currentRound.answers;
   }
 
   identifyCorrectAnswers() {
@@ -49,10 +48,16 @@ class Turn {
     return this.checkGuess(guess) ? 'Correct!' : 'Incorrect!'
   }
 
-  togglePlayer() {
+  toggleHelper() {
     this.currentPlayer === this.currentRound.game.player1
       ? this.currentPlayer = this.currentRound.game.player2
       : this.currentPlayer = this.currentRound.game.player1
+  }
+
+  togglePlayer(guess) {
+    if(this.checkGuess(guess) === false){
+      return this.toggleHelper()
+    }
   }
 }
 

@@ -28,10 +28,6 @@ describe('Turn', () => {
     expect(turn.identifyQuestion()).to.eql(round.survey[0].id)
   });
 
-  it('should find answers for prompted question', () => {
-    expect(turn.identifyAnswerInfo()).to.eql(round.answers);
-  });
-
   it('should return correct answers from answer info', () => {
     expect(turn.identifyCorrectAnswers()[0]).to.eql(round.answers[0].answer)
     expect(turn.identifyCorrectAnswers()[1]).to.eql(round.answers[1].answer)
@@ -56,13 +52,13 @@ describe('Turn', () => {
     expect(turn.currentPlayer.score).to.equal(round.answers[0].respondents)
   });
 
-  it('should do sumthin', () => {
+  it('should toggle player when guess is incorrect', () => {
     expect(turn.currentPlayer).to.equal(game.player1);
-    turn.togglePlayer();
+    turn.togglePlayer('wrong');
     expect(turn.currentPlayer).to.equal(game.player2);
-    turn.togglePlayer();
+    turn.togglePlayer('wrong');
     expect(turn.currentPlayer).to.equal(game.player1);
-  })
+  });
 
   // it('should update score', () => {
   //   let turn = new Turn(round, player1);
