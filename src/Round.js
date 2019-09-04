@@ -14,15 +14,11 @@ class Round {
     return turn;
   }
 
-  togglePlayer() {
-
-  }
-
   organizeSurvey() {
     this.question = this.survey.shift();
-
-    this.answers = this.survey
+    this.answers = this.survey;
   }
+
 
   endRound(game) {
     if (!this.answers.length) {

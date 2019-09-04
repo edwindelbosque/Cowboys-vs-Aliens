@@ -71,11 +71,17 @@ describe('Turn', () => {
     expect(turn.correctGuesses).to.eql([round.answers[0].answer, round.answers[1].answer]);
   });
 
-
   it('should give feedback', () => {
     expect(turn.giveFeedback('wrong guess')).to.equal('Incorrect!')
     expect(turn.giveFeedback(round.answers[0].answer)).to.equal('Correct!')
   });
+
+  // it('should end round when all correct guesses have been made', () => {
+  
+  //chai.spy.on (?????????????) 
+
+  //   expect()
+  // }); 
 
 
 }); // <------ end of describe block

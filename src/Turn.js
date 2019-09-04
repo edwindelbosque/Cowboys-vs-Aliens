@@ -1,3 +1,5 @@
+import Round from "./Round";
+
 class Turn {
   constructor(currentRound) {
     this.currentRound = currentRound;
@@ -55,7 +57,7 @@ class Turn {
   }
 
   togglePlayer(guess) {
-    if(this.checkGuess(guess) === false){
+    if(this.checkGuess(guess) === false) {
       return this.toggleHelper()
     }
   }
@@ -65,6 +67,12 @@ class Turn {
       this.correctGuesses.push(guess);
     }
   }
+
+  // signalRound() {
+  //   if(this.correctGuesses === 3) {
+  //     round.endRound(game)
+  //   }
+  // }  
 
 
 }
