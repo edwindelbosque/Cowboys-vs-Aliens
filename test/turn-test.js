@@ -59,28 +59,23 @@ describe('Turn', () => {
     turn.togglePlayer('wrong');
     expect(turn.currentPlayer).to.equal(game.player1);
     turn.togglePlayer(round.answers[0].answer)
-    console.log('[]---->', round.answers)
-    console.log('right answer--->', round.answers[0].answer)
     expect(turn.currentPlayer).to.equal(game.player1);
   });
 
-  // it('should update score', () => {
-  //   let turn = new Turn(round, player1);
-  //   turn.checkGuess('Bowling Ball');
-  //   player1.updateScore('Bowling Ball');
-  //   expect(player1.score).to.equal(5)
-  // });
+  it('should account for correct guesses only', () => {
+    turn.rememberCorrectGuesses('wrong');
+    expect(turn.correctGuesses).to.eql([]);
+    turn.rememberCorrectGuesses(round.answers[0].answer);
+    expect(turn.correctGuesses).to.eql([round.answers[0].answer]);
+    turn.rememberCorrectGuesses(round.answers[1].answer);
+    expect(turn.correctGuesses).to.eql([round.answers[0].answer, round.answers[1].answer]);
+  });
+
 
   it('should give feedback', () => {
     expect(turn.giveFeedback('wrong guess')).to.equal('Incorrect!')
     expect(turn.giveFeedback(round.answers[0].answer)).to.equal('Correct!')
   });
 
-  // it('should switch player after a turn is complete', () => {
-  //   let turn = new Turn(round, player1);
-  // });
-
-
-  // last test == next player should be able to guess?...
 
 }); // <------ end of describe block

@@ -59,6 +59,14 @@ class Turn {
       return this.toggleHelper()
     }
   }
+
+  rememberCorrectGuesses(guess) {
+    if(this.checkGuess(guess) === true) {
+      this.correctGuesses.push(guess);
+    }
+  }
+
+
 }
 
 export default Turn;
