@@ -94,10 +94,12 @@ it('should call something', () => {
 }); // <------ end of describe block
 
 
-
-
-
-
+describe('getWinner', function() {
+  it('should call something', () => {
+    game.getWinner()
+    expect(DOMupdates.showWinner).to.have.been.called(1)
+  })
+})
 
 
 
