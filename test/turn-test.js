@@ -52,11 +52,15 @@ describe('Turn', () => {
     expect(turn.currentPlayer.score).to.equal(round.answers[0].respondents)
   });
 
-  it('should toggle player when guess is incorrect', () => {
+  it('should toggle player when guess is incorrect only', () => {
     expect(turn.currentPlayer).to.equal(game.player1);
     turn.togglePlayer('wrong');
     expect(turn.currentPlayer).to.equal(game.player2);
     turn.togglePlayer('wrong');
+    expect(turn.currentPlayer).to.equal(game.player1);
+    turn.togglePlayer(round.answers[0].answer)
+    console.log('[]---->', round.answers)
+    console.log('right answer--->', round.answers[0].answer)
     expect(turn.currentPlayer).to.equal(game.player1);
   });
 
