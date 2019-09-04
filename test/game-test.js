@@ -83,7 +83,7 @@ it('should only pick a survey that has not been used', () => {
 }); // <------ end of describe block
 
 describe('getWinner', function() {
-  it.only('should call something', () => {
+  it('should call something', () => {
     game.getWinner()
     expect(DOMupdates.showWinner).to.have.been.called(1)
   })
