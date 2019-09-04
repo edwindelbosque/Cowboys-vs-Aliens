@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Turn from '../src/Turn';
+// import Turn from '../src/Turn';
 import Round from '../src/Round';
 import Game from '../src/Game';
 import data from '../data/surveys'
@@ -11,7 +11,7 @@ describe('Round', () => {
     game = new Game(data);
     game.startRound();
     round = new Round(game);
-    turn = new Turn(round)
+    // turn = new Turn(round)
   });
 
   it('should be a function', () => {

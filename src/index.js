@@ -15,9 +15,10 @@ import './images/favicon-32x32.png';
 import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
+import data from '../data/surveys'
 import Game from './Game';
 
-const game = new Game()
+let game;
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -33,6 +34,7 @@ startGameButton.on('click', () => {
   $('#cowboy-name').text(cowboyInput.val());
   $('#alien-name').text(alienInput.val());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
+  // game = new Game(data, cowboyInput.val(), alienInput.val())
 })
 
 exitButton.on('click', () => {
