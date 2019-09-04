@@ -17,8 +17,10 @@ import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
 import data from '../data/surveys'
 import Game from './Game';
+import Round from './Round';
+import Turn from './Turn';
 
-let game;
+let game, round, turn;
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -51,13 +53,18 @@ alienInput.on('keyup', () => {
 })
 
 startGameButton.on('click', () => {
-  console.log('startGameButton handler ran');
   $('#cowboy-name').text(cowboyInput.val().toUpperCase());
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 
-  game = new Game(data, cowboyInput.val(), alienInput.val())
-  console.log(game);
+  game = new Game(data, cowboyInput.val(), alienInput.val());
+  game.startGame();
+  round = new Round(game);
+  round.organizeSurvey();
+  turn = new Turn(round);
+
+  console.log(turn);
+
 })
 
 setTimeout(function () {
@@ -78,5 +85,6 @@ function displayStartButton() {
 }
 
 guessButton.on('click', () => {
+  turn.updateScore(guessInput.val());
   guessInput.val('');
 });

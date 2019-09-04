@@ -1,5 +1,7 @@
 import Game from '../src/Game';
 import Turn from "./Turn";
+import DOMupdates from "./DOMupdates";
+
 
 class Round {
   constructor(game) {
@@ -15,8 +17,9 @@ class Round {
   }
 
   organizeSurvey() {
-    this.question = this.survey.shift()
-    this.answers = this.survey
+    this.question = this.survey.shift();
+    this.answers = this.survey;
+    DOMupdates.appendQuestion(this.question.question);
   }
 
   endRound(game) {

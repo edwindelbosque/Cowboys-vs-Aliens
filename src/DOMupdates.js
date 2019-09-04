@@ -12,7 +12,7 @@ const DOMupdates = {
   },
 
   appendAnswer(answer, number) {
-    $('#answer-1').text(answer)
+    $(`#answer-${number}`).text(answer)
   }
 
   
