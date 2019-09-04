@@ -59,12 +59,11 @@ startGameButton.on('click', () => {
   // game = new Game(data, cowboyInput.val(), alienInput.val())
 })
 
-  setTimeout(function () {
-    cowboyInput.val('');
-    alienInput.val('');
-    startGameButton.css('opacity', '0');
-  }, 2000);
-});
+setTimeout(function () {
+  cowboyInput.val('');
+  alienInput.val('');
+  startGameButton.css('opacity', '0');
+}, 2000);
 
 
 exitButton.on('click', () => {
