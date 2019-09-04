@@ -33,15 +33,15 @@
   <main>
     <nav>
       <p id="exit-button">X</p>
-      <h5 role="timer">:30</h5>
+      <h5 role="timer" id="timer">:30</h5>
     </nav>
     <header>
-      <h1 class="header__h1--display">WHAT IS MY FAVORITE COLOR?</h1>
+      <h1 class="header__h1--display" id="current-question">WHAT IS MY FAVORITE COLOR?</h1>
     </header>
     <section class="section--scoreboard">
       <div class="section__div--pts-cowboy">
-        <h2><span>250</span>
-
+        <h2>
+          <span id="player-1-score">250</span>
         </h2>
         <img>
         <h3 id="cowboy-name">YOSEMITE</h3>
@@ -82,7 +82,7 @@
         </section>
       </div>
       <div class="section__div--pts-alien">
-        <h2><span>445</span></h2>
+        <h2><span id="player-2-score">445</span></h2>
         <img>
         <h3 id="alien-name">MARVIN</h3>
       </div>
