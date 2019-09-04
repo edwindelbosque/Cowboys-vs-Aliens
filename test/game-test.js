@@ -68,6 +68,17 @@ it('should only pick a survey that has not been used', () => {
   { answer: 'Dryer Sheets', respondents: 6, surveyId: 8}])
 })
 
+it.only('should call something', () => {
+  game.getWinner()
+  expect(DOMupdates.showWinner).to.have.been.called(1)
+})
+
+// it('should create a regular round, () => {
+//   game.startGame();
+//   chai.spy.on(game.currentRound, 'beginRound', () => true)
+//   expect(game.startRound).to.be.called(1);
+// });
+
 
 
 // it.only('should increase the round counter', () => {  
@@ -82,12 +93,12 @@ it('should only pick a survey that has not been used', () => {
 
 }); // <------ end of describe block
 
-describe('getWinner', function() {
-  it.only('should call something', () => {
-    game.getWinner()
-    expect(DOMupdates.showWinner).to.have.been.called(1)
-  })
-})
+
+
+
+
+
+
 
 
 
