@@ -68,7 +68,7 @@ it('should only pick a survey that has not been used', () => {
   { answer: 'Dryer Sheets', respondents: 6, surveyId: 8}])
 })
 
-it.only('should call something', () => {
+it('should call something', () => {
   game.getWinner()
   expect(DOMupdates.showWinner).to.have.been.called(1)
 })
