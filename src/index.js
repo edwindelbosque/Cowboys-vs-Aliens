@@ -20,7 +20,6 @@ import Game from './Game';
 
 let game;
 
-
 const main = $('main');
 const startGameButton = $('#start-game-button');
 const exitButton = $('#exit-button');
@@ -52,11 +51,13 @@ alienInput.on('keyup', () => {
 })
 
 startGameButton.on('click', () => {
+  console.log('startGameButton handler ran');
   $('#cowboy-name').text(cowboyInput.val().toUpperCase());
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 
-  // game = new Game(data, cowboyInput.val(), alienInput.val())
+  game = new Game(data, cowboyInput.val(), alienInput.val())
+  console.log(game);
 })
 
 setTimeout(function () {
