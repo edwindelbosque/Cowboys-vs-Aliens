@@ -15,6 +15,11 @@ import './images/favicon-32x32.png';
 import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
+import data from '../data/surveys'
+import Game from './Game';
+
+let game;
+
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -50,12 +55,17 @@ startGameButton.on('click', () => {
   $('#cowboy-name').text(cowboyInput.val().toUpperCase());
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
+
+  // game = new Game(data, cowboyInput.val(), alienInput.val())
+})
+
   setTimeout(function () {
     cowboyInput.val('');
     alienInput.val('');
     startGameButton.css('opacity', '0');
   }, 2000);
 });
+
 
 exitButton.on('click', () => {
   $("html").delay(250).animate({ scrollTop: 0 }, 1000);
