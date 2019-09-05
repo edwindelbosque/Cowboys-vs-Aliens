@@ -29,10 +29,11 @@ class Turn {
 
   updateScore(guess) {
     if (this.checkGuess(guess)) {
-      let index = this.currentRound.answers.findIndex(answer => answer === guess) + 1;
-      this.currentPlayer.score += this.countRespondents(guess);
-      DOMupdates.appendAnswer(guess, index);
-      DOMupdates.appendRespondents(this.countRespondents(guess), index);
+      let upperCaseGuess = guess.toUpperCase()
+      let index = this.currentRound.capitalizeAnswers().findIndex(answer => answer === upperCaseGuess) + 1;
+      this.currentPlayer.score += this.countRespondents(upperCaseGuess);
+      DOMupdates.appendAnswer(upperCaseGuess, index);
+      DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
       DOMupdates.appendPlayerScore(this.currentPlayer.score);
     }
   }

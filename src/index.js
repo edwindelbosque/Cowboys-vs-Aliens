@@ -98,9 +98,8 @@ startGameButton.on('click', () => {
 
   (async () => {
 
-    let notes = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
-    console.log(notes);
-    var game = new Game(notes, cowboyInput.val(), alienInput.val());
+    let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
+    var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
     game.startGame();
     round = new Round(game);
     round.organizeSurvey();
