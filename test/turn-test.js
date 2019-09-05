@@ -39,7 +39,7 @@ describe('Turn', () => {
   });
 
   it('should capitalize guesses', () => {
-    expect(turn.capitalizeGuess('bOwLiNg BaLL')).to.equal('Bowling Ball')
+    expect(turn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
   });
 
   it('should check to see if guess was incorrect', () => {

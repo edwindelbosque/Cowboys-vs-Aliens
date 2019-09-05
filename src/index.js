@@ -15,7 +15,7 @@ import './images/favicon-32x32.png';
 import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
-import data from '../data/surveys'
+// import data from '../data/surveys'
 import Game from './Game';
 import Round from './Round';
 import Turn from './Turn';
@@ -31,6 +31,43 @@ const guessInput = $('#guess-input');
 const guessButton = $('#guess-button');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
+let fetchedData = [];
+
+// function fetchMe() {
+//   fetchedData.push(fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+//     .then(data => data.json()).then(data => data.data));
+// }
+
+// fetchMe();
+// // console.log(data);
+// console.log('hoo', fetchedData);
+
+// const getMasterProd = () => fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data').then(data => data.json());
+// let hi = [];
+
+// $(document).ready(() => {
+//   getMasterProd()
+//     .then((data) => {
+//       hi.push(data.data);
+//     });
+// });
+
+// console.log('hi', hi);
+// console.log(getMasterProd())
+
+// const wrapperFunc = async () => {
+//   let notes = await getData()
+// }
+
+// console.log(getData());
+
+// var obj;
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then(res => res.json())
+//   .then(data => obj = data)
+//   .then(() => console.log(obj))
+
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -57,13 +94,20 @@ startGameButton.on('click', () => {
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 
-  game = new Game(data, cowboyInput.val(), alienInput.val());
-  game.startGame();
-  round = new Round(game);
-  round.organizeSurvey();
-  turn = new Turn(round);
+  const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
 
-  console.log(turn);
+  (async () => {
+
+    let notes = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
+    console.log(notes);
+    var game = new Game(notes, cowboyInput.val(), alienInput.val());
+    game.startGame();
+    round = new Round(game);
+    round.organizeSurvey();
+    turn = new Turn(round);
+
+  })();
+
 
 })
 

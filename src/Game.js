@@ -3,6 +3,8 @@ import Player from "./Player";
 import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
 
+
+
 class Game {
   constructor(data, playerOne, playerTwo) {
     this.data = data
@@ -63,7 +65,6 @@ class Game {
   }
 
   getWinner() {
-    console.log(DOMupdates)
     if (this.player1.score > this.player2.score) {
       DOMupdates.showWinner(this.player1)
     } else if (this.player1.score < this.player2.score) {

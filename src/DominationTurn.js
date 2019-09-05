@@ -4,8 +4,8 @@ import Turn from './Turn.js';
 class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
-      this.seconds = 30;
-      this.guesses = [];
+    this.seconds = 30;
+    this.guesses = [];
   }
 
   decreaseTimer() {
@@ -13,15 +13,15 @@ class DominationTurn extends Turn {
   }
 
   multiplyScores(multiplier) {
-    
+
   }
-  
+
   calculateScores() {
 
   }
 
   continueDominationRound() {
-    if(this.currentPlayer === player2) {
+    if (this.currentPlayer === player2) {
       game.getWinner()
     } else {
       this.changeDominationTurn()
@@ -38,8 +38,8 @@ class DominationTurn extends Turn {
 }
 
 
-  //Extend from round
-  //Keep track of timer
+//Extend from round
+//Keep track of timer
 
 
 

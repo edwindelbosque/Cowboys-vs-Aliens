@@ -24,11 +24,7 @@ class Turn {
   }
 
   capitalizeGuess(guess) {
-    let capitalizedWords = guess.toLowerCase().split(' ').map(word => {
-      return (word.charAt(0).toUpperCase() + word.slice(1));
-    });
-
-    return capitalizedWords.join(' ');
+    return guess.toUpperCase();
   }
 
   checkGuess(guess) {
@@ -37,7 +33,8 @@ class Turn {
 
   countRespondents(guess) {
     let answerInfo = this.identifyAnswerInfo().find(answer => {
-      return answer.answer.includes(this.capitalizeGuess(guess))
+      let textAnswer = answer.answer.toUpperCase();
+      return textAnswer.includes(this.capitalizeGuess(guess))
     })
     return answerInfo.respondents;
   }
@@ -46,9 +43,9 @@ class Turn {
     if (this.checkGuess(guess)) {
       let index = this.identifyCorrectAnswers().findIndex(answer => answer === guess) + 1;
       this.currentPlayer.score += this.countRespondents(guess);
-      // DOMupdates.appendAnswer(guess, index);
-      // DOMupdates.appendRespondents(this.countRespondents(guess), index);
-      // DOMupdates.appendPlayerScore(this.currentPlayer.score);
+      DOMupdates.appendAnswer(guess, index);
+      DOMupdates.appendRespondents(this.countRespondents(guess), index);
+      DOMupdates.appendPlayerScore(this.currentPlayer.score);
     }
   }
 
