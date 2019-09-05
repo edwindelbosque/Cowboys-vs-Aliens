@@ -23,9 +23,9 @@ const DOMupdates = {
     $('#player-1-score').text(score);
   },
 
-  appendCurrentPlayerName(name) {
-    $('#players-turn').text(name);
-  }
+  // appendCurrentPlayerName(name) {
+  //   $('#players-turn').text(name);
+  // }
 }
 
 

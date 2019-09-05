@@ -5,11 +5,11 @@ import DOMupdates from "./DOMupdates";
 
 class Round {
   constructor(game) {
-   this.game = game;
-   this.survey = game.currentSurvey;
-   this.currentPlayer = game.getStartingPlayer();
-   this.answers = [];
-   this.question = {};
+    this.game = game;
+    this.survey = game.currentSurvey;
+    this.currentPlayer = game.getStartingPlayer();
+    this.answers = [];
+    this.question = {};
   }
 
   beginTurn() {
@@ -21,7 +21,7 @@ class Round {
     this.question = this.survey.shift();
     this.answers = this.survey;
     DOMupdates.appendQuestion(this.question.question);
-    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
+    // DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
   endRound(game) {
