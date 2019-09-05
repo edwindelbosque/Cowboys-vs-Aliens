@@ -86,5 +86,5 @@ function displayStartButton() {
 
 guessButton.on('click', () => {
   turn.updateScore(guessInput.val());
-  guessInput.val('');
+  guessInput.val(''); /*not sure why this input clears on an incorrect answer, but not on a correct answer*/
 });
