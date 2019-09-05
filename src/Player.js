@@ -5,8 +5,8 @@ class Player {
     this.multiplier = 1;
   }
 
-  calculateFinalScore() {
-    return this.score = this.score * this.multiplier;
+  calculateFinalScore(respondents) {
+    return this.score = this.score + respondents * this.multiplier;
   }
 
 
