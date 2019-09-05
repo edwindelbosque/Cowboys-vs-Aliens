@@ -44,10 +44,11 @@ class Turn {
 
   updateScore(guess) {
     if (this.checkGuess(guess)) {
-      let number = this.identifyCorrectAnswers().findIndex(answer => answer === guess) + 1;
+      let index = this.identifyCorrectAnswers().findIndex(answer => answer === guess) + 1;
       this.currentPlayer.score += this.countRespondents(guess);
-      DOMupdates.appendAnswer(guess, number);
-      DOMupdates.appendPlayerScore(this.currentPlayer.score);
+      // DOMupdates.appendAnswer(guess, index);
+      // DOMupdates.appendRespondents(this.countRespondents(guess), index);
+      // DOMupdates.appendPlayerScore(this.currentPlayer.score);
     }
   }
 

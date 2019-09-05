@@ -7,7 +7,7 @@ import DOMupdates from '../src/DOMupdates.js'
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
-chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => {});
+chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => { });
 
 let round, game, turn;
 beforeEach(() => {
@@ -80,15 +80,15 @@ describe('Turn', () => {
     expect(turn.giveFeedback(round.answers[0].answer)).to.equal('Correct!')
   });
 
-  describe('appendAnswer', function() {
-  it('should call appendAnswer', () => {
-    turn.updateScore(round.answers[0].answer);
-    expect(DOMupdates.appendAnswer).to.have.been.called(1)
+  describe('appendAnswer', function () {
+    it('should call appendAnswer', () => {
+      turn.updateScore(round.answers[0].answer);
+      expect(DOMupdates.appendAnswer).to.have.been.called(1)
+    })
   })
-})
 
   // it('should end round when all correct guesses have been made', () => {
-  
+
   //chai.spy.on (?????????????) 
 
   //   expect()

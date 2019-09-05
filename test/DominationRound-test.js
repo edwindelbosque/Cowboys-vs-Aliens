@@ -12,12 +12,12 @@ beforeEach(() => {
 });
 
 describe('DominationRound', () => {
-  
-  it.only('should be a function', () => {
+
+  it('should be a function', () => {
     expect(DominationRound).to.be.a('function');
   });
 
-  it.only('should be an instance of DominationRound', () => {
+  it('should be an instance of DominationRound', () => {
     expect(dominationRound).to.be.an.instanceOf(DominationRound);
   });
 
@@ -26,7 +26,7 @@ describe('DominationRound', () => {
 
   // })
 
-  
+
 
 
 }); // <------ end of describe block

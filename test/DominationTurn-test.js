@@ -15,11 +15,15 @@ beforeEach(() => {
   dominationRound = new DominationRound(game, 3);
   dominationRound.organizeSurvey();
   dominationTurn = new DominationTurn(dominationRound)
-  
+
 });
 
 describe('DominationTurn', () => {
+<<<<<<< HEAD:test/fast-turn-test.js
   
+=======
+
+>>>>>>> b4d1da7d6b8fe831b90498e31dcf4a93743d92d1:test/DominationTurn-test.js
   it('should be a function', () => {
     expect(DominationTurn).to.be.a('function');
   });
@@ -43,7 +47,7 @@ describe('DominationTurn', () => {
    
 
 
-  
+
 
 
 }); // <------ end of describe block

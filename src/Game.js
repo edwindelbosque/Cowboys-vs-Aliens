@@ -74,6 +74,7 @@ class Game {
     }
   }
 
+<<<<<<< HEAD
  
 
 
@@ -82,6 +83,9 @@ class Game {
   
 
   
+=======
+
+>>>>>>> b4d1da7d6b8fe831b90498e31dcf4a93743d92d1
 
 
 
