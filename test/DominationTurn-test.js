@@ -4,6 +4,8 @@ import Game from '../src/Game';
 // import Round from '../src/Round';
 import DominationRound from '../src/DominationRound';
 import DominationTurn from '../src/DominationTurn';
+import Player from '../src/Player.js';
+import Turn from '../src/Turn.js';
 const expect = chai.expect;
 
 let game, dominationTurn, dominationRound;
@@ -28,6 +30,15 @@ describe('DominationTurn', () => {
 
   it('should multiply scores based on users multiplier', () => {
     expect(dominationTurn.calculateScores())
+  });
+
+  it.only('should send total respondents to be multiplied', () => {
+    const newPlayer = new Player('Fernice');
+    newPlayer.multiplier = 2;
+    dominationTurn.countRespondents('Beer')
+    dominationTurn.multiplyScores();
+    expect(newPlayer.score).to.equal(6)
+
   })
 
 

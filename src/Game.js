@@ -14,6 +14,7 @@ class Game {
     this.roundCount = 1;
     this.player1 = new Player(playerOne);
     this.player2 = new Player(playerTwo);
+    this.multiplier = 1;
   }
 
   startGame() {
@@ -73,9 +74,6 @@ class Game {
       DOMupdates.showWinner('TIE!')
     }
   }
-
-
-
 
 
   // On start game:

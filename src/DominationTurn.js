@@ -1,6 +1,5 @@
 import Turn from './Turn.js';
 
-
 class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
@@ -13,7 +12,6 @@ class DominationTurn extends Turn {
   }
 
   multiplyScores(multiplier) {
-
   }
 
   calculateScores() {
@@ -37,12 +35,8 @@ class DominationTurn extends Turn {
 
 }
 
-
 //Extend from round
 //Keep track of timer
 
-
-
 export default DominationTurn;
-
 import Game from './Game.js';
