@@ -17,6 +17,10 @@ class Round {
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
+  capitalizeAnswers() {
+    return this.answers.map(answer => answer.answer.toUpperCase());
+  }
+
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;

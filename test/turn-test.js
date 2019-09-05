@@ -32,12 +32,6 @@ describe('Turn', () => {
     expect(turn.identifyQuestion()).to.eql(round.survey[0].id)
   });
 
-  it('should return correct answers from answer info', () => {
-    expect(turn.identifyCorrectAnswers()[0]).to.eql(round.answers[0].answer)
-    expect(turn.identifyCorrectAnswers()[1]).to.eql(round.answers[1].answer)
-    expect(turn.identifyCorrectAnswers()[2]).to.eql(round.answers[2].answer)
-  });
-
   it('should capitalize guesses', () => {
     expect(turn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
   });
@@ -50,12 +44,6 @@ describe('Turn', () => {
     expect(turn.countRespondents(round.answers[0].answer)).to.equal(round.answers[0].respondents)
   });
 
-  // it('should allot appropriate number of points', () => {
-  //   turn.updateScore(round.answers[0].answer);
-  //   round.currentPlayer
-  //   expect(turn.currentPlayer.score).to.equal(round.answers[0].respondents)
-  // });
-
   it('should toggle player when guess is incorrect only', () => {
     expect(turn.currentPlayer).to.equal(game.player1);
     turn.togglePlayer('wrong');
@@ -64,15 +52,6 @@ describe('Turn', () => {
     expect(turn.currentPlayer).to.equal(game.player1);
     turn.togglePlayer(round.answers[0].answer)
     expect(turn.currentPlayer).to.equal(game.player1);
-  });
-
-  it('should account for correct guesses only', () => {
-    turn.rememberCorrectGuesses('wrong');
-    expect(turn.correctGuesses).to.eql([]);
-    turn.rememberCorrectGuesses(round.answers[0].answer);
-    expect(turn.correctGuesses).to.eql([round.answers[0].answer]);
-    turn.rememberCorrectGuesses(round.answers[1].answer);
-    expect(turn.correctGuesses).to.eql([round.answers[0].answer, round.answers[1].answer]);
   });
 
   it('should give feedback', () => {
