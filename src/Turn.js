@@ -46,9 +46,9 @@ class Turn {
     if (this.checkGuess(guess)) {
       let index = this.identifyCorrectAnswers().findIndex(answer => answer === guess) + 1;
       this.currentPlayer.score += this.countRespondents(guess);
-      DOMupdates.appendAnswer(guess, index);
-      DOMupdates.appendRespondents(this.countRespondents(guess), index);
-      DOMupdates.appendPlayerScore(this.currentPlayer.score);
+      // DOMupdates.appendAnswer(guess, index);
+      // DOMupdates.appendRespondents(this.countRespondents(guess), index);
+      // DOMupdates.appendPlayerScore(this.currentPlayer.score);
     }
   }
 

@@ -15,13 +15,13 @@ const DOMupdates = {
     $(`#answer-${index}`).text(answer);
   },
 
-  appendRespondents(number, index) {
-    $(`#answer-pts-${index}`).text(number);
-  },
+  // appendRespondents(number, index) {
+  //   $(`#answer-pts-${index}`).text(number);
+  // },
 
-  appendPlayerScore(score) {
-    $('#player-1-score').text(score);
-  },
+  // appendPlayerScore(score) {
+  //   $('#player-1-score').text(score);
+  // },
 
   // appendCurrentPlayerName(name) {
   //   $('#players-turn').text(name);
