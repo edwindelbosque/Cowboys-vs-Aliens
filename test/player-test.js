@@ -36,6 +36,14 @@ describe('Player', () => {
     expect(player1.score).to.equal(0);
   });
 
+  it.only('should multiply the player score based on the multiplier', () => {
+    const examplePlayer = new Player('Todd')
+    examplePlayer.score = 20;
+    examplePlayer.multiplier = 2
+    examplePlayer.calculateFinalScore()
+    expect(examplePlayer.score).to.equal(40)
+  })
+
   // it('should update score when a player guesses correctly', () => {
   //   expect(player1.updateScore('bowling ball')).to.equal(5);
   // });
