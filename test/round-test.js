@@ -35,7 +35,7 @@ describe('Round', () => {
   });
 
   it('should get just the answers from the survey array', () => {
-    round.organizeSurvey()
+    round.organizeSurvey();
     expect(round.answers).to.include(game.currentSurvey[0]);
     expect(round.answers).to.include(game.currentSurvey[1]);
     expect(round.answers).to.include(game.currentSurvey[2]);

@@ -11,44 +11,30 @@ class Turn {
     return this.currentRound.survey[0].id
   }
 
-  identifyAnswerInfo() {
-    return this.currentRound.survey.filter(survey => {
-      return survey.answer;
-    });
-  }
-
-  identifyCorrectAnswers() {
-    return this.identifyAnswerInfo().map(answerInfo => {
-      return answerInfo.answer
-    })
-  }
-
   capitalizeGuess(guess) {
-    let capitalizedWords = guess.toLowerCase().split(' ').map(word => {
-      return (word.charAt(0).toUpperCase() + word.slice(1));
-    });
-
-    return capitalizedWords.join(' ');
+    return guess.toUpperCase();
   }
 
   checkGuess(guess) {
-    return this.identifyCorrectAnswers().includes(this.capitalizeGuess(guess)) ? true : false;
+    return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess)) ? true : false;
   }
 
   countRespondents(guess) {
-    let answerInfo = this.identifyAnswerInfo().find(answer => {
-      return answer.answer.includes(this.capitalizeGuess(guess))
+    let answerInfo = this.currentRound.answers.find(answer => {
+      let textAnswer = answer.answer.toUpperCase();
+      return textAnswer.includes(this.capitalizeGuess(guess))
     })
     return answerInfo.respondents;
   }
 
   updateScore(guess) {
     if (this.checkGuess(guess)) {
-      let index = this.identifyCorrectAnswers().findIndex(answer => answer === guess) + 1;
-      this.currentPlayer.score += this.countRespondents(guess);
-      // DOMupdates.appendAnswer(guess, index);
-      // DOMupdates.appendRespondents(this.countRespondents(guess), index);
-      // DOMupdates.appendPlayerScore(this.currentPlayer.score);
+      let upperCaseGuess = guess.toUpperCase()
+      let index = this.currentRound.capitalizeAnswers().findIndex(answer => answer === upperCaseGuess) + 1;
+      this.currentPlayer.score += this.countRespondents(upperCaseGuess);
+      DOMupdates.appendAnswer(upperCaseGuess, index);
+      DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
+      DOMupdates.appendPlayerScore(this.currentPlayer.score);
     }
   }
 
@@ -56,10 +42,12 @@ class Turn {
     return this.checkGuess(guess) ? 'Correct!' : 'Incorrect!'
   }
 
-  togglePlayer() {
-    this.currentPlayer === this.currentRound.game.player1
-      ? this.currentPlayer = this.currentRound.game.player2
-      : this.currentPlayer = this.currentRound.game.player1
+  togglePlayer(guess) {
+    if (!this.checkGuess(guess)) {
+      this.currentPlayer === this.currentRound.game.player1
+        ? this.currentPlayer = this.currentRound.game.player2
+        : this.currentPlayer = this.currentRound.game.player1
+    }
   }
 }
 

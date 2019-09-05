@@ -1,0 +1,167 @@
+.body--startpage {
+
+  &:after {
+    animation: grain 15s ease-in-out infinite;
+    background-image: url('/images/grainy-filter.jpg');
+    content: "";
+    height: 300%;
+    left: -50%;
+    opacity: 0.4;
+    position: fixed;
+    top: -100%;
+    width: 300%;
+  }
+
+  align-items: center;
+  background-image: url('/images/start-page.gif');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  margin: 0;
+  padding: 10px 0 107px 0;
+
+  h1 {
+    font-size: 60px;
+  }
+
+  span {
+    font-size: 40px;
+  }
+  
+  p {
+    color: #ffffffc1;
+    font-size: 30px;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+.startpage__header {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-bottom: 90px;
+  width: 100%;
+}
+
+.startpage--players--container {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+
+  div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.startpage--character--icon {
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-name: floating;
+  animation-timing-function: ease-in-out;
+  height: 200px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.startpage__input--player {
+  background-color: #00000000;
+  border-radius: 10px;
+  border: 5px solid #BA38C4;
+  box-shadow: 0px 0px 20px black;
+  color: white;
+  font-family: 'Press Start 2P';
+  font-size: 30px;
+  height: 60px;
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-top: 4px;
+  text-align: center;
+  width: 285px;
+  z-index: 1;
+  box-shadow: 0 0 2px #f877ff;
+  transition: 0.25s;
+}
+
+#alien-name-input {
+  color: $alien-accent;
+
+  &:focus {
+    box-shadow: 0 0 20px #0bff3c;
+    transition: 0.25s;
+    border-color: rgb(191, 191, 191);
+    outline: none;
+  }
+
+  &:active {
+    border-color: rgb(255, 255, 255);
+    color: white;
+    box-shadow: 0 0 50px #75dfff;
+    transition: 0.25s;
+  }
+}
+
+#cowboy-name-input {
+  color: $cowboy-name;
+
+  &:focus {
+    box-shadow: 0 0 20px #ff2a26;
+    transition: 0.25s;
+    border-color: white;
+    outline: none;
+  }
+
+  &:active {
+    border-color: white;
+    color: white;
+    box-shadow: 0 0 50px #75dfff;
+    transition: 0.25s;
+  }
+}
+
+.startpage__footer--button {
+  opacity: 0;
+  background-color: #00000000;
+  border-radius: 10px;
+  border: 5px solid #BA38C4;
+  color: $alien-accent;
+  font-family: 'Press Start 2P';
+  font-size: 35px;
+  height: 125px;
+  margin-top: 50px;
+  width: 240px;
+  box-shadow: 0 0 5px #f877ff;
+  transition: .25s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
+  }
+}
+
+footer button span {
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  animation: blink-animation 1s steps(5, start) infinite;
+  color: white;
+  line-height: 1.2;
+  width: 500px;
+  z-index: 1;
+}
+
+footer {
+  z-index: 1;
+}
