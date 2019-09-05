@@ -3,7 +3,9 @@ import Turn from './Turn.js';
 
 class DominationTurn extends Turn {
   constructor(currentRound) {
-    super(currentRound)
+    super(currentRound);
+      this.currentRound = currentRound;
+      this.currentPlayer = currentRound.currentPlayer;
       this.seconds = 30;
       this.guesses = [];
   }
@@ -12,8 +14,8 @@ class DominationTurn extends Turn {
 
   }
 
-  multiplyScores(multiplier) {
-    
+  multiplyScores() {
+    return this.currentPlayer.calculateFinalScore(this.countRespondents())
   }
   
   calculateScores() {
