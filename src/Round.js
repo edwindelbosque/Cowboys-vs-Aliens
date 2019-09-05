@@ -13,13 +13,15 @@ class Round {
   }
 
   beginTurn() {
-    let turn = new Turn(this)
+    let turn = new Turn(this);
+    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
     DOMupdates.appendQuestion(this.question.question);
+    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
   endRound(game) {
