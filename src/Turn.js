@@ -22,7 +22,8 @@ class Turn {
 
   spliceAnswers(guess) {
     let i = this.currentRound.capitalizeAnswers().findIndex(answer => answer === this.capitalizeGuess(guess))
-    this.currentRound.answers.splice(i, i + 1);
+    this.currentRound.answers[i].answer = 'false';
+    console.log(this.currentRound.answers)
     this.currentRound.endRound();
   }
 

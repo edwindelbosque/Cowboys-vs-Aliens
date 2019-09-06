@@ -19,7 +19,15 @@ class Round {
   }
 
   capitalizeAnswers() {
-    return this.answers.map(answer => answer.answer.toUpperCase());
+    // debugger;
+    console.log('answers in capitalizeAnswers', this.answers);
+    return this.answers.map(answer => {
+      if (answer.answer) {
+        return answer.answer.toUpperCase();
+      } else {
+        return 'false';
+      }
+    })
   }
 
   organizeSurvey() {
@@ -28,7 +36,7 @@ class Round {
   }
 
   endRound() {
-    if (!this.answers.length) {
+    if (this.answers.every(answer => answer === 'FALSE')) {
       console.log('ROUND END!');
       this.game.roundCount++;
       this.game.startRound();
