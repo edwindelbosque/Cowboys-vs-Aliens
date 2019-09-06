@@ -33,42 +33,6 @@ const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
 let fetchedData = [];
 
-// function fetchMe() {
-//   fetchedData.push(fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
-//     .then(data => data.json()).then(data => data.data));
-// }
-
-// fetchMe();
-// // console.log(data);
-// console.log('hoo', fetchedData);
-
-// const getMasterProd = () => fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data').then(data => data.json());
-// let hi = [];
-
-// $(document).ready(() => {
-//   getMasterProd()
-//     .then((data) => {
-//       hi.push(data.data);
-//     });
-// });
-
-// console.log('hi', hi);
-// console.log(getMasterProd())
-
-// const wrapperFunc = async () => {
-//   let notes = await getData()
-// }
-
-// console.log(getData());
-
-// var obj;
-
-// fetch('https://jsonplaceholder.typicode.com/posts/1')
-//   .then(res => res.json())
-//   .then(data => obj = data)
-//   .then(() => console.log(obj))
-
-
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
@@ -102,7 +66,7 @@ startGameButton.on('click', () => {
     var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
     game.startGame();
     round = new Round(game);
-    round.organizeSurvey();
+    round.beginTurn();
     turn = new Turn(round);
 
   })();
@@ -129,5 +93,5 @@ function displayStartButton() {
 
 guessButton.on('click', () => {
   turn.updateScore(guessInput.val());
-  guessInput.val(''); /*not sure why this input clears on an incorrect answer, but not on a correct answer*/
+  guessInput.val(''); 
 });
