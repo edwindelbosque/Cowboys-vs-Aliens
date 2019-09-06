@@ -11,8 +11,7 @@ class Round {
     this.answers = [];
     this.question = {};
   }
-}
-  
+}  
 
 export default Round;
 

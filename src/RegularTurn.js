@@ -18,12 +18,14 @@ class RegularTurn extends Turn {
   }
 
   checkGuess(guess) {
+    console.log(this.currentRound.capitalizeAnswers());
     return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
   }
 
   spliceAnswers(guess) {
     let i = this.currentRound.capitalizeAnswers().findIndex(answer => answer === this.capitalizeGuess(guess))
-    this.currentRound.answers.splice(i, i + 1);
+    this.currentRound.answers[i].answer = 'false';
+    console.log(this.currentRound.answers)
     this.currentRound.endRound();
   }
 
