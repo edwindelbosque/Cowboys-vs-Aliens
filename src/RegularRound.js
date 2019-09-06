@@ -29,7 +29,7 @@ class RegularRound extends Round  {
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
-    console.log('organize survey firing', this.answers)
+    console.log('organize survey firing--------->', this.answers)
     DOMupdates.appendQuestion(this.question.question);
    
   }
@@ -37,7 +37,6 @@ class RegularRound extends Round  {
   endRound() {
     if (!this.answers.length) {
       this.game.roundCount++;
-      this.game.startRound();
       this.game.chooseRound();
       this.organizeSurvey()
     }

@@ -59,13 +59,15 @@ class Game {
   }
 
   startRegularRound() {
-    // new RegularRound(this)
-    // this.currentSurvey = []
+    this.currentSurvey = []
+    new RegularRound(this)
+
   }
 
   startDominationRound() {
-    new DominationRound(this)
     this.currentSurvey = []
+    new DominationRound(this)
+   
   }
 
   getWinner() {

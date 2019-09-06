@@ -78,12 +78,12 @@ describe('Game', () => {
     expect(DOMupdates.showWinner).to.have.been.called(1)
   })
 
-  it('should create a regular round', () => {
-    game.startGame();
-    game.roundCount = 1;
-    chai.spy.on(game.startRegularRound(), 'beginRound', () => true)
-    expect(game.).to.be.called(1);
-  });
+  // it('should create a regular round', () => {
+  //   game.startGame();
+  //   game.roundCount = 1;
+  //   chai.spy.on(game.startRegularRound(), 'beginRound', () => true)
+  //   expect(game.).to.be.called(1);
+  // });
 
   it('after 2 regular rounds, it should switch to fast round', () => {  
     game.roundCount = 3;

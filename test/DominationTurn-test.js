@@ -11,7 +11,7 @@ const expect = chai.expect;
 let game, dominationRound, dominationTurn;
 beforeEach(() => {
   game = new Game(data, 'Erick', 'Jeannie');
-  game.startRound();
+  game.startDominationRound();
   dominationRound = new DominationRound(game, 3);
   dominationTurn = new DominationTurn(dominationRound)
 

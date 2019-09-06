@@ -10,7 +10,7 @@ let game, round, regularRound;
 describe('Round', () => {
   beforeEach(() => {
     game = new Game(data);
-    game.startRound();
+    game.startRegularRound();
     round = new Round(game);
     regularRound = new RegularRound(game)
     // turn = new Turn(round)
