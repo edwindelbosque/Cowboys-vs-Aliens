@@ -18,7 +18,6 @@ class RegularTurn extends Turn {
   }
 
   checkGuess(guess) {
-    console.log(this.currentRound.capitalizeAnswers());
     return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
   }
 
