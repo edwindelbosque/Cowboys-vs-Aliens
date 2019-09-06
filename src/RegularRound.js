@@ -37,7 +37,6 @@ class RegularRound extends Round  {
     if (!this.answers.length) {
       this.game.roundCount++;
       this.game.chooseRound();
-      this.organizeSurvey()
     }
   }
 }
