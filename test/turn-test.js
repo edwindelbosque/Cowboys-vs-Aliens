@@ -3,75 +3,77 @@ import Turn from '../src/Turn';
 import Round from '../src/Round';
 import Game from '../src/Game';
 import data from '../data/surveys.js'
-import DOMupdates from '../src/DOMupdates.js'
+import DOMupdates from '../src/DOMupdates.js';
+import RegularRound from '../src/RegularRound'
+import RegularTurn from '../src/RegularTurn'
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => { });
 
-let round, game, turn;
+let game, regularRound, regularTurn;
 beforeEach(() => {
   game = new Game(data, 'Erick', 'Jeannie');
   game.startGame();
-  round = new Round(game);
-  round.organizeSurvey();
-  turn = new Turn(round);
+  regularRound = new RegularRound(game);
+  regularRound.organizeSurvey();
+  regularTurn = new RegularTurn(regularRound);
 });
 
 describe('Turn', () => {
 
   it('should be a function', () => {
-    expect(Turn).to.be.a('function');
+    expect(RegularTurn).to.be.a('function');
   });
 
   it('should be an instance of Turn', () => {
-    expect(turn).to.be.an.instanceOf(Turn);
+    expect(regularTurn).to.be.an.instanceOf(RegularTurn);
   });
 
   it('should know ID of survey question', () => {
-    expect(turn.identifyQuestion()).to.eql(round.survey[0].id)
+    expect(regularTurn.identifyQuestion()).to.eql(regularRound.survey[0].id)
   });
 
   it('should capitalize guesses', () => {
-    expect(turn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
+    expect(regularTurn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
   });
 
   it('should check to see if guess was incorrect', () => {
-    expect(turn.checkGuess('Wrong Answer')).to.equal(false);
+    expect(regularTurn.checkGuess('Wrong Answer')).to.equal(false);
   });
 
   it('should find number of respondents', () => {
-    expect(turn.countRespondents(round.answers[0].answer)).to.equal(round.answers[0].respondents)
+    expect(regularTurn.countRespondents(regularRound.answers[0].answer)).to.equal(regularRound.answers[0].respondents)
   });
 
   it('should toggle player when guess is incorrect only', () => {
-    expect(turn.currentPlayer).to.equal(game.player1);
-    turn.togglePlayer('wrong');
-    expect(turn.currentPlayer).to.equal(game.player2);
-    turn.togglePlayer('wrong');
-    expect(turn.currentPlayer).to.equal(game.player1);
-    turn.togglePlayer(round.answers[0].answer)
-    expect(turn.currentPlayer).to.equal(game.player1);
+    expect(regularTurn.currentPlayer).to.equal(game.player1);
+    regularTurn.togglePlayer('wrong');
+    expect(regularTurn.currentPlayer).to.equal(game.player2);
+    regularTurn.togglePlayer('wrong');
+    expect(regularTurn.currentPlayer).to.equal(game.player1);
+    regularTurn.togglePlayer(regularRound.answers[0].answer)
+    expect(regularTurn.currentPlayer).to.equal(game.player1);
   });
 
   it('should give feedback', () => {
-    expect(turn.giveFeedback('wrong guess')).to.equal('Incorrect!')
-    expect(turn.giveFeedback(round.answers[0].answer)).to.equal('Correct!')
+    expect(regularTurn.giveFeedback('wrong guess')).to.equal('Incorrect!')
+    expect(regularTurn.giveFeedback(regularRound.answers[0].answer)).to.equal('Correct!')
   });
 
   it('should splice the answers array in Round', () => {
-    turn.spliceAnswers('wrong');
-    expect(round.answers.length).to.equal(3)
-    turn.spliceAnswers(round.answers[0].answer);
-    expect(round.answers.length).to.equal(2)
-    turn.spliceAnswers(round.answers[0].answer);
-    expect(round.answers.length).to.equal(1)
-    turn.spliceAnswers(round.answers[0].answer);
+    regularTurn.spliceAnswers('wrong');
+    expect(regularRound.answers.length).to.equal(3)
+    regularTurn.spliceAnswers(regularRound.answers[0].answer);
+    expect(regularRound.answers.length).to.equal(2)
+    regularTurn.spliceAnswers(regularRound.answers[0].answer);
+    expect(regularRound.answers.length).to.equal(1)
+    regularTurn.spliceAnswers(regularRound.answers[0].answer);
   });
 
   describe('appendAnswer', function () {
     it('should call appendAnswer', () => {
-      turn.updateScore(round.answers[0].answer);
+      regularTurn.updateScore(regularRound.answers[0].answer);
       expect(DOMupdates.appendAnswer).to.have.been.called(1)
     })
   })

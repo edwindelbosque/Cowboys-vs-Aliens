@@ -1,8 +1,10 @@
 import Round from "./Round";
 import DOMupdates from "./DOMupdates";
+import Turn from "./Turn"
 
 class RegularTurn extends Turn {
   constructor(currentRound) {
+    super(currentRound)
     this.currentRound = currentRound;
     this.currentPlayer = currentRound.currentPlayer;
   }
