@@ -30,10 +30,6 @@ const guessInput = $('#guess-input');
 const guessButton = $('#guess-button');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
-<<<<<<< HEAD
-let fetchedData = [];
-=======
->>>>>>> master
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
