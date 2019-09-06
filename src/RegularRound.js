@@ -29,9 +29,8 @@ class RegularRound extends Round  {
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
-    console.log('organize survey firing--------->', this.answers)
     DOMupdates.appendQuestion(this.question.question);
-   
+    
   }
 
   endRound() {
