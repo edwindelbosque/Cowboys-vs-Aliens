@@ -59,6 +59,16 @@ describe('Turn', () => {
     expect(turn.giveFeedback(round.answers[0].answer)).to.equal('Correct!')
   });
 
+  it('should splice the answers array in Round', () => {
+    turn.spliceAnswers('wrong');
+    expect(round.answers.length).to.equal(3)
+    turn.spliceAnswers(round.answers[0].answer);
+    expect(round.answers.length).to.equal(2)
+    turn.spliceAnswers(round.answers[0].answer);
+    expect(round.answers.length).to.equal(1)
+    turn.spliceAnswers(round.answers[0].answer);
+  });
+
   describe('appendAnswer', function () {
     it('should call appendAnswer', () => {
       turn.updateScore(round.answers[0].answer);

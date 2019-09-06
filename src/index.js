@@ -85,6 +85,5 @@ function displayStartButton() {
 
 guessButton.on('click', () => {
   turn.updateScore(guessInput.val());
-  turn.togglePlayer(guessInput.val())
   guessInput.val('');
 });
