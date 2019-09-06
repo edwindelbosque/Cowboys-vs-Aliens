@@ -17,7 +17,8 @@ class RegularRound extends Round  {
   }
 
   beginTurn() {
-    let RegularTurn = new RegularTurn(this);
+    // let regularTurn = new RegularTurn(this);
+    this.organizeSurvey()
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
@@ -28,7 +29,9 @@ class RegularRound extends Round  {
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
+    console.log('organize survey firing', this.answers)
     DOMupdates.appendQuestion(this.question.question);
+   
   }
 
   endRound() {
@@ -36,7 +39,7 @@ class RegularRound extends Round  {
       this.game.roundCount++;
       this.game.startRound();
       this.game.chooseRound();
-      // this.organizeSurvey()
+      this.organizeSurvey()
     }
   }
 }

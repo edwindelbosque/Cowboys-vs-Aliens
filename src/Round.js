@@ -23,6 +23,7 @@ class Round {
   }
 
   organizeSurvey() {
+    console.log(this.survey)
     this.question = this.survey.shift();
     this.answers = this.survey;
   }

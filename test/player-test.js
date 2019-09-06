@@ -36,7 +36,7 @@ describe('Player', () => {
     expect(player1.score).to.equal(0);
   });
 
-  it('should multiply the player score based on the multiplier', () => {
+  it.skip('should multiply the player score based on the multiplier', () => {
     const examplePlayer = new Player('Todd')
     examplePlayer.score = 20;
     examplePlayer.multiplier = 2

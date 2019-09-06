@@ -3,11 +3,12 @@ import RegularRound from "./RegularRound"
 import Player from "./Player";
 import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
+import data from '../data/surveys'
 
 
 class Game {
   constructor(data, playerOne, playerTwo) {
-    this.data = data
+    this.data = data;
     this.currentSurvey = [];
     this.currentSurveyId = 0
     this.usedSurveys = [];
@@ -18,13 +19,14 @@ class Game {
   }
 
   startGame() {
-    this.chooseSurvey()
+    this.chooseSurvey();
+    // this.chooseRound();
   }
 
-  startRound() {
-    this.currentSurvey = []
-    this.chooseSurvey();
-  }
+  // startRound() {
+  //   this.currentSurvey = []
+  //   this.chooseSurvey();
+  // }
 
   chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1) {
     if (!this.usedSurveys.includes(id)) {
@@ -32,6 +34,7 @@ class Game {
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);
+      console.log(this.currentSurvey)
       return this.currentSurvey
     } else {
       this.chooseSurvey();
@@ -56,8 +59,8 @@ class Game {
   }
 
   startRegularRound() {
-    new RegularRound(this)
-    this.currentSurvey = []
+    // new RegularRound(this)
+    // this.currentSurvey = []
   }
 
   startDominationRound() {
