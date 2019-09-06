@@ -1,12 +1,39 @@
 import Round from "./Round";
 import DOMupdates from "./DOMupdates";
+import Turn from "./Turn"
 
-class Turn {
+class RegularTurn extends Turn {
   constructor(currentRound) {
+    super(currentRound)
     this.currentRound = currentRound;
     this.currentPlayer = currentRound.currentPlayer;
   }
-}
+
+  identifyQuestion() {
+    return this.currentRound.survey[0].id
+  }
+
+  capitalizeGuess(guess) {
+    return guess.toUpperCase();
+  }
+
+  checkGuess(guess) {
+    return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
+  }
+
+  spliceAnswers(guess) {
+    let i = this.currentRound.capitalizeAnswers().findIndex(answer => answer === this.capitalizeGuess(guess))
+    this.currentRound.answers.splice(i, i + 1);
+    this.currentRound.endRound();
+  }
+
+  countRespondents(guess) {
+    let answerInfo = this.currentRound.answers.find(answer => {
+      let textAnswer = answer.answer.toUpperCase();
+      return textAnswer.includes(this.capitalizeGuess(guess))
+    })
+    return answerInfo.respondents;
+  }
 
   updateScore(guess) {
     this.togglePlayer(guess);
@@ -22,7 +49,7 @@ class Turn {
   }
 
   giveFeedback(guess) {
-    return this.checkGuess(guess) ? 'Correct! Guess again.' : 'X'
+    return this.checkGuess(guess) ? 'Correct!' : 'Incorrect!'
   }
 
   togglePlayer(guess) {
@@ -34,4 +61,4 @@ class Turn {
   }
 }
 
-export default Turn;
+export default RegularTurn;

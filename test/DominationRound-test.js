@@ -5,7 +5,7 @@ import Game from '../src/Game';
 import DominationRound from '../src/DominationRound';
 const expect = chai.expect;
 
-let dominationRound, game;
+let  game, dominationRound;
 beforeEach(() => {
   game = new Game(data)
   dominationRound = new DominationRound(game, 3);
@@ -21,7 +21,7 @@ describe('DominationRound', () => {
     expect(dominationRound).to.be.an.instanceOf(DominationRound);
   });
 
-  // it.only('should instantiate a new Domination Round', () => {
+  // it.only('should instantiate a new Domination turn', () => {
   //   dominationRound.startDominationRound()
 
   // })
