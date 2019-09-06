@@ -27,10 +27,13 @@ class Round {
     this.answers = this.survey;
   }
 
-  endRound(game) {
+  endRound() {
     if (!this.answers.length) {
-      game.roundCount++;
-      // game.roundHandler();
+      console.log('ROUND END!');
+      this.game.roundCount++;
+      this.game.startRound();
+      this.game.chooseRound();
+      // this.organizeSurvey()
     }
   }
 }
