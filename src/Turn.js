@@ -6,7 +6,6 @@ class Turn {
     this.currentRound = currentRound;
     this.currentPlayer = currentRound.currentPlayer;
   }
-}
 
   updateScore(guess) {
     this.togglePlayer(guess);
