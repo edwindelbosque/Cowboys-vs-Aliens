@@ -15,7 +15,6 @@ import './images/favicon-32x32.png';
 import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
-// import data from '../data/surveys'
 import Game from './Game';
 import Round from './Round';
 import Turn from './Turn';
@@ -31,43 +30,6 @@ const guessInput = $('#guess-input');
 const guessButton = $('#guess-button');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
-let fetchedData = [];
-
-// function fetchMe() {
-//   fetchedData.push(fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
-//     .then(data => data.json()).then(data => data.data));
-// }
-
-// fetchMe();
-// // console.log(data);
-// console.log('hoo', fetchedData);
-
-// const getMasterProd = () => fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data').then(data => data.json());
-// let hi = [];
-
-// $(document).ready(() => {
-//   getMasterProd()
-//     .then((data) => {
-//       hi.push(data.data);
-//     });
-// });
-
-// console.log('hi', hi);
-// console.log(getMasterProd())
-
-// const wrapperFunc = async () => {
-//   let notes = await getData()
-// }
-
-// console.log(getData());
-
-// var obj;
-
-// fetch('https://jsonplaceholder.typicode.com/posts/1')
-//   .then(res => res.json())
-//   .then(data => obj = data)
-//   .then(() => console.log(obj))
-
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -97,37 +59,31 @@ startGameButton.on('click', () => {
   const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
 
   (async () => {
-
     let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
     var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
     game.startGame();
     round = new Round(game);
     round.organizeSurvey();
     turn = new Turn(round);
-
   })();
-
-
+}).on('click', () => {
+  startGameButton.animate({ opacity: '0' }, 60);
 })
-
-setTimeout(function () {
-  cowboyInput.val('');
-  alienInput.val('');
-  startGameButton.css('opacity', '0');
-}, 2000);
-
 
 exitButton.on('click', () => {
   $("html").delay(250).animate({ scrollTop: 0 }, 1000);
+  startGameButton.css('opacity', '0');
+  cowboyInput.val('');
+  alienInput.val('');
 });
 
 function displayStartButton() {
   alienInput.val() === '' || cowboyInput.val() === ''
-    ? startGameButton.animate({ opacity: '0' }, 100)
-    : startGameButton.animate({ opacity: '1' }, 100)
+    ? startGameButton.animate({ opacity: '0' }, 20)
+    : startGameButton.animate({ opacity: '1' }, 20)
 }
 
 guessButton.on('click', () => {
   turn.updateScore(guessInput.val());
-  guessInput.val(''); /*not sure why this input clears on an incorrect answer, but not on a correct answer*/
+  guessInput.val('');
 });

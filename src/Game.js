@@ -3,8 +3,6 @@ import Player from "./Player";
 import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
 
-
-
 class Game {
   constructor(data, playerOne, playerTwo) {
     this.data = data

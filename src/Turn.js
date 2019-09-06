@@ -16,7 +16,14 @@ class Turn {
   }
 
   checkGuess(guess) {
-    return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess)) ? true : false;
+    console.log(this.currentRound.capitalizeAnswers());
+    return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
+  }
+
+  spliceAnswers(guess) {
+    let i = this.currentRound.capitalizeAnswers().findIndex(answer => answer === this.capitalizeGuess(guess))
+    this.currentRound.answers.splice(i, i + 1);
+    this.currentRound.endRound();
   }
 
   countRespondents(guess) {
@@ -28,13 +35,15 @@ class Turn {
   }
 
   updateScore(guess) {
+    this.togglePlayer(guess);
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.capitalizeAnswers().findIndex(answer => answer === upperCaseGuess) + 1;
       this.currentPlayer.score += this.countRespondents(upperCaseGuess);
       DOMupdates.appendAnswer(upperCaseGuess, index);
       DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
-      DOMupdates.appendPlayerScore(this.currentPlayer.score);
+      DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
+      this.spliceAnswers(guess);
     }
   }
 

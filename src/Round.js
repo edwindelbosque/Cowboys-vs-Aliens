@@ -25,13 +25,15 @@ class Round {
     this.question = this.survey.shift();
     this.answers = this.survey;
     DOMupdates.appendQuestion(this.question.question);
-    // DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
-  endRound(game) {
+  endRound() {
     if (!this.answers.length) {
-      game.roundCount++;
-      // game.roundHandler();
+      console.log('ROUND END!');
+      this.game.roundCount++;
+      this.game.startRound();
+      this.game.chooseRound();
+      // this.organizeSurvey()
     }
   }
 }

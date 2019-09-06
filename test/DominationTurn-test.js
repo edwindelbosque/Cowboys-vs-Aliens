@@ -32,7 +32,7 @@ describe('DominationTurn', () => {
     expect(dominationTurn.calculateScores())
   });
 
-  it.only('should send total respondents to be multiplied', () => {
+  it('should send total respondents to be multiplied', () => {
     const newPlayer = new Player('Fernice');
     newPlayer.multiplier = 2;
     dominationTurn.countRespondents('Beer')
