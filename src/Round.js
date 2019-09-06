@@ -14,7 +14,6 @@ class Round {
 
   beginTurn() {
     let turn = new Turn(this);
-    console.log('hi');
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
