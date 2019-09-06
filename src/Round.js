@@ -11,31 +11,6 @@ class Round {
     this.answers = [];
     this.question = {};
   }
-
-  beginTurn() {
-    let turn = new Turn(this);
-    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
-  }
-
-  capitalizeAnswers() {
-    return this.answers.map(answer => answer.answer.toUpperCase());
-  }
-
-  organizeSurvey() {
-    this.question = this.survey.shift();
-    this.answers = this.survey;
-    DOMupdates.appendQuestion(this.question.question);
-  }
-
-  endRound() {
-    if (!this.answers.length) {
-      console.log('ROUND END!');
-      this.game.roundCount++;
-      this.game.startRound();
-      this.game.chooseRound();
-      // this.organizeSurvey()
-    }
-  }
 }
 
 
