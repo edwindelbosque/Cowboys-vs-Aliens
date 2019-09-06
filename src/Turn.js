@@ -7,34 +7,6 @@ class Turn {
     this.currentPlayer = currentRound.currentPlayer;
   }
 
-  identifyQuestion() {
-    return this.currentRound.survey[0].id
-  }
-
-  capitalizeGuess(guess) {
-    return guess.toUpperCase();
-  }
-
-  checkGuess(guess) {
-    console.log(this.currentRound.capitalizeAnswers());
-    return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
-  }
-
-  spliceAnswers(guess) {
-    let i = this.currentRound.capitalizeAnswers().findIndex(answer => answer === this.capitalizeGuess(guess))
-    this.currentRound.answers[i].answer = 'false';
-    console.log(this.currentRound.answers)
-    this.currentRound.endRound();
-  }
-
-  countRespondents(guess) {
-    let answerInfo = this.currentRound.answers.find(answer => {
-      let textAnswer = answer.answer.toUpperCase();
-      return textAnswer.includes(this.capitalizeGuess(guess))
-    })
-    return answerInfo.respondents;
-  }
-
   updateScore(guess) {
     this.togglePlayer(guess);
     if (this.checkGuess(guess)) {

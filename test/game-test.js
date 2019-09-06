@@ -72,38 +72,28 @@ describe('Game', () => {
     { answer: 'Dryer Sheets', respondents: 6, surveyId: 8 }])
   })
 
-  it('should call something', () => {
+  it('should call function to show the winner of the game', () => {
     game.getWinner()
     expect(DOMupdates.showWinner).to.have.been.called(1)
   })
 
-  // it('should create a regular round, () => {
-  //   game.startGame();
-  //   chai.spy.on(game.currentRound, 'beginRound', () => true)
-  //   expect(game.startRound).to.be.called(1);
-  // });
+  it('should create a regular round', () => {
+    game.startGame();
+    chai.spy.on(game.currentRound, 'beginRound', () => true)
+    expect(game.startRound).to.be.called(1);
+  });
 
-
-
-  // it.only('should increase the round counter', () => {  
-  //   game.chooseRound() 
-  //   game.chooseRound()
-  //   expect(game.roundCount).to.equal(3)
-  // });
+  it('should increase the round counter', () => {  
+    game.chooseRound() 
+    game.chooseRound()
+    expect(game.roundCount).to.equal(3)
+  });
 
 
 
 
 
 }); // <------ end of describe block
-
-
-describe('getWinner', function () {
-  it('should call something', () => {
-    game.getWinner()
-    expect(DOMupdates.showWinner).to.have.been.called(1)
-  })
-})
 
 
 

@@ -1,7 +1,9 @@
 import Round from "./Round";
+import RegularRound from "./RegularRound"
 import Player from "./Player";
 import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
+
 
 class Game {
   constructor(data, playerOne, playerTwo) {
@@ -54,7 +56,7 @@ class Game {
   }
 
   startRegularRound() {
-    new Round(this)
+    new RegularRound(this)
     this.currentSurvey = []
   }
 
