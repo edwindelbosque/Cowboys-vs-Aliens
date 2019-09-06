@@ -19,8 +19,9 @@ const DOMupdates = {
     $(`#answer-pts-${index}`).text(number);
   },
 
-  appendPlayerScore(score) {
-    $('#player-1-score').text(score);
+  appendPlayerScore(score, currentPlayer, player) {
+    let number = currentPlayer === player ? 1 : 2;
+    $(`#player-${number}-score`).text(score);
   },
 
   appendCurrentPlayerName(name) {

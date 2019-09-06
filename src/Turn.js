@@ -34,7 +34,7 @@ class Turn {
       this.currentPlayer.score += this.countRespondents(upperCaseGuess);
       DOMupdates.appendAnswer(upperCaseGuess, index);
       DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
-      DOMupdates.appendPlayerScore(this.currentPlayer.score);
+      DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
     }
   }
 
@@ -44,6 +44,7 @@ class Turn {
 
   togglePlayer(guess) {
     if (!this.checkGuess(guess)) {
+      console.log('woooo', this.currentPlayer)
       this.currentPlayer === this.currentRound.game.player1
         ? this.currentPlayer = this.currentRound.game.player2
         : this.currentPlayer = this.currentRound.game.player1
