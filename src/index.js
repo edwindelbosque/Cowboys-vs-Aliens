@@ -63,7 +63,7 @@ startGameButton.on('click', () => {
     var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
     game.startGame();
     round = new Round(game);
-    round.organizeSurvey();
+    round.beginTurn();
     turn = new Turn(round);
   })();
 }).on('click', () => {

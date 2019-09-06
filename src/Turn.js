@@ -48,7 +48,7 @@ class Turn {
   }
 
   giveFeedback(guess) {
-    return this.checkGuess(guess) ? 'Correct!' : 'Incorrect!'
+    return this.checkGuess(guess) ? 'Correct! Guess again.' : 'X'
   }
 
   togglePlayer(guess) {

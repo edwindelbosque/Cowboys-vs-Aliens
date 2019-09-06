@@ -13,7 +13,8 @@ class Round {
   }
 
   beginTurn() {
-    let turn = new Turn(this);
+    this.organizeSurvey();
+    DOMupdates.appendQuestion(this.question.question);
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
@@ -24,7 +25,6 @@ class Round {
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
-    DOMupdates.appendQuestion(this.question.question);
   }
 
   endRound() {
