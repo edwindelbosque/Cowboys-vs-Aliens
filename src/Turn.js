@@ -44,7 +44,6 @@ class Turn {
 
   togglePlayer(guess) {
     if (!this.checkGuess(guess)) {
-      console.log('woooo', this.currentPlayer)
       this.currentPlayer === this.currentRound.game.player1
         ? this.currentPlayer = this.currentRound.game.player2
         : this.currentPlayer = this.currentRound.game.player1
