@@ -1,5 +1,6 @@
 
 import Game from '../src/Game';
+import Round from '../src/Round'
 import Turn from "./Turn";
 import DOMupdates from "./DOMupdates";
 import RegularTurn from "./RegularTurn"
@@ -7,6 +8,7 @@ import RegularTurn from "./RegularTurn"
 
 class RegularRound extends Round  {
   constructor(game) {
+    super(game)
     this.game = game;
     this.survey = game.currentSurvey;
     this.currentPlayer = game.getStartingPlayer();
@@ -15,7 +17,7 @@ class RegularRound extends Round  {
   }
 
   beginTurn() {
-    let RegularTurn = new Turn(this);
+    let RegularTurn = new RegularTurn(this);
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
   }
 
@@ -31,7 +33,6 @@ class RegularRound extends Round  {
 
   endRound() {
     if (!this.answers.length) {
-      console.log('ROUND END!');
       this.game.roundCount++;
       this.game.startRound();
       this.game.chooseRound();
