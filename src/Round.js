@@ -11,60 +11,7 @@ class Round {
     this.answers = [];
     this.question = {};
   }
-
-  beginTurn() {
-    this.organizeSurvey();
-    DOMupdates.appendQuestion(this.question.question);
-    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
-  }
-
-  capitalizeAnswers() {
-    return this.answers.map(answer => {
-      if (answer.answer) {
-        return answer.answer.toUpperCase();
-      } else {
-        return 'false';
-      }
-    })
-  }
-
-  organizeSurvey() {
-    this.question = this.survey.shift();
-    this.answers = this.survey;
-  }
-
-  endRound() {
-    console.log('answers in end round', this.answers)
-    if (this.answers.every(answer => answer.answer === 'false')) {
-      console.log('ROUND END!');
-      this.game.roundCount++;
-      this.game.startRound();
-      this.game.chooseRound();
-      // this.organizeSurvey()
-    }
-  }
-}
-
-
-
-
-
-
-//Generates a new random survey question
-//Should not generate a survey question that was already generated for that round
-//Generates 3 correct answers from that question
-
-//Instantiates turn (if there are still unguessed correct answers)
-//Keeps track of how many correct answers have been guessed
-
-//checkRound() called after every turn. Changes property this.isComplete if the answers array is empty
-//
-
-
-//Ends round when every correct answer is guessed
-
-
-// <------ end of Round block
+}  
 
 export default Round;
 

@@ -3,6 +3,7 @@ import Game from '../src/Game';
 import data from '../data/surveys.js'
 import DOMupdates from '../src/DOMupdates.js'
 import Player from '../src/Player';
+import RegularRound from '../src/RegularRound';
 const spies = require('chai-spies');
 const expect = chai.expect;
 chai.use(spies);
@@ -77,16 +78,16 @@ describe('Game', () => {
     expect(DOMupdates.showWinner).to.have.been.called(1)
   })
 
-  it('should create a regular round', () => {
-    game.startGame();
-    chai.spy.on(game.currentRound, 'beginRound', () => true)
-    expect(game.startRound).to.be.called(1);
-  });
+  // it('should create a regular round', () => {
+  //   game.startGame();
+  //   game.roundCount = 1;
+  //   chai.spy.on(game.startRegularRound(), 'beginRound', () => true)
+  //   expect(game.).to.be.called(1);
+  // });
 
-  it('should increase the round counter', () => {  
-    game.chooseRound() 
-    game.chooseRound()
-    expect(game.roundCount).to.equal(3)
+  it('after 2 regular rounds, it should switch to fast round', () => {  
+    game.roundCount = 3;
+    expect(game.chooseRound()).to.equal(game.startDominationRound())
   });
 
 
