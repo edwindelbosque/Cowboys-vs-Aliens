@@ -24,7 +24,7 @@ class Game {
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);     
-      console.log(this.currentSurvey) 
+
       return this.currentSurvey
     } else {
       this.chooseSurvey();
@@ -52,13 +52,13 @@ class Game {
     DOMupdates.clearAnswers();
     this.currentSurvey = [];
     this.chooseSurvey();
-    console.log(this.currentSurvey)
+    // console.log(this.currentSurvey)
     let round = new Round(this);
     round.beginTurn();
   }
 
   startDominationRound() {
-    console.log('game.startDominationRound ran')
+    // console.log('game.startDominationRound ran')
     this.currentSurvey = [];
     this.chooseSurvey();
   }
@@ -72,6 +72,10 @@ class Game {
       DOMupdates.showWinner('TIE!')
     }
   }
+
+  // endGame() {
+  //   this.getWinner()
+  // }
 
 
   // On start game:

@@ -19,17 +19,29 @@ beforeEach(() => {
 
 describe('DominationTurn', () => {
 
-  it('should be a function', () => {
+  it.only('should be a function', () => {
     expect(DominationTurn).to.be.a('function');
   });
 
-  it('should be an instance of DominationRound', () => {
+  it.only('should be an instance of DominationRound', () => {
     expect(dominationTurn).to.be.an.instanceOf(DominationTurn);
   });
 
-  it('should multiply scores based on users multiplier', () => {
-    expect(dominationTurn.calculateScores())
+  it.only('should be asked a question', () => {
+    expect(dominationTurn.getQuestion()).to.equal(dominationRound.survey[0].question)
   });
+
+  // it.only('should get answer', () => {
+  //   expect(dominationTurn.)
+  // });
+
+  // it('should ask another question after only one guess', () => {
+  //   expect(dominationTurn.getQuestion()).to.equal('string')
+  // });
+
+  // it.only('should multiply scores based on users multiplier', () => {
+  //   expect(dominationTurn.calculateScores())
+  // });
 
   // it('should send total respondents to be multiplied', () => {
   //   const newPlayer = new Player('Fernice');
