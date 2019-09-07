@@ -66,9 +66,7 @@ startGameButton.on('click', () => {
 
   // (async () => {
   //   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
-game = new Game(data, cowboyInput.val(), alienInput.val());
-game.chooseSurvey();
-instantiateRoundAndTurn();
+
 
 function instantiateRoundAndTurn() {
   console.log('instantiate new!')
@@ -89,6 +87,9 @@ function instantiateRoundAndTurn() {
 // })
 
 startGameButton.on('click', () => {
+  game = new Game(data, cowboyInput.val(), alienInput.val());
+  game.chooseSurvey();
+  instantiateRoundAndTurn();
   startGameButton.animate({ opacity: '0' }, 60);
 })
 
