@@ -31,6 +31,10 @@ describe('DominationTurn', () => {
     expect(dominationTurn.getQuestion()).to.equal(dominationRound.survey[0].question)
   });
 
+  it.only('should save each prompted survey', () => {
+    expect(dominationTurn.saveSurvey()).to.equal(dominationRound.survey)
+  });
+
   // it.only('should get answer', () => {
   //   expect(dominationTurn.)
   // });

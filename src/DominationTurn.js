@@ -4,6 +4,7 @@ class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
     this.seconds = 30;
+    this.surveysPrompted = []
     this.guesses = []
     this.dominationPoints = 0
   }
@@ -11,6 +12,13 @@ class DominationTurn extends Turn {
   getQuestion() {
     //returns STRING of actual survey question
     return this.currentRound.survey[0].question
+  }
+
+  saveSurvey() {
+    //surveys saved will allow for points to be added once dom turn is complete
+    console.log('before--->', this.surveysPrompted)
+    this.surveysPrompted.push(this.currentRound.survey)
+    console.log('after--->', this.surveysPrompted)
   }
 
   // capitalizeGuess(guess) {
