@@ -52,13 +52,11 @@ class Game {
     DOMupdates.clearAnswers();
     this.currentSurvey = [];
     this.chooseSurvey();
-    // console.log(this.currentSurvey)
     let round = new Round(this);
     round.beginTurn();
   }
 
   startDominationRound() {
-    // console.log('game.startDominationRound ran')
     this.currentSurvey = [];
     this.chooseSurvey();
   }

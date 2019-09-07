@@ -30,23 +30,16 @@ class DominationTurn extends Turn {
 
   saveRespondents() {
     return this.respondentsInfo.push(this.organizeRespondents())
+
     //surveys saved will allow for points to be added once dom turn is complete
   }
 
   saveGuess(guess) {
+
     return this.dominationGuesses.push(guess)
   }
 
-  // capitalizeGuess(guess) {
-  //   return guess.toUpperCase();
-  // }
 
-  // checkGuess(guess) {
-  //   console.log(this.currentRound.capitalizeAnswers());
-  //   return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
-  // }
-
-  // will invoke a new domination turn for player2?
 
   decreaseTimer() {
 
