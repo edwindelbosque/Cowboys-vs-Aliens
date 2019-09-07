@@ -6,6 +6,7 @@ class Turn {
     this.currentRound = currentRound;
     this.currentPlayer = currentRound.currentPlayer;
   }
+}
 
 
 

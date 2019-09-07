@@ -26,6 +26,10 @@ const DOMupdates = {
 
   appendCurrentPlayerName(name) {
     $('#players-turn').text(name);
+  },
+
+  appendMultiplierInput() {
+    $('multiplier').show();
   }
 }
 

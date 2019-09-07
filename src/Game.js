@@ -65,7 +65,7 @@ class Game {
 
   startDominationRound() {
     this.currentSurvey = [];
-    new DominationRound(this);
+    new DominationRound(this, multiplier);
   }
 
   getWinner() {
