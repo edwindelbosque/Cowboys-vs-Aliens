@@ -20,7 +20,7 @@ import Round from './Round';
 import Turn from './Turn';
 import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
-import data from '../data/surveys'
+// import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
 
@@ -65,7 +65,7 @@ startGameButton.on('click', () => {
 
   (async () => {
     let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
-    var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
+    game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
     game.chooseSurvey();
     if (game.roundCount < 3) {
       regularRound = new RegularRound(game);
@@ -96,6 +96,5 @@ function displayStartButton() {
 
   guessButton.on('click', () => {
     regularTurn.updateScore(guessInput.val());
-    console.log('regularRound--->', regularRound, 'regularTurn--->', regularTurn);
     guessInput.val('');
   });
