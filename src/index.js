@@ -20,7 +20,7 @@ import Round from './Round';
 import Turn from './Turn';
 import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
-// import data from '../data/surveys'
+import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
 
@@ -96,5 +96,6 @@ function displayStartButton() {
 
   guessButton.on('click', () => {
     regularTurn.updateScore(guessInput.val());
+    console.log('regularRound--->', regularRound, 'regularTurn--->', regularTurn);
     guessInput.val('');
   });

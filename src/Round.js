@@ -9,6 +9,7 @@ class Round {
     this.survey = game.currentSurvey;
     this.currentPlayer = game.getStartingPlayer();
     this.answers = [];
+    this.answerStrings = [];
     this.question = {};
   }
 
@@ -18,13 +19,11 @@ class Round {
     DOMupdates.appendQuestion(this.question.question);
   }
 
-  capitalizeAnswers() {
-    return this.answers.map(answer => answer.answer.toUpperCase());
-  }
-
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
+    this.answerStrings = this.answers.map(answer => answer.answer.toUpperCase());
+    console.log('answerStrings--->', this.answerStrings)
   }
 }  
 
