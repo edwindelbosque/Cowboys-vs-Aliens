@@ -14,9 +14,7 @@ class Round {
   }
 
   beginTurn() {
-    console.log('beginTurn ran!');
     this.organizeSurvey();
-    console.log(this.currentPlayerName);
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
     DOMupdates.appendQuestion(this.question.question);
   }
@@ -25,7 +23,6 @@ class Round {
     this.question = this.survey.shift();
     this.answers = this.survey;
     this.answerStrings = this.answers.map(answer => answer.answer.toUpperCase());
-    console.log('answerStrings--->', this.answerStrings)
   }
 
 
