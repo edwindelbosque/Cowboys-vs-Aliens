@@ -16,25 +16,8 @@ class RegularRound extends Round  {
     this.question = {};
   }
 
-  beginTurn() {
-    // let regularTurn = new RegularTurn(this);
-    this.organizeSurvey()
-    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
-  }
-
-  capitalizeAnswers() {
-    return this.answers.map(answer => answer.answer.toUpperCase());
-  }
-
-  organizeSurvey() {
-    this.question = this.survey.shift();
-    this.answers = this.survey;
-    DOMupdates.appendQuestion(this.question.question);
-    
-  }
-
   endRound() {
-    if (!this.answers.length) {
+    if (!this.answers.every(answer => answer === 'false')) {
       this.game.roundCount++;
       this.game.chooseRound();
     }

@@ -22,7 +22,7 @@ import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
 // import data from '../data/surveys'
 
-let game, regularRound, regularTurn;
+let game, regularRound, regularTurn, dominationRound, dominationTurn;
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -67,10 +67,16 @@ startGameButton.on('click', () => {
     let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
     var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
     game.startGame();
-    regularRound = new RegularRound(game);
-    regularRound.beginTurn();
-    regularTurn = new RegularTurn(regularRound);
-  })();
+    if (game.roundCount < 3) {
+      regularRound = new RegularRound(game);
+      regularRound.beginTurn();
+      regularTurn = new RegularTurn(regularRound);
+    }
+    if (game.roundCount === 3) {
+      dominationRound = new DominationRound(game);
+      dominationRound.startDominationRound();
+      dominationTurn = new DominationTurn(dominationRound);
+    }})();
 }).on('click', () => {
   startGameButton.animate({ opacity: '0' }, 60);
 })

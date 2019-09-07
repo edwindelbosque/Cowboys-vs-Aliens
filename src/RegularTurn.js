@@ -56,9 +56,13 @@ class RegularTurn extends Turn {
 
   togglePlayer(guess) {
     if (!this.checkGuess(guess)) {
-      this.currentPlayer === this.currentRound.game.player1
-        ? this.currentPlayer = this.currentRound.game.player2
-        : this.currentPlayer = this.currentRound.game.player1
+      if (this.currentPlayer === this.currentRound.game.player1) {
+        this.currentPlayer = this.currentRound.game.player2;
+        DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
+      } else {
+        this.currentPlayer = this.currentRound.game.player1;
+        DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
+      }
     }
   }
 }
