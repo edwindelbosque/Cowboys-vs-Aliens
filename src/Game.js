@@ -1,5 +1,6 @@
 import Round from "./Round";
 import RegularRound from "./RegularRound"
+import RegularTurn from "./RegularTurn"
 import Player from "./Player";
 import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
@@ -24,7 +25,6 @@ class Game {
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);     
-
       return this.currentSurvey
     } else {
       this.chooseSurvey();
@@ -41,7 +41,7 @@ class Game {
   }
 
   getStartingPlayer() {
-    if (this.roundCounter % 2 === 0) {
+    if (this.roundCount % 2 === 0) {
       return this.player2
     } else {
       return this.player1

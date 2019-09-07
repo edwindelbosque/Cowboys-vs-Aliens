@@ -41,7 +41,7 @@ class RegularTurn extends Turn {
     this.togglePlayer(guess);
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
-      let index = this.currentRound.capitalizeAnswers().findIndex(answer => answer === upperCaseGuess) + 1;
+      let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
       this.currentPlayer.score += this.countRespondents(upperCaseGuess);
       // console.log('in Update score ====>>>', this.giveFeedback(guess))
       DOMupdates.appendAnswer(upperCaseGuess, index);

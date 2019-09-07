@@ -9,22 +9,23 @@ class Round {
     this.survey = game.currentSurvey;
     this.currentPlayer = game.getStartingPlayer();
     this.answers = [];
+    this.answerStrings = [];
     this.question = {};
   }
 
   beginTurn() {
+    console.log('beginTurn ran!');
     this.organizeSurvey();
+    console.log(this.currentPlayerName);
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
     DOMupdates.appendQuestion(this.question.question);
-  }
-
-  capitalizeAnswers() {
-    return this.answers.map(answer => answer.answer.toUpperCase());
   }
 
   organizeSurvey() {
     this.question = this.survey.shift();
     this.answers = this.survey;
+    this.answerStrings = this.answers.map(answer => answer.answer.toUpperCase());
+    console.log('answerStrings--->', this.answerStrings)
   }
 
 

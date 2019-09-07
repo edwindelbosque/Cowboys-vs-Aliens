@@ -17,7 +17,7 @@ class RegularRound extends Round  {
   }
 
   endRound() {
-    if (this.answers.every(answer => answer.answer === 'false')) {
+    if (this.answerStrings.every(answer => answer === 'false')) {
       this.game.roundCount++;
       this.game.chooseRound();
     }

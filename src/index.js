@@ -20,7 +20,7 @@ import Round from './Round';
 import Turn from './Turn';
 import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
-// import data from '../data/surveys'
+import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
 
@@ -58,26 +58,38 @@ startGameButton.on('click', () => {
   $('#cowboy-name').text(cowboyInput.val().toUpperCase());
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
+})
  
 
 
-  const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
+  // const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
 
-  (async () => {
-    let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
-    var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
-    game.chooseSurvey();
-    if (game.roundCount < 3) {
-      regularRound = new RegularRound(game);
-      regularRound.beginTurn();
-      regularTurn = new RegularTurn(regularRound);
-    }
-    if (game.roundCount === 3) {
-      dominationRound = new DominationRound(game);
-      dominationRound.startDominationRound();
-      dominationTurn = new DominationTurn(dominationRound);
-    }})();
-}).on('click', () => {
+  // (async () => {
+  //   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
+
+
+function instantiateRoundAndTurn() {
+  console.log('instantiate new!')
+  if (game.roundCount < 3) {
+    regularRound = new RegularRound(game);
+    regularRound.beginTurn();
+    regularTurn = new RegularTurn(regularRound);
+  }
+  if (game.roundCount === 3) {
+    dominationRound = new DominationRound(game);
+    dominationRound.startDominationRound();
+    dominationTurn = new DominationTurn(dominationRound);
+  }
+} 
+  //   }})();
+// }).on('click', () => {
+//   startGameButton.animate({ opacity: '0' }, 60);
+// })
+
+startGameButton.on('click', () => {
+  game = new Game(data, cowboyInput.val(), alienInput.val());
+  game.chooseSurvey();
+  instantiateRoundAndTurn();
   startGameButton.animate({ opacity: '0' }, 60);
 })
 
@@ -94,7 +106,10 @@ function displayStartButton() {
     : startGameButton.animate({ opacity: '1' }, 20)
 }
 
-  guessButton.on('click', () => {
-    regularTurn.updateScore(guessInput.val());
-    guessInput.val('');
-  });
+guessButton.on('click', () => {
+  regularTurn.updateScore(guessInput.val());
+  guessInput.val('');
+  if (regularRound.answerStrings.every(answer => answer === 'false')) {
+    instantiateRoundAndTurn();
+  }
+})
