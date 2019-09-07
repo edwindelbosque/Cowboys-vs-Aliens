@@ -11,6 +11,15 @@ const DOMupdates = {
     $('#current-question').text(question);
   },
 
+  clearAnswers() {
+    $('#answer-1').text('');
+    $('#answer-2').text('');
+    $('#answer-3').text('');
+    $(`#answer-pts-1`).text('');
+    $(`#answer-pts-2`).text('');
+    $(`#answer-pts-3`).text('');
+  },
+
   appendAnswer(answer, index) {
     $(`#answer-${index}`).text(answer);
   },

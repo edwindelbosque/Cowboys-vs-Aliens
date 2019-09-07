@@ -18,16 +18,6 @@ class Game {
     this.multiplier = 1;
   }
 
-  startGame() {
-    this.chooseSurvey();
-    // this.chooseRound();
-  }
-
-  // startRound() {
-  //   this.currentSurvey = []
-  //   this.chooseSurvey();
-  // }
-
   chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1) {
     if (!this.usedSurveys.includes(id)) {
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
@@ -43,10 +33,10 @@ class Game {
 
   chooseRound() {
     if (this.roundCount < 3) {
-      this.startRegularRound()
+      this.startRegularRound();
     }
     if (this.roundCount === 3) {
-      this.startDominationRound()
+      this.startDominationRound();
     }
   }
 
@@ -59,13 +49,18 @@ class Game {
   }
 
   startRegularRound() {
+    console.log('game.startRegularRound ran')
     this.currentSurvey = [];
-    new RegularRound(this);
+    this.chooseSurvey();
+    let round = new Round(this);
+    round.beginTurn();
+    DOMupdates.clearAnswers();
   }
 
   startDominationRound() {
+    console.log('game.startDominationRound ran')
     this.currentSurvey = [];
-    new DominationRound(this, multiplier);
+    this.chooseSurvey();
   }
 
   getWinner() {
