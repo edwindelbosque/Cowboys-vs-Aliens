@@ -66,7 +66,7 @@ startGameButton.on('click', () => {
   (async () => {
     let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
     var game = new Game(fetchedData, cowboyInput.val(), alienInput.val());
-    game.startGame();
+    game.chooseSurvey();
     if (game.roundCount < 3) {
       regularRound = new RegularRound(game);
       regularRound.beginTurn();
