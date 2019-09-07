@@ -1,5 +1,6 @@
 import Round from "./Round";
 import RegularRound from "./RegularRound"
+import RegularTurn from "./RegularTurn"
 import Player from "./Player";
 import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
@@ -18,23 +19,12 @@ class Game {
     this.multiplier = 1;
   }
 
-  startGame() {
-    this.chooseSurvey();
-    // this.chooseRound();
-  }
-
-  // startRound() {
-  //   this.currentSurvey = []
-  //   this.chooseSurvey();
-  // }
-
   chooseSurvey(id = Math.floor(Math.random() * (15 - 1 + 1)) + 1) {
     if (!this.usedSurveys.includes(id)) {
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
       this.currentSurvey = this.currentSurvey.concat(answers);     
-      console.log(this.currentSurvey) 
       return this.currentSurvey
     } else {
       this.chooseSurvey();
@@ -43,15 +33,15 @@ class Game {
 
   chooseRound() {
     if (this.roundCount < 3) {
-      this.startRegularRound()
+      this.startRegularRound();
     }
     if (this.roundCount === 3) {
-      this.startDominationRound()
+      this.startDominationRound();
     }
   }
 
   getStartingPlayer() {
-    if (this.roundCounter % 2 === 0) {
+    if (this.roundCount % 2 === 0) {
       return this.player2
     } else {
       return this.player1
@@ -59,13 +49,16 @@ class Game {
   }
 
   startRegularRound() {
+    DOMupdates.clearAnswers();
     this.currentSurvey = [];
-    new RegularRound(this);
+    this.chooseSurvey();
+    let round = new Round(this);
+    round.beginTurn();
   }
 
   startDominationRound() {
     this.currentSurvey = [];
-    new DominationRound(this);
+    this.chooseSurvey();
   }
 
   getWinner() {
@@ -77,6 +70,10 @@ class Game {
       DOMupdates.showWinner('TIE!')
     }
   }
+
+  // endGame() {
+  //   this.getWinner()
+  // }
 
 
   // On start game:
