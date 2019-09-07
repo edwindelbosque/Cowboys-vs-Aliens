@@ -49,12 +49,12 @@ class Game {
   }
 
   startRegularRound() {
-    console.log('game.startRegularRound ran')
+    DOMupdates.clearAnswers();
     this.currentSurvey = [];
     this.chooseSurvey();
+    console.log(this.currentSurvey)
     let round = new Round(this);
     round.beginTurn();
-    DOMupdates.clearAnswers();
   }
 
   startDominationRound() {
