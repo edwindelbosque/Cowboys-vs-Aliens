@@ -14,7 +14,9 @@ class Round {
   }
 
   beginTurn() {
+    console.log('beginTurn ran!');
     this.organizeSurvey();
+    console.log(this.currentPlayerName);
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
     DOMupdates.appendQuestion(this.question.question);
   }
