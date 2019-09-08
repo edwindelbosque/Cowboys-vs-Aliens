@@ -24,12 +24,10 @@ describe('DominationRound', () => {
   });
 
 
-  //temporary solution???????
-
 
 
   // it.only('should instantiate a new Domination turn', () => {
-  //   dominationRound.startDominationRound()
+  //   dominationRound.startDominationTurn()
 
   // })
 

@@ -11,7 +11,7 @@ const expect = chai.expect;
 let game, dominationRound, dominationTurn;
 beforeEach(() => {
   game = new Game(data, 'Erick', 'Jeannie');
-  game.startDominationRound();
+  game.startDominationTurn();
   dominationRound = new DominationRound(game, 3);
   dominationTurn = new DominationTurn(dominationRound)
 
@@ -33,6 +33,7 @@ describe('DominationTurn', () => {
   });
 
   it.skip('should save respondents', () => {
+    dominationTurn.getQuestion()
     dominationTurn.saveRespondents()
     // console.log(dominationRound.respondentsInfo)
     expect(dominationRound.respondentsInfo).to.eql([{},{}])
@@ -40,22 +41,29 @@ describe('DominationTurn', () => {
   //method IS WORKING, unsure best way to test
 
   it.only('should save guess', () => {
+    dominationTurn.getQuestion()
+    dominationTurn.saveRespondents()
     dominationTurn.saveGuess('wrong')
     expect(dominationRound.dominationGuesses).to.eql(['wrong'])
   });
 
-  // it.only('should save all prompted survey respondents', () => {
+  it.only('should save all guesses', () => {
+    dominationTurn.getQuestion()
+    dominationTurn.saveRespondents()
+    dominationTurn.saveGuess('wrong1')
+    dominationTurn.saveGuess('wrong2')
+    expect(dominationRound.dominationGuesses).to.eql(['wrong1', 'wrong2'])
+  });
 
-  //   dominationTurn.getQuestion();
-  //   dominationTurn.saveRespondents();
-  //   dominationTurn.saveGuess('wrong1')
-  //   dominationTurn.getQuestion();
-  //   dominationTurn.saveRespondents();
-  //   dominationTurn.saveGuess('wrong2')
-  //   console.log('??--->', dominationRound.survey[0].question)
-  //   console.log('R info---->', dominationTurn.respondentsInfo)
-  //   expect(dominationTurn.dominationGuesses).to.eql(['wrong1', 'wrong2'])
-  // });
+  it.only('should compare find correct guesses', () => {
+    dominationTurn.getQuestion()
+    dominationTurn.saveRespondents()
+    dominationTurn.saveGuess('wrong1')
+    dominationTurn.saveGuess('wrong2')
+    dominationTurn.saveGuess(dominationRound.survey[1].answer)
+    dominationTurn.saveGuess(dominationRound.survey[2].answer)
+    expect(dominationRound.findCorrectGuesses()).to.equal(dominationRound.survey[1].respondents + dominationRound.survey[2].respondents)
+  });
 
 
   // it('should ask another question after only one guess', () => {

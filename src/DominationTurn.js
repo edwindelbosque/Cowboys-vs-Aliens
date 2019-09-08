@@ -3,7 +3,6 @@ import Turn from './Turn.js';
 class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
-    this.dominationPoints = 0
   }
 
   getQuestion() {
@@ -11,22 +10,26 @@ class DominationTurn extends Turn {
     return this.currentRound.survey[0].question
   }
 
-  organizeRespondents() {
-    let answerInfo = this.currentRound.survey.filter(obj => {
-      return obj.answer
-    })
+  // organizeRespondents() {
+  //   let answerInfo = this.currentRound.survey.filter(obj => {
+  //     return obj.answer
+  //   })
 
-    return answerInfo.reduce((acc, obj) => {
-      acc[obj.answer] = obj.respondents
-      return acc
-    }, {})
+  //   return answerInfo.reduce((acc, obj) => {
+  //     acc[obj.answer] = obj.respondents
+  //     return acc
+  //   }, {})
 
-    //makes survey into a single object of key-value pairs
-    // {[answer]: [respondents], [answer]: [respondents], [answer]: [respondents]}
-  }
+  //   //makes survey into a single object of key-value pairs
+  //   // {[answer]: [respondents], [answer]: [respondents], [answer]: [respondents]}
+  // }
 
   saveRespondents() {
-    return this.currentRound.respondentsInfo.push(this.organizeRespondents())
+    let answerInfo = [this.currentRound.survey[1], this.currentRound.survey[2], this.currentRound.survey[3]]
+    
+    answerInfo.forEach(answer => {
+      this.currentRound.respondentsInfo.push(answer)
+    })
 
     //surveys saved will allow for points to be added once dom ROUND is complete
   }
