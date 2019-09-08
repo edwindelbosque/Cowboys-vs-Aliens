@@ -161,7 +161,7 @@ header {
   }
 }
 
-#guess-button {
+#guess-button, #multiplier-input-btn, #go-btn {
   width: 280px;
   padding-top: 8px;
   padding-left: 5px;
@@ -179,6 +179,35 @@ header {
 
   &:focus {
     outline: none;
+  }
+
+  &:active {
+    border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
+  }
+}
+
+#multiplier-input {
+  width: 250px;
+  height: 80px;
+  border: 6px solid $pink-border;
+  border-radius: 10px;
+  margin-top: 40px;
+  background-color: #00000000;
+  font-size: 40px;
+  color: white;
+  padding-top: 6px;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  box-shadow: 0 0 10px #f877ff;
+  transition: 1s;
+
+  &:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 40px #75dfff;
+    transition: 0.25s;
   }
 
   &:active {

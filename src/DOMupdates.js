@@ -38,7 +38,19 @@ const DOMupdates = {
   },
 
   appendMultiplierInput() {
-    $('multiplier').show();
+    $('#multiplier').show();
+  },
+
+  submitMultiplierInput() {
+    $('#multiplier-input-btn').click(appendGoButton());
+  },
+
+  appendGoButton() {
+    $('#go-btn').show();
+  },
+
+  clickGoBtn() {
+    $('#go-btn').on('click', console.log('Go!'));
   }
 }
 

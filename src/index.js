@@ -22,6 +22,7 @@ import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
 import DominationRound from './DominationRound'
 import DominationTurn from './DominationTurn'
+import DOMupdates from './DOMupdates'
 import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
@@ -33,6 +34,8 @@ const cowboyInput = $('#cowboy-name-input');
 const alienInput = $('#alien-name-input');
 const guessInput = $('#guess-input');
 const guessButton = $('#guess-button');
+const multiplierButton = $('#multiplier-input-btn');
+const goButton = $('#go-btn');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
 
@@ -78,7 +81,7 @@ function instantiateRoundAndTurn() {
   }
   if (game.roundCount === 3) {
     dominationRound = new DominationRound(game);
-    dominationRound.startDominationRound();
+    dominationRound.beginDominationTurn();
     dominationTurn = new DominationTurn(dominationRound);
   }
 } 
@@ -113,4 +116,8 @@ guessButton.on('click', () => {
   if (regularRound.answerStrings.every(answer => answer === 'false')) {
     instantiateRoundAndTurn();
   }
+});
+
+multiplierButton.on('click', () => {
+  goButton.show();
 })

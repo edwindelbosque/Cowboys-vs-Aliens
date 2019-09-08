@@ -18,7 +18,11 @@ class DominationRound extends Round {
 // do we need a multiplier in turn and round?
 
   beginDominationTurn() {
-    this.beginTurn();
+    console.log('beginDominationTurn ran!')
+    this.organizeSurvey();
+    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
+    DOMupdates.appendMultiplierInput();
+
   }
 
   // ^this.beginTurn ?
