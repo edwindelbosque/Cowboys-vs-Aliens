@@ -8,12 +8,17 @@ class DominationRound extends Round {
     this.multiplier = multiplier;
   }
 
-
-
-  startDominationRound() {
-    let dominationTurn = new DominationTurn()
+  beginDominationTurn() {
+    this.beginTurn();
   }
 
+  startDominationRound() {
+    DOMupdates.appendMultiplierInput();
+  }
+
+  displayReadyButton() {
+    
+  }
 
 
   endDominationRound() {
