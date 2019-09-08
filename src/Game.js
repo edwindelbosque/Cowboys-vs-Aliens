@@ -58,7 +58,6 @@ class Game {
   }
 
   startDominationRound() {
-    console.log('game.startDominationRound ran')
     this.currentSurvey = [];
     this.chooseSurvey();
   }

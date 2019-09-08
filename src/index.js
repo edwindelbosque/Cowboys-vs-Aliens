@@ -69,7 +69,6 @@ startGameButton.on('click', () => {
 
 
 function instantiateRoundAndTurn() {
-  console.log('instantiate new!')
   if (game.roundCount < 3) {
     regularRound = new RegularRound(game);
     regularRound.beginTurn();
