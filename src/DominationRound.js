@@ -21,11 +21,13 @@ class DominationRound extends Round {
     console.log('beginDominationTurn ran!')
     this.organizeSurvey();
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
-    DOMupdates.appendMultiplierInput();
-
+    DOMupdates.appendQuestion(this.question.question);
   }
 
-  // ^this.beginTurn ?
+  decrementTime() {
+    this.seconds -= 1;
+    console.log(this.seconds);
+  }
 
   organizeData(data) {
   }

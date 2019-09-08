@@ -38,6 +38,7 @@ const multiplier = $('#multiplier');
 const goButton = $('#go-btn');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
+const timer = $('#timer');
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -74,7 +75,6 @@ startGameButton.on('click', () => {
 
 
 function instantiateRoundAndTurn() {
-    console.log('roundCount--->', game.roundCount)
   if (game.roundCount < 3) {
     regularRound = new RegularRound(game);
     regularRound.beginTurn();
@@ -118,13 +118,31 @@ guessButton.on('click', () => {
 });
 
 multiplier.on('keydown', () => {
-  console.log('multiply!!!')
+  timer.show();
   goButton.show();
 })
 
 goButton.on('click', () => {
-  console.log('GO!!!');
   dominationRound = new DominationRound(game);
   dominationRound.beginDominationTurn();
   dominationTurn = new DominationTurn(dominationRound);
+  counter();
 })
+
+
+let timeLeft = 30;
+
+function counter() {
+  setInterval(countdown, 1000);
+} 
+
+function countdown() {
+  timeLeft -= 1;
+  if (timeLeft === 0)
+  {
+     clearInterval(counter);
+     return;
+  }
+
+  timer.text(`:${timeLeft}`);
+}
