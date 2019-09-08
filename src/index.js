@@ -111,10 +111,19 @@ function displayStartButton() {
 }
 
 guessButton.on('click', () => {
+  if (game.roundCount < 3) {
   regularTurn.updateScore(guessInput.val());
   guessInput.val('');
-  if (regularRound.answerStrings.every(answer => answer === 'false')) {
+    if (regularRound.answerStrings.every(answer => answer === 'false')) {
     instantiateRoundAndTurn();
+    }
+  }
+  if (game.roundCount === 3) {
+    dominationRound = new DominationRound(game);
+    dominationRound.beginDominationTurn();
+    dominationTurn = new DominationTurn(dominationRound);
+    dominationTurn.updateScore(guessInput.val());
+    guessInput.val('');
   }
 });
 
@@ -125,9 +134,6 @@ multiplier.on('keydown', () => {
 
 goButton.on('click', () => {
   timeLeft = 30;
-  dominationRound = new DominationRound(game);
-  dominationRound.beginDominationTurn();
-  dominationTurn = new DominationTurn(dominationRound);
   startTimer();
 })
 

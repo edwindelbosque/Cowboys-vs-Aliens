@@ -11,12 +11,6 @@ class DominationRound extends Round {
     this.dominationGuesses = [];
   }
 
-
-
-
-// display stuff and instantiate dominationTurn
-// do we need a multiplier in turn and round?
-
   beginDominationTurn() {
     console.log('beginDominationTurn ran!')
     this.organizeSurvey();
@@ -25,14 +19,12 @@ class DominationRound extends Round {
   }
 
   organizeData(data) {
-  }
-  //^temporary solutin??
 
+  }
 
   displayReadyButton() {
     
   }
-
 
   endDominationRound() {
     console.log('endDominationRound ran!')

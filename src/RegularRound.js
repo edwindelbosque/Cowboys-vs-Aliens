@@ -9,11 +9,6 @@ import RegularTurn from "./RegularTurn"
 class RegularRound extends Round  {
   constructor(game) {
     super(game)
-    this.game = game;
-    this.survey = game.currentSurvey;
-    this.currentPlayer = game.getStartingPlayer();
-    this.answers = [];
-    this.question = {};
   }
 
   endRound() {
