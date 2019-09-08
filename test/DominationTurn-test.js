@@ -32,15 +32,16 @@ describe('DominationTurn', () => {
     expect(dominationTurn.getQuestion()).to.equal(dominationRound.survey[0].question)
   });
 
-  it.only('should save guess', () => {
+  it.skip('should save respondents', () => {
     dominationTurn.saveRespondents()
+    // console.log(dominationRound.respondentsInfo)
     expect(dominationRound.respondentsInfo).to.eql([{},{}])
   });
   //method IS WORKING, unsure best way to test
 
-  it.skip('should save guess', () => {
+  it.only('should save guess', () => {
     dominationTurn.saveGuess('wrong')
-    expect(dominationTurn.dominationGuesses).to.eql(['wrong'])
+    expect(dominationRound.dominationGuesses).to.eql(['wrong'])
   });
 
   // it.only('should save all prompted survey respondents', () => {

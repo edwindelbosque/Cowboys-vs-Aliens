@@ -8,6 +8,7 @@ class DominationRound extends Round {
     this.multiplier = multiplier;
     this.seconds = 30;
     this.respondentsInfo = [];
+    this.dominationGuesses = [];
   }
 
 
