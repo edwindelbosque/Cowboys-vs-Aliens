@@ -26,6 +26,7 @@ import DOMupdates from './DOMupdates'
 import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
+let timeLeft = 30;
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -123,26 +124,25 @@ multiplier.on('keydown', () => {
 })
 
 goButton.on('click', () => {
+  timeLeft = 30;
   dominationRound = new DominationRound(game);
   dominationRound.beginDominationTurn();
   dominationTurn = new DominationTurn(dominationRound);
-  counter();
+  startTimer();
 })
 
+const startTimer = () => {
+  const counter = setInterval(countdown, 1000);
 
-let timeLeft = 30;
+  function countdown() {
+    timeLeft -= 1;
 
-function counter() {
-  setInterval(countdown, 1000);
-} 
+    if (timeLeft < 0) {
+       clearInterval(counter);
+       dominationRound.endDominationRound();
+       return;
+    }
 
-function countdown() {
-  timeLeft -= 1;
-  if (timeLeft === 0)
-  {
-     clearInterval(counter);
-     return;
+    timer.text(`:${timeLeft}`);
   }
-
-  timer.text(`:${timeLeft}`);
 }

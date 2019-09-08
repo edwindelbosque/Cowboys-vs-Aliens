@@ -24,11 +24,6 @@ class DominationRound extends Round {
     DOMupdates.appendQuestion(this.question.question);
   }
 
-  decrementTime() {
-    this.seconds -= 1;
-    console.log(this.seconds);
-  }
-
   organizeData(data) {
   }
   //^temporary solutin??
@@ -40,9 +35,7 @@ class DominationRound extends Round {
 
 
   endDominationRound() {
-
-  // endGame()
-  // invoke end game? 
+    console.log('endDominationRound ran!')
   }
 
 
