@@ -14,7 +14,7 @@ chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => { });
 let game, regularRound, regularTurn;
 beforeEach(() => {
   game = new Game(data, 'Erick', 'Jeannie');
-  // game.startGame();
+  game.startGame();
   regularRound = new RegularRound(game);
   regularRound.organizeSurvey();
   regularTurn = new RegularTurn(regularRound);
