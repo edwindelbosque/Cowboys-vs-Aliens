@@ -18,13 +18,14 @@ class RegularTurn extends Turn {
   }
 
   checkGuess(guess) {
-    return this.currentRound.answerStrings.includes(this.capitalizeGuess(guess));
+    // console.log(this.currentRound.capitalizeAnswers());
+    return this.currentRound.capitalizeAnswers().includes(this.capitalizeGuess(guess));
   }
 
   spliceAnswers(guess) {
-    let i = this.currentRound.answerStrings.findIndex(answer => answer === this.capitalizeGuess(guess))
-    this.currentRound.answerStrings[i] = 'false';
-    // debugger;
+    let i = this.currentRound.capitalizeAnswers().findIndex(answer => answer === this.capitalizeGuess(guess))
+    this.currentRound.answers[i].answer = 'false';
+    // console.log(this.currentRound.answers)
     this.currentRound.endRound();
   }
 
@@ -42,10 +43,13 @@ class RegularTurn extends Turn {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
       this.currentPlayer.score += this.countRespondents(upperCaseGuess);
+      // console.log('in Update score ====>>>', this.giveFeedback(guess))
       DOMupdates.appendAnswer(upperCaseGuess, index);
       DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
       DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
       this.spliceAnswers(guess);
+    } else {
+      // console.log('should return INCORRECT', this.giveFeedback(guess))
     }
   }
 
