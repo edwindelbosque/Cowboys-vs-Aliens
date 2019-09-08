@@ -4,20 +4,53 @@ class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
     this.seconds = 30;
-    this.guesses = [];
+    this.respondentsInfo = [];
+    this.dominationGuesses = [];
+    this.dominationPoints = 0
   }
+
+  getQuestion() {
+    //returns STRING of actual survey question
+    return this.currentRound.survey[0].question
+  }
+
+  organizeRespondents() {
+    let answerInfo = this.currentRound.survey.filter(obj => {
+      return obj.answer
+    })
+
+    return answerInfo.reduce((acc, obj) => {
+      acc[obj.answer] = obj.respondents
+      return acc
+    }, {})
+
+    //makes survey into a single object of key-value pairs
+    // {[answer]: [respondents], [answer]: [respondents], [answer]: [respondents]}
+  }
+
+  saveRespondents() {
+    console.log(this.organizeRespondents())
+    return this.respondentsInfo.push(this.organizeRespondents())
+
+    //surveys saved will allow for points to be added once dom turn is complete
+  }
+
+  saveGuess(guess) {
+    return this.dominationGuesses.push(guess)
+  }
+
+
 
   decreaseTimer() {
 
   }
 
+
   multiplyScores(multiplier) {
-    
+    // game.player.score + this.dominationPoints
+    // return score * multiplier
   }
 
-  calculateScores() {
-
-  }
 
 //   continueDominationRound() {
 //     if (this.currentPlayer === player2) {

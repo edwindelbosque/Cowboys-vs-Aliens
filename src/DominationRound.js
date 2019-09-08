@@ -8,13 +8,22 @@ class DominationRound extends Round {
     this.multiplier = multiplier;
   }
 
+
+
+
+// display stuff and instantiate dominationTurn
+// do we need a multiplier in turn and round?
+
   beginDominationTurn() {
     this.beginTurn();
   }
 
-  startDominationRound() {
-    DOMupdates.appendMultiplierInput();
+  // ^this.beginTurn ?
+
+  organizeData(data) {
   }
+  //^temporary solutin??
+
 
   displayReadyButton() {
     
@@ -23,6 +32,8 @@ class DominationRound extends Round {
 
   endDominationRound() {
 
+  // endGame()
+  // invoke end game? 
   }
 
 
