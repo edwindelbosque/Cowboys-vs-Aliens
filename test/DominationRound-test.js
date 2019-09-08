@@ -23,10 +23,7 @@ describe('DominationRound', () => {
     expect(dominationRound).to.be.an.instanceOf(DominationRound);
   });
 
-  it.only('should organize get/data', () => {
-    dominationRound.organizeData(data);
-    expect(dominationRound).to.eql([])
-  });
+
   //temporary solution???????
 
 

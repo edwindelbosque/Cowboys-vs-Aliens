@@ -6,6 +6,8 @@ class DominationRound extends Round {
   constructor(game, multiplier) {
     super(game);
     this.multiplier = multiplier;
+    this.seconds = 30;
+    this.respondentsInfo = [];
   }
 
 

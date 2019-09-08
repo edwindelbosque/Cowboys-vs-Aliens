@@ -3,7 +3,6 @@ import Turn from './Turn.js';
 class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
-    this.seconds = 30;
     this.respondentsInfo = [];
     this.dominationGuesses = [];
     this.dominationPoints = 0
@@ -29,8 +28,7 @@ class DominationTurn extends Turn {
   }
 
   saveRespondents() {
-    console.log(this.organizeRespondents())
-    return this.respondentsInfo.push(this.organizeRespondents())
+    return this.currentRound.respondentsInfo.push(this.organizeRespondents())
 
     //surveys saved will allow for points to be added once dom turn is complete
   }
