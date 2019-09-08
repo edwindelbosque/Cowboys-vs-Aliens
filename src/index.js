@@ -20,6 +20,8 @@ import Round from './Round';
 import Turn from './Turn';
 import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
+import DominationRound from './DominationRound'
+import DominationTurn from './DominationTurn'
 import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;

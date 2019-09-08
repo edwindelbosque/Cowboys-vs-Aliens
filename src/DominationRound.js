@@ -1,6 +1,6 @@
 import Round from './Round.js';
 import DominationTurn from './DominationTurn.js';
-
+import DOMupdates from "./DOMupdates";
 
 class DominationRound extends Round {
   constructor(game, multiplier) {
