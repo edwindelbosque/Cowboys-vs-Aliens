@@ -30,7 +30,6 @@ class DominationTurn extends Turn {
     answerInfo.forEach(answer => {
       this.currentRound.respondentsInfo.push(answer)
     })
-
     //surveys saved will allow for points to be added once dom ROUND is complete
   }
 

@@ -20,7 +20,12 @@ class DominationRound extends Round {
   // ^this.beginTurn ?
 
   findCorrectGuesses() {
-
+// this.dominationGuesses
+    //every guess is compared to this.respondentsInfo.answer
+      // true? >>> get value of respondents
+      // false? >> nada
+//return is one number (total respondent points)
+    //change method name
   
     console.log(this.dominationGuesses)
     console.log(this.respondentsInfo)
