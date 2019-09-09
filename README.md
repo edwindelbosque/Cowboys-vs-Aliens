@@ -1,13 +1,13 @@
 # COWBOYS vs ALIENS: The Feud
-## Contributors: @ZoeKHarvey, @jmevans0211, @ericwm76, @edwindelbosque
-
-<img width="1428" alt="Screen Shot 2019-09-08 at 5 26 02 PM" src="https://user-images.githubusercontent.com/48811985/64496063-a8c33600-d290-11e9-87e6-dda79ee64d2b.png">
-
-<img width="1428" alt="Screen Shot 2019-09-08 at 5 29 45 PM" src="https://user-images.githubusercontent.com/48811985/64496065-aeb91700-d290-11e9-9640-475a01cac456.png">
+### Contributors: [@ZoeKHarvey](https://github.com/ZoeKHarvey), [@jmevans0211](https://github.com/jmevans0211), [@ericwm76](https://github.com/ericwm76), [@edwindelbosque](https://github.com/edwindelbosque)
 
 ## Summary
 
 For this exciting project we wanted to mainly solidify our understanding of object-oriented programming (OOP) principles by building out a game show, we decided to base it on Family Feud, but with a sci-fi spin on Cowboys and Aliens, which we were pretty excited about! This was an opportunity to work with classes to build a program at a larger scale than we have in our previous projects. This was also an opportunity for ourselves to build out a program based on user stories - which we knew is more aligned to what we can expect to see when working with product managers in a production environment.
+
+<img width="1428" alt="Screen Shot 2019-09-08 at 5 26 02 PM" src="https://user-images.githubusercontent.com/48811985/64496063-a8c33600-d290-11e9-87e6-dda79ee64d2b.png">
+
+<img width="1428" alt="Screen Shot 2019-09-08 at 5 29 45 PM" src="https://user-images.githubusercontent.com/48811985/64496065-aeb91700-d290-11e9-9640-475a01cac456.png">
 
 ## Goals
 
