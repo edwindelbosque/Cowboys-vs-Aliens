@@ -46,6 +46,8 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
+$('#multiplier').fadeOut();
+
 cowboyInput.on('keyup', () => {
   displayStartButton();
 }).on('focus', () => {
@@ -67,13 +69,13 @@ startGameButton.on('click', () => {
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 })
- 
 
 
-  // const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
 
-  // (async () => {
-  //   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
+// const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
+
+// (async () => {
+//   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
 
 
 function instantiateRoundAndTurn() {
@@ -85,8 +87,8 @@ function instantiateRoundAndTurn() {
   if (game.roundCount === 3) {
     multiplier.show();
   }
-} 
-  //   }})();
+}
+//   }})();
 // }).on('click', () => {
 //   startGameButton.animate({ opacity: '0' }, 60);
 // })
@@ -124,7 +126,8 @@ function domRoundSubmit() {
   if ($('#current-question').text()) {
     dominationTurn.updateScore(guessInput.val());
   }
-  multiplier.show();
+  multiplier.fadeIn()
+  $('.section__div--turn').css({ zIndex: '-1', opacity: '0' });
   guessInput.val('');
 }
 
@@ -148,6 +151,7 @@ goButton.on('click', () => {
   dominationRound.beginDominationTurn();
   dominationTurn = new DominationTurn(dominationRound, multiplierInput.val());
   startTimer();
+  DOMupdates.clickGoBtn()
 })
 
 const startTimer = () => {
@@ -157,9 +161,9 @@ const startTimer = () => {
     timeLeft -= 1;
 
     if (timeLeft < 0) {
-       clearInterval(counter);
-       dominationRound.endDominationRound();
-       return;
+      clearInterval(counter);
+      dominationRound.endDominationRound();
+      return;
     }
 
     timer.text(`:${timeLeft}`);
