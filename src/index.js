@@ -111,18 +111,30 @@ function displayStartButton() {
     : startGameButton.animate({ opacity: '1' }, 20)
 }
 
+function submitRegular() {
+  regularTurn.updateScore(guessInput.val());
+  guessInput.val('');
+  if (regularRound.answerStrings.every(answer => answer === 'false')) {
+    DOMupdates.clearQuestion();
+    instantiateRoundAndTurn();
+  }
+}
+
+function domRoundSubmit() {
+  if ($('#current-question').text()) {
+    console.log('heyo');
+    dominationTurn.updateScore(guessInput.val());
+  }
+  multiplier.show();
+  guessInput.val('');
+}
+
 guessButton.on('click', () => {
   if (game.roundCount < 3) {
-    regularTurn.updateScore(guessInput.val());
-    guessInput.val('');
-    if (regularRound.answerStrings.every(answer => answer === 'false')) {
-      DOMupdates.clearQuestion();
-      instantiateRoundAndTurn();
-    }
+    submitRegular();
   }
   if (game.roundCount === 3) {
-    multiplier.show();
-    guessInput.val('');
+    domRoundSubmit();
   }
 });
 

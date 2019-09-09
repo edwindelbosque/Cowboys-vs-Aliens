@@ -1,4 +1,5 @@
 import Turn from './Turn.js';
+import DOMupdates from "./DOMupdates";
 
 class DominationTurn extends Turn {
   constructor(currentRound, multiplier) {
@@ -48,7 +49,7 @@ class DominationTurn extends Turn {
   spliceAnswers(guess) {
     let i = this.currentRound.answerStrings.findIndex(answer => answer === this.capitalizeGuess(guess))
     this.currentRound.answerStrings[i] = 'false';
-    this.currentRound.endRound();
+    // this.currentRound.endRound();
   }
 
   countRespondents(guess) {
@@ -61,6 +62,7 @@ class DominationTurn extends Turn {
 
   updateScore(guess) {
     // this.togglePlayer(guess);
+    debugger;
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
