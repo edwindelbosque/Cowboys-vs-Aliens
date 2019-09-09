@@ -1,9 +1,10 @@
 import Turn from './Turn.js';
 
 class DominationTurn extends Turn {
-  constructor(currentRound) {
+  constructor(currentRound, multiplier) {
     super(currentRound)
-    this.dominationPoints = 0
+    this.dominationPoints = 0;
+    this.multiplier = multiplier;
   }
 
   getQuestion() {
@@ -59,11 +60,11 @@ class DominationTurn extends Turn {
   }
 
   updateScore(guess) {
-    this.togglePlayer(guess);
+    // this.togglePlayer(guess);
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
-      this.currentPlayer.score += this.countRespondents(upperCaseGuess);
+      this.currentPlayer.score += this.countRespondents(upperCaseGuess) * this.multiplier;
       DOMupdates.appendAnswer(upperCaseGuess, index);
       DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
       DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);

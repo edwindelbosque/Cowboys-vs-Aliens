@@ -11,6 +11,10 @@ const DOMupdates = {
     $('#current-question').text(question);
   },
 
+  clearQuestion() {
+    $('#current-question').text('');
+  },
+
   clearAnswers() {
     $('#answer-1').text('');
     $('#answer-2').text('');
