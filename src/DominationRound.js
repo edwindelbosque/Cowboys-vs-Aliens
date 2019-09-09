@@ -19,10 +19,9 @@ class DominationRound extends Round {
   }
   // ^this.beginTurn ?
 
-  findCorrectGuesses() {
-
-    console.log(this.dominationGuesses)
-    console.log(this.respondentsInfo)
+  getTotalScore() {
+    console.log('GUESSES--->', this.dominationGuesses)
+    console.log('INFO--->', this.respondentsInfo)
   }
 
   displayReadyButton() {

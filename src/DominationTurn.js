@@ -3,6 +3,7 @@ import Turn from './Turn.js';
 class DominationTurn extends Turn {
   constructor(currentRound) {
     super(currentRound)
+    this.answers = []
   }
 
   getQuestion() {
@@ -10,12 +11,21 @@ class DominationTurn extends Turn {
     return this.currentRound.survey[0].question
   }
 
+  getAnswerStrings() {
+    console.log(this.currentRound)
+    return this.answers.push(this.currentRound.survey[1].answer, this.currentRound.survey[2].answer, this.currentRound.survey[3].answer)
+  }
+
   capitalizeGuess(guess) {
     return guess.toUpperCase();
   }
 
   checkGuess(guess) {
-    return this.currentRound.answerStrings.includes(this.capitalizeGuess(guess));
+    // console.log('answers--->', this.answers)
+    console.log('guess---->', guess)
+    console.log('boolean??', this.answers)
+    return this.currentRound.answers.includes(guess);
+    // **how do we capitalize the answers coming in??**
   }
 
   
@@ -42,20 +52,20 @@ class DominationTurn extends Turn {
     //surveys saved will allow for points to be added once dom ROUND is complete
   }
   
-    getScore(guess) {
-      if(this.checkGuess){
-        let answerObj= this.currentRound.respondentsInfo.find(answer => {
-          return answer.answer === guess
-      })
-        return answerObj.respondents
-      } else {
-        return 0
-      }
+  getScores(guess) {
+    if(this.checkGuess){
+      let answerObj= this.currentRound.respondentsInfo.find(answer => {
+        return answer.answer === guess
+    })
+      return answerObj.respondents
+    } else {
+      return 0
     }
+  }
   
   
-    savePoints(guess) {
-    return this.currentRound.dominationGuesses.push(this.getScore(guess))
+  savePoints(guess) {
+    return this.currentRound.dominationGuesses.push(this.getScores(guess))
     //surveys saved will allow for points to be added once dom ROUND is complete
   }
 

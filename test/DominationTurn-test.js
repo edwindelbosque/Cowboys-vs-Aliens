@@ -13,6 +13,7 @@ beforeEach(() => {
   game = new Game(data, 'Erick', 'Jeannie');
   game.startDominationTurn();
   dominationRound = new DominationRound(game, 3);
+  dominationRound.organizeSurvey();
   dominationTurn = new DominationTurn(dominationRound)
 
 });
@@ -32,7 +33,12 @@ describe('DominationTurn', () => {
     expect(dominationTurn.getQuestion()).to.equal(dominationRound.survey[0].question)
   });
 
-  it.only('should capitalize guesses', () => {
+  it.only('should have answer strings', () => {
+    dominationTurn.getAnswerStrings();
+    expect(dominationTurn.answers).to.eql([dominationRound.survey[1].answer, dominationRound.survey[2].answer, dominationRound.survey[3].answer])
+  });
+
+  it.skip('should capitalize guesses', () => {
     expect(dominationTurn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
   });
 
@@ -40,12 +46,29 @@ describe('DominationTurn', () => {
     expect(dominationTurn.checkGuess('Wrong Answer')).to.equal(false);
   });
 
-  it.only('should give points for correct answers', () => {
-    dominationTurn.getQuestion()
+  it.only('should check to see if guess was correct', () => {
+    console.log('TEST', dominationRound.survey[2].answer)
+    expect(dominationTurn.checkGuess(dominationRound.survey[2].answer)).to.equal(true);
+  });
+
+  it.skip('should give points for correct answers', () => {
     dominationTurn.saveRespondents()
     dominationTurn.checkGuess(dominationRound.survey[2].answer)
-    expect(dominationTurn.getScore(dominationRound.survey[2].answer)).to.equal(dominationRound.survey[2].respondents)
+    expect(dominationTurn.getScores(dominationRound.survey[2].answer)).to.equal(dominationRound.survey[2].respondents)
   });
+
+  it.skip('should save points', () => {
+    dominationTurn.getAnswerStrings()
+    dominationTurn.saveRespondents()
+    dominationTurn.checkGuess(dominationRound.survey[2].answer)
+    dominationTurn.savePoints(dominationRound.survey[2].answer)
+    dominationTurn.checkGuess('WRONG')
+    dominationTurn.savePoints('WRONG')
+    console.log(dominationRound.dominationGuesses)
+    // **add 0 to expected**
+    expect(dominationRound.dominationGuesses).to.eql([dominationRound.survey[2].respondents, 0])
+  });
+
 
   // it.skip('should save respondents', () => {
   //   dominationTurn.getQuestion()
