@@ -84,7 +84,7 @@ function instantiateRoundAndTurn() {
     regularRound.beginTurn();
     regularTurn = new RegularTurn(regularRound);
   }
-  if (game.roundCount === 3) {
+  if (game.roundCount >= 3) {
     multiplier.show();
   }
 }
@@ -135,7 +135,7 @@ guessButton.on('click', () => {
   if (game.roundCount < 3) {
     submitRegular();
   }
-  if (game.roundCount === 3) {
+  if (game.roundCount >= 3) {
     domRoundSubmit();
   }
 });
@@ -148,7 +148,7 @@ multiplier.on('keydown', () => {
 goButton.on('click', () => {
   timeLeft = 30;
   dominationRound = new DominationRound(game);
-  dominationRound.beginDominationTurn();
+  dominationRound.beginTurn();
   dominationTurn = new DominationTurn(dominationRound, multiplierInput.val());
   startTimer();
   DOMupdates.clickGoBtn()
@@ -161,9 +161,10 @@ const startTimer = () => {
     timeLeft -= 1;
 
     if (timeLeft < 0) {
-      clearInterval(counter);
-      dominationRound.endDominationRound();
-      return;
+       clearInterval(counter);
+       dominationRound.endDominationRound();
+       dominationRound.beginTurn();
+       return;
     }
 
     timer.text(`:${timeLeft}`);

@@ -35,7 +35,7 @@ class Game {
     if (this.roundCount < 3) {
       this.startRegularRound();
     }
-    if (this.roundCount === 3) {
+    if (this.roundCount >= 3) {
       this.startDominationRound();
     }
   }

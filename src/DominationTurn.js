@@ -66,22 +66,9 @@ class DominationTurn extends Turn {
       this.currentPlayer.score += this.countRespondents(upperCaseGuess) * this.multiplier;
       DOMupdates.appendAnswer(upperCaseGuess, index);
       DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
-      // DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
       this.spliceAnswers(guess);
     }
   }
-
-
-  decreaseTimer() {
-
-  }
-
-  endTurn() {
-
-  }
-
-  
-
 
   multiplyScores(multiplier) {
     // game.player.score + this.dominationPoints
