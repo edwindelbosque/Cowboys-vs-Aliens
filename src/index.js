@@ -145,7 +145,7 @@ multiplier.on('keydown', () => {
 goButton.on('click', () => {
   timeLeft = 30;
   dominationRound = new DominationRound(game);
-  dominationRound.beginDominationTurn();
+  dominationRound.beginTurn();
   dominationTurn = new DominationTurn(dominationRound, multiplierInput.val());
   startTimer();
 })
@@ -159,7 +159,7 @@ const startTimer = () => {
     if (timeLeft < 0) {
        clearInterval(counter);
        dominationRound.endDominationRound();
-       dominationRound.beginDominationTurn();
+       dominationRound.beginTurn();
        return;
     }
 

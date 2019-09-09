@@ -11,29 +11,11 @@ class DominationRound extends Round {
     this.dominationGuesses = [];
   }
 
-  beginDominationTurn() {
-    this.organizeSurvey();
-    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
-    DOMupdates.appendQuestion(this.question.question);
-  }
-
-  organizeData(data) {
-
-  }
-
-  displayReadyButton() {
-    
-  }
-
   endDominationRound() {
-    console.log('endDominationRound ran!')
+    DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.game.player1);
     this.game.roundCount++;
     this.game.chooseRound();
   }
-
-
 }
-
-
 
 export default DominationRound;
