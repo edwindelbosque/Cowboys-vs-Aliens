@@ -99,6 +99,12 @@ startGameButton.on('click', () => {
   game.chooseSurvey();
   instantiateRoundAndTurn();
   startGameButton.animate({ opacity: '0' }, 60);
+
+  $('.section--scoreboard').css({ fontSize: '25px' });
+  $('.header__h1--display').css({ fontSize: '30px' });
+  $('#section-players').show();
+
+
 })
 
 exitButton.on('click', () => {
