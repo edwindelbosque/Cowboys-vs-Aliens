@@ -27,6 +27,7 @@ import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
 let timeLeft = 30;
+let counter = 0; 
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -126,8 +127,14 @@ function domRoundSubmit() {
   if ($('#current-question').text()) {
     dominationTurn.updateScore(guessInput.val());
   }
+}
+
+function makeMultiplierAppear() {
+  if (counter === 0 || timeLeft < 0) {
+  counter++;
   multiplier.fadeIn()
   $('.section__div--turn').css({ zIndex: '-1', opacity: '0' });
+  }
   guessInput.val('');
 }
 
@@ -137,6 +144,7 @@ guessButton.on('click', () => {
   }
   if (game.roundCount >= 3) {
     domRoundSubmit();
+    makeMultiplierAppear();
   }
 });
 
@@ -162,6 +170,7 @@ const startTimer = () => {
 
     if (timeLeft < 0) {
        clearInterval(counter);
+       makeMultiplierAppear();
        dominationRound.endDominationRound();
        dominationRound.beginTurn();
        return;
