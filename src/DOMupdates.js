@@ -55,7 +55,8 @@ const DOMupdates = {
   },
 
   clickGoBtn() {
-    $('#go-btn').on('click', console.log('Go!'));
+    $('#multiplier').fadeOut();
+    $('.section__div--turn').css({ zIndex: '1', opacity: '1' });
   },
 
   displayFeedback(checkedGuess) {

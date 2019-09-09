@@ -46,6 +46,8 @@ window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
+$('#multiplier').fadeOut();
+
 cowboyInput.on('keyup', () => {
   displayStartButton();
 }).on('focus', () => {
@@ -124,7 +126,8 @@ function domRoundSubmit() {
   if ($('#current-question').text()) {
     dominationTurn.updateScore(guessInput.val());
   }
-  multiplier.show();
+  multiplier.fadeIn()
+  $('.section__div--turn').css({ zIndex: '-1', opacity: '0' });
   guessInput.val('');
 }
 
@@ -148,6 +151,7 @@ goButton.on('click', () => {
   dominationRound.beginDominationTurn();
   dominationTurn = new DominationTurn(dominationRound, multiplierInput.val());
   startTimer();
+  DOMupdates.clickGoBtn()
 })
 
 const startTimer = () => {
