@@ -32,38 +32,44 @@ describe('DominationTurn', () => {
     expect(dominationTurn.getQuestion()).to.equal(dominationRound.survey[0].question)
   });
 
-  it.skip('should save respondents', () => {
+  it.only('should capitalize guesses', () => {
+    expect(dominationTurn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
+  });
+
+  it.only('should check to see if guess was incorrect', () => {
+    expect(dominationTurn.checkGuess('Wrong Answer')).to.equal(false);
+  });
+
+  it.only('should give points for correct answers', () => {
     dominationTurn.getQuestion()
     dominationTurn.saveRespondents()
-    // console.log(dominationRound.respondentsInfo)
-    expect(dominationRound.respondentsInfo).to.eql([{},{}])
+    dominationTurn.checkGuess(dominationRound.survey[2].answer)
+    expect(dominationTurn.getScore(dominationRound.survey[2].answer)).to.equal(dominationRound.survey[2].respondents)
   });
+
+  // it.skip('should save respondents', () => {
+  //   dominationTurn.getQuestion()
+  //   dominationTurn.saveRespondents()
+  //   // console.log(dominationRound.respondentsInfo)
+  //   expect(dominationRound.respondentsInfo).to.eql([{},{}])
+  // });
   //method IS WORKING, unsure best way to test
 
-  it.only('should save guess', () => {
-    dominationTurn.getQuestion()
-    dominationTurn.saveRespondents()
-    dominationTurn.saveGuess('wrong')
-    expect(dominationRound.dominationGuesses).to.eql(['wrong'])
-  });
+  // it.only('should save guess', () => {
+  //   dominationTurn.getQuestion()
+  //   dominationTurn.saveRespondents()
+  //   dominationTurn.saveGuess('wrong')
+  //   expect(dominationRound.dominationGuesses).to.eql(['wrong'])
+  // });
 
-  it.only('should save all guesses', () => {
-    dominationTurn.getQuestion()
-    dominationTurn.saveRespondents()
-    dominationTurn.saveGuess('wrong1')
-    dominationTurn.saveGuess('wrong2')
-    expect(dominationRound.dominationGuesses).to.eql(['wrong1', 'wrong2'])
-  });
+  // it.only('should save all guesses', () => {
+  //   dominationTurn.getQuestion()
+  //   dominationTurn.saveRespondents()
+  //   dominationTurn.saveGuess('wrong1')
+  //   dominationTurn.saveGuess('wrong2')
+  //   expect(dominationRound.dominationGuesses).to.eql(['wrong1', 'wrong2'])
+  // });
 
-  it.only('should compare find correct guesses', () => {
-    dominationTurn.getQuestion()
-    dominationTurn.saveRespondents()
-    dominationTurn.saveGuess('wrong1')
-    dominationTurn.saveGuess('wrong2')
-    dominationTurn.saveGuess(dominationRound.survey[1].answer)
-    dominationTurn.saveGuess(dominationRound.survey[2].answer)
-    expect(dominationRound.findCorrectGuesses()).to.equal(dominationRound.survey[1].respondents + dominationRound.survey[2].respondents)
-  });
 
 
   // it('should ask another question after only one guess', () => {

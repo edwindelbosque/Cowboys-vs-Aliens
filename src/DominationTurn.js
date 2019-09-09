@@ -10,20 +10,29 @@ class DominationTurn extends Turn {
     return this.currentRound.survey[0].question
   }
 
+  capitalizeGuess(guess) {
+    return guess.toUpperCase();
+  }
+
+  checkGuess(guess) {
+    return this.currentRound.answerStrings.includes(this.capitalizeGuess(guess));
+  }
+
+  
   // organizeRespondents() {
-  //   let answerInfo = this.currentRound.survey.filter(obj => {
-  //     return obj.answer
-  //   })
-
-  //   return answerInfo.reduce((acc, obj) => {
-  //     acc[obj.answer] = obj.respondents
-  //     return acc
-  //   }, {})
-
-  //   //makes survey into a single object of key-value pairs
-  //   // {[answer]: [respondents], [answer]: [respondents], [answer]: [respondents]}
-  // }
-
+    //   let answerInfo = this.currentRound.survey.filter(obj => {
+      //     return obj.answer
+      //   })
+      
+      //   return answerInfo.reduce((acc, obj) => {
+        //     acc[obj.answer] = obj.respondents
+        //     return acc
+        //   }, {})
+        
+        //   //makes survey into a single object of key-value pairs
+        //   // {[answer]: [respondents], [answer]: [respondents], [answer]: [respondents]}
+        // }
+        
   saveRespondents() {
     let answerInfo = [this.currentRound.survey[1], this.currentRound.survey[2], this.currentRound.survey[3]]
     
@@ -32,9 +41,21 @@ class DominationTurn extends Turn {
     })
     //surveys saved will allow for points to be added once dom ROUND is complete
   }
-
-  saveGuess(guess) {
-    return this.currentRound.dominationGuesses.push(guess)
+  
+    getScore(guess) {
+      if(this.checkGuess){
+        let answerObj= this.currentRound.respondentsInfo.find(answer => {
+          return answer.answer === guess
+      })
+        return answerObj.respondents
+      } else {
+        return 0
+      }
+    }
+  
+  
+    savePoints(guess) {
+    return this.currentRound.dominationGuesses.push(this.getScore(guess))
     //surveys saved will allow for points to be added once dom ROUND is complete
   }
 
