@@ -122,7 +122,6 @@ function submitRegular() {
 
 function domRoundSubmit() {
   if ($('#current-question').text()) {
-    console.log('heyo');
     dominationTurn.updateScore(guessInput.val());
   }
   multiplier.show();
@@ -145,10 +144,10 @@ multiplier.on('keydown', () => {
 
 goButton.on('click', () => {
   timeLeft = 30;
-  startTimer();
   dominationRound = new DominationRound(game);
   dominationRound.beginDominationTurn();
   dominationTurn = new DominationTurn(dominationRound, multiplierInput.val());
+  startTimer();
 })
 
 const startTimer = () => {

@@ -49,7 +49,6 @@ class DominationTurn extends Turn {
   spliceAnswers(guess) {
     let i = this.currentRound.answerStrings.findIndex(answer => answer === this.capitalizeGuess(guess))
     this.currentRound.answerStrings[i] = 'false';
-    // this.currentRound.endRound();
   }
 
   countRespondents(guess) {
@@ -61,15 +60,13 @@ class DominationTurn extends Turn {
   }
 
   updateScore(guess) {
-    // this.togglePlayer(guess);
-    debugger;
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
       this.currentPlayer.score += this.countRespondents(upperCaseGuess) * this.multiplier;
       DOMupdates.appendAnswer(upperCaseGuess, index);
       DOMupdates.appendRespondents(this.countRespondents(upperCaseGuess), index);
-      DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
+      // DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
       this.spliceAnswers(guess);
     }
   }
@@ -78,6 +75,12 @@ class DominationTurn extends Turn {
   decreaseTimer() {
 
   }
+
+  endTurn() {
+
+  }
+
+  
 
 
   multiplyScores(multiplier) {
