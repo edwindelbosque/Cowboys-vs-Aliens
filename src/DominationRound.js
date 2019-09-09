@@ -12,7 +12,6 @@ class DominationRound extends Round {
   }
 
   beginDominationTurn() {
-    console.log('beginDominationTurn ran!')
     this.organizeSurvey();
     DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
     DOMupdates.appendQuestion(this.question.question);

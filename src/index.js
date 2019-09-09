@@ -36,6 +36,7 @@ const alienInput = $('#alien-name-input');
 const guessInput = $('#guess-input');
 const guessButton = $('#guess-button');
 const multiplier = $('#multiplier');
+const multiplierInput = $('#multiplier-input');
 const goButton = $('#go-btn');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
@@ -110,20 +111,29 @@ function displayStartButton() {
     : startGameButton.animate({ opacity: '1' }, 20)
 }
 
-guessButton.on('click', () => {
-  if (game.roundCount < 3) {
+function submitRegular() {
   regularTurn.updateScore(guessInput.val());
   guessInput.val('');
-    if (regularRound.answerStrings.every(answer => answer === 'false')) {
+  if (regularRound.answerStrings.every(answer => answer === 'false')) {
+    DOMupdates.clearQuestion();
     instantiateRoundAndTurn();
-    }
+  }
+}
+
+function domRoundSubmit() {
+  if ($('#current-question').text()) {
+    dominationTurn.updateScore(guessInput.val());
+  }
+  multiplier.show();
+  guessInput.val('');
+}
+
+guessButton.on('click', () => {
+  if (game.roundCount < 3) {
+    submitRegular();
   }
   if (game.roundCount === 3) {
-    dominationRound = new DominationRound(game);
-    dominationRound.beginDominationTurn();
-    dominationTurn = new DominationTurn(dominationRound);
-    dominationTurn.updateScore(guessInput.val());
-    guessInput.val('');
+    domRoundSubmit();
   }
 });
 
@@ -134,6 +144,9 @@ multiplier.on('keydown', () => {
 
 goButton.on('click', () => {
   timeLeft = 30;
+  dominationRound = new DominationRound(game);
+  dominationRound.beginDominationTurn();
+  dominationTurn = new DominationTurn(dominationRound, multiplierInput.val());
   startTimer();
 })
 
