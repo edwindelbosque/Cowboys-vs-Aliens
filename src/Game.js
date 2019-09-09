@@ -52,12 +52,10 @@ class Game {
     DOMupdates.clearAnswers();
     this.currentSurvey = [];
     this.chooseSurvey();
-    // global.regularRound = new RegularRound(this);
-    // global.regularRound.beginTurn();
-    // global.regularTurn = new RegularTurn(global.regularRound);
   }
 
   startDominationRound() {
+    DOMupdates.clearAnswers();
     this.currentSurvey = [];
     this.chooseSurvey();
   }

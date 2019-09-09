@@ -33,7 +33,7 @@
   <main>
     <nav>
       <p id="exit-button">X</p>
-      <h5 role="timer" id="timer">:30</h5>
+      <h5 role="timer" id="timer" style="display: none">:30</h5>
     </nav>
     <header>
       <h1 class="header__h1--display" id="current-question">WHAT IS MY FAVORITE COLOR?</h1>
@@ -95,10 +95,10 @@
         <button class="bring-front" id="guess-button">SUBMIT</button>
       </div>
     </section>
-    <section id="multiplier">
-      <label for="multiplier">Multiplier!</label>
-      <input type="number" id="multiplier-input" placeholder="Enter a number 1-5">
-      <button id="multiplier-input-button">Submit</button>
+    <section id="multiplier" style="">
+      <label for="multiplier-input">Multiplier!</label>
+      <input type="number" id="multiplier-input" placeholder="Enter a number 1-5" min="1" max="5">
+      <button id="go-btn" style="">GO!</button>
     </section>
   </main>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

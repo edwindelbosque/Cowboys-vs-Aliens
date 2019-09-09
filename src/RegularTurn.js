@@ -24,7 +24,6 @@ class RegularTurn extends Turn {
   spliceAnswers(guess) {
     let i = this.currentRound.answerStrings.findIndex(answer => answer === this.capitalizeGuess(guess))
     this.currentRound.answerStrings[i] = 'false';
-    // debugger;
     this.currentRound.endRound();
   }
 

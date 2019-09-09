@@ -20,9 +20,13 @@ import Round from './Round';
 import Turn from './Turn';
 import RegularRound from './RegularRound'
 import RegularTurn from './RegularTurn'
+import DominationRound from './DominationRound'
+import DominationTurn from './DominationTurn'
+import DOMupdates from './DOMupdates'
 import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
+let timeLeft = 30;
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -31,8 +35,11 @@ const cowboyInput = $('#cowboy-name-input');
 const alienInput = $('#alien-name-input');
 const guessInput = $('#guess-input');
 const guessButton = $('#guess-button');
+const multiplier = $('#multiplier');
+const goButton = $('#go-btn');
 const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
+const timer = $('#timer');
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -75,9 +82,7 @@ function instantiateRoundAndTurn() {
     regularTurn = new RegularTurn(regularRound);
   }
   if (game.roundCount === 3) {
-    dominationRound = new DominationRound(game);
-    dominationRound.startDominationRound();
-    dominationTurn = new DominationTurn(dominationRound);
+    multiplier.show();
   }
 } 
   //   }})();
@@ -106,9 +111,44 @@ function displayStartButton() {
 }
 
 guessButton.on('click', () => {
+  if (game.roundCount < 3) {
   regularTurn.updateScore(guessInput.val());
   guessInput.val('');
-  if (regularRound.answerStrings.every(answer => answer === 'false')) {
+    if (regularRound.answerStrings.every(answer => answer === 'false')) {
     instantiateRoundAndTurn();
+    }
   }
+  if (game.roundCount === 3) {
+    dominationRound = new DominationRound(game);
+    dominationRound.beginDominationTurn();
+    dominationTurn = new DominationTurn(dominationRound);
+    dominationTurn.updateScore(guessInput.val());
+    guessInput.val('');
+  }
+});
+
+multiplier.on('keydown', () => {
+  timer.show();
+  goButton.show();
 })
+
+goButton.on('click', () => {
+  timeLeft = 30;
+  startTimer();
+})
+
+const startTimer = () => {
+  const counter = setInterval(countdown, 1000);
+
+  function countdown() {
+    timeLeft -= 1;
+
+    if (timeLeft < 0) {
+       clearInterval(counter);
+       dominationRound.endDominationRound();
+       return;
+    }
+
+    timer.text(`:${timeLeft}`);
+  }
+}
