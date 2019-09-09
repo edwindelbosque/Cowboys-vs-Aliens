@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Turn from './Turn';
 
 
 const DOMupdates = {
@@ -54,7 +55,26 @@ const DOMupdates = {
   },
 
   clickGoBtn() {
-    $('#go-btn').on('click', console.log('Go!'));
+    $('#multiplier').fadeOut();
+    $('.section__div--turn').css({ zIndex: '1', opacity: '1' });
+  },
+
+  displayFeedback(checkedGuess) {
+    if (checkedGuess) {
+      $('.section__div--answer-board').css({ borderColor: 'green' })
+      $('.div__section--middle-row').css({ borderTopColor: 'green', borderBottomColor: 'green' })
+      setTimeout(function () {
+        $('.section__div--answer-board').css({ borderColor: 'white' })
+        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white' })
+      }, 500);
+    } else {
+      $('.section__div--answer-board').css({ borderColor: 'red' })
+      $('.div__section--middle-row').css({ borderTopColor: 'red', borderBottomColor: 'red' })
+      setTimeout(function () {
+        $('.section__div--answer-board').css({ borderColor: 'white' })
+        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white' })
+      }, 500);
+    }
   }
 }
 

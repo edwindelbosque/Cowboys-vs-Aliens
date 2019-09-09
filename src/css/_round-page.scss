@@ -106,6 +106,7 @@ header {
   border-top: 8px dashed white;
   border-bottom: 8px dashed white;
   height: 90px;
+  width: 100%
 }
 
 .section__div--answer {
@@ -232,4 +233,17 @@ header {
 
 #alien-name {
   color: $alien-accent;
+}
+
+#multiplier {
+  position: absolute;
+  height: 300px;
+}
+
+#section__div--turn {
+  position: absolute;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

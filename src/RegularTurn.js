@@ -19,8 +19,6 @@ class RegularTurn extends Turn {
 
   checkGuess(guess) {
     return this.currentRound.answerStrings.includes(guess.toUpperCase());
-
-    // return this.currentRound.answerStrings.includes(this.capitalizeGuess(guess));
   }
 
   spliceAnswers(guess) {
@@ -39,6 +37,7 @@ class RegularTurn extends Turn {
 
   updateScore(guess) {
     this.togglePlayer(guess);
+    this.giveFeedback(guess)
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
@@ -48,10 +47,6 @@ class RegularTurn extends Turn {
       DOMupdates.appendPlayerScore(this.currentPlayer.score, this.currentPlayer, this.currentRound.game.player1);
       this.spliceAnswers(guess);
     }
-  }
-
-  giveFeedback(guess) {
-    return this.checkGuess(guess) ? 'Correct!' : 'Incorrect!'
   }
 
   togglePlayer(guess) {
