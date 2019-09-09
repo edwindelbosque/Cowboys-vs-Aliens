@@ -67,13 +67,13 @@ startGameButton.on('click', () => {
   $('#alien-name').text(alienInput.val().toUpperCase());
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 })
- 
 
 
-  // const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
 
-  // (async () => {
-  //   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
+// const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
+
+// (async () => {
+//   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
 
 
 function instantiateRoundAndTurn() {
@@ -85,8 +85,8 @@ function instantiateRoundAndTurn() {
   if (game.roundCount === 3) {
     multiplier.show();
   }
-} 
-  //   }})();
+}
+//   }})();
 // }).on('click', () => {
 //   startGameButton.animate({ opacity: '0' }, 60);
 // })
@@ -157,9 +157,9 @@ const startTimer = () => {
     timeLeft -= 1;
 
     if (timeLeft < 0) {
-       clearInterval(counter);
-       dominationRound.endDominationRound();
-       return;
+      clearInterval(counter);
+      dominationRound.endDominationRound();
+      return;
     }
 
     timer.text(`:${timeLeft}`);
