@@ -18,7 +18,9 @@ class RegularTurn extends Turn {
   }
 
   checkGuess(guess) {
-    return this.currentRound.answerStrings.includes(this.capitalizeGuess(guess));
+    return this.currentRound.answerStrings.includes(guess.toUpperCase());
+
+    // return this.currentRound.answerStrings.includes(this.capitalizeGuess(guess));
   }
 
   spliceAnswers(guess) {

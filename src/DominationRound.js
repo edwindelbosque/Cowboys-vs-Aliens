@@ -27,6 +27,8 @@ class DominationRound extends Round {
 
   endDominationRound() {
     console.log('endDominationRound ran!')
+    this.game.roundCount++;
+    this.game.chooseRound();
   }
 
 

@@ -82,7 +82,7 @@ function instantiateRoundAndTurn() {
     regularRound.beginTurn();
     regularTurn = new RegularTurn(regularRound);
   }
-  if (game.roundCount === 3) {
+  if (game.roundCount >= 3) {
     multiplier.show();
   }
 } 
@@ -132,7 +132,7 @@ guessButton.on('click', () => {
   if (game.roundCount < 3) {
     submitRegular();
   }
-  if (game.roundCount === 3) {
+  if (game.roundCount >= 3) {
     domRoundSubmit();
   }
 });
@@ -159,6 +159,7 @@ const startTimer = () => {
     if (timeLeft < 0) {
        clearInterval(counter);
        dominationRound.endDominationRound();
+       dominationRound.beginDominationTurn();
        return;
     }
 
