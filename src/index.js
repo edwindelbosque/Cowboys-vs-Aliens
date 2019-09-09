@@ -27,7 +27,7 @@ import data from '../data/surveys'
 
 let game, regularRound, regularTurn, dominationRound, dominationTurn;
 let timeLeft = 30;
-let counter = 0; 
+let counter = 0;
 
 const main = $('main');
 const startGameButton = $('#start-game-button');
@@ -95,10 +95,16 @@ function instantiateRoundAndTurn() {
 // })
 
 startGameButton.on('click', () => {
-  game = new Game(data, cowboyInput.val(), alienInput.val());
+  game = new Game(data, cowboyInput.val().toUpperCase(), alienInput.val().toUpperCase());
   game.chooseSurvey();
   instantiateRoundAndTurn();
   startGameButton.animate({ opacity: '0' }, 60);
+
+  $('.section--scoreboard').css({ fontSize: '25px' });
+  $('.header__h1--display').css({ fontSize: '30px' });
+  $('#section-players').show();
+
+
 })
 
 exitButton.on('click', () => {
@@ -131,9 +137,9 @@ function domRoundSubmit() {
 
 function makeMultiplierAppear() {
   if (counter === 0 || timeLeft < 0) {
-  counter++;
-  multiplier.fadeIn()
-  $('.section__div--turn').css({ zIndex: '-1', opacity: '0' });
+    counter++;
+    multiplier.fadeIn()
+    $('.section__div--turn').css({ zIndex: '-1', opacity: '0' });
   }
   guessInput.val('');
 }
@@ -169,11 +175,11 @@ const startTimer = () => {
     timeLeft -= 1;
 
     if (timeLeft < 0) {
-       clearInterval(counter);
-       makeMultiplierAppear();
-       dominationRound.endDominationRound();
-       dominationRound.beginTurn();
-       return;
+      clearInterval(counter);
+      makeMultiplierAppear();
+      dominationRound.endDominationRound();
+      dominationRound.beginTurn();
+      return;
     }
 
     timer.text(`:${timeLeft}`);

@@ -24,7 +24,7 @@ class Game {
       this.currentSurvey.push(this.data.surveys.find(survey => survey.id === id));
       this.usedSurveys.push(id);
       let answers = this.data.answers.filter(answer => answer.surveyId === id).sort((a, b) => b.respondents - a.respondents);
-      this.currentSurvey = this.currentSurvey.concat(answers);     
+      this.currentSurvey = this.currentSurvey.concat(answers);
       return this.currentSurvey
     } else {
       this.chooseSurvey();
@@ -35,8 +35,14 @@ class Game {
     if (this.roundCount < 3) {
       this.startRegularRound();
     }
-    if (this.roundCount >= 3) {
+    if (this.roundCount === 3) {
       this.startDominationRound();
+    }
+    if (this.roundCount === 4) {
+      this.startDominationRound();
+    }
+    if (this.roundCount > 4) {
+      this.getWinner();
     }
   }
 

@@ -4,8 +4,10 @@ import Turn from './Turn';
 
 const DOMupdates = {
   showWinner(player) {
-    $('').text(player.name);
-    $('').text(player.score);
+    $('.section--scoreboard').text(player.score).css({ fontSize: '80px' });
+    $('.header__h1--display').text(`${player.name} WINS!`).css({ fontSize: '100px' });
+    $('#section-players').hide();
+    $('#multiplier').hide();
   },
 
   appendQuestion(question) {
