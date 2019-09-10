@@ -117,6 +117,19 @@ function submitRegular() {
   }
 }
 
+guessInput.on('keypress', function (e) {
+  if (e.which === 13) {
+
+    if (game.roundCount < 3) {
+      submitRegular();
+    }
+    if (game.roundCount >= 3) {
+      domRoundSubmit();
+      makeMultiplierAppear();
+    }
+  }
+});
+
 function domRoundSubmit() {
   if ($('#current-question').text()) {
     dominationTurn.updateScore(guessInput.val());
@@ -140,7 +153,7 @@ guessButton.on('click', () => {
     domRoundSubmit();
     makeMultiplierAppear();
   }
-});
+})
 
 multiplier.on('keydown', () => {
   timer.show();
