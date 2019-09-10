@@ -40,8 +40,10 @@ const DOMupdates = {
     $(`#player-${number}-score`).text(score);
   },
 
-  appendCurrentPlayerName(name) {
-    $('#players-turn').text(name);
+  appendCurrentPlayerName(name, round) {
+    name === round.game.player1.name
+      ? $('#players-turn').text(name).css({ color: '#f54747' })
+      : $('#players-turn').text(name).css({ color: '#91D631' })
   },
 
   appendMultiplierInput() {
