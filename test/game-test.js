@@ -29,8 +29,6 @@ describe('Game', () => {
     expect(game).to.be.an.instanceOf(Game);
   });
 
-  // test all initial properties.
-
   it('should hold all survey data', () => {
     expect(game.data).to.deep.equal(data);
   });
@@ -104,10 +102,6 @@ describe('Game', () => {
     game.roundCount = 3;
     expect(game.chooseRound()).to.equal(game.startRound())
   });
-
-
-
-
 
 }); // <------ end of describe block
 

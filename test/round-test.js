@@ -36,7 +36,6 @@ describe('Round', () => {
     round.beginTurn();
     expect(DOMupdates.appendCurrentPlayerName).to.have.been.called(1);
     expect(DOMupdates.appendQuestion).to.have.been.called(1);
-
   });
 
   it('should update roundCounter in game class', () => {

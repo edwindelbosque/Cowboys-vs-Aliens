@@ -16,9 +16,11 @@ let game, dominationRound, dominationTurn;
 describe('DominationTurn', () => {
   
   beforeEach(() => {
-    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers'], () => true);
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'updateScore', 'displayFeedback', 'appendAnswer', 'appendRespondents'], () => true);
     game = new Game(data, 'Erick', 'Jeannie');
+    game.chooseSurvey()
     dominationRound = new DominationRound(game, 3);
+    dominationRound.organizeSurvey()
     dominationTurn = new DominationTurn(dominationRound)
     game.startRound();
   });
@@ -29,11 +31,16 @@ describe('DominationTurn', () => {
 
   it('should be a function', () => {
     expect(DominationTurn).to.be.a('function');
-
   });
 
   it('should be an instance of DominationRound', () => {
     expect(dominationTurn).to.be.an.instanceOf(DominationTurn);
+  });
+
+  it('should update player answer and score to DOM', () => {
+    dominationTurn.updateScore(dominationRound.answerStrings[0])
+    expect(DOMupdates.appendAnswer).to.have.been.called(1);
+    expect(DOMupdates.appendRespondents).to.have.been.called(1);
   });
 
 }); // <------ end of describe block

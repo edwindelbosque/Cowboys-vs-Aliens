@@ -20,6 +20,7 @@ describe('Turn', () => {
   beforeEach(function () {
     chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'displayFeedback'], () => true);
     game = new Game(data, 'playerone', 'playertwo')
+    game.chooseSurvey()
     player1 = new Player('Cowboy');
     player2 = new Player('Alien');
     round = new Round(game);
@@ -44,11 +45,11 @@ describe('Turn', () => {
     expect(regularTurn.checkGuess('Wrong Answer')).to.equal(false);
   });
 
-  it.skip('should find number of respondents', () => {
+  it('should find number of respondents', () => {
     expect(regularTurn.countRespondents(regularRound.answers[0].answer)).to.equal(regularRound.answers[0].respondents)
   });
 
-  it.skip('should toggle player when guess is incorrect only', () => {
+  it('should toggle player when guess is incorrect only', () => {
     expect(regularTurn.currentPlayer).to.equal(game.player1);
     regularTurn.togglePlayer('wrong');
     expect(regularTurn.currentPlayer).to.equal(game.player2);
@@ -58,19 +59,14 @@ describe('Turn', () => {
     expect(regularTurn.currentPlayer).to.equal(game.player1);
   });
 
-  it.skip('should give feedback', () => {
-    expect(regularTurn.giveFeedback('wrong guess')).to.equal('Incorrect!')
-    expect(regularTurn.giveFeedback(regularRound.answers[0].answer)).to.equal('Correct!')
+  it('should give feedback', () => {
+    regularTurn.giveFeedback('wrong guess');
+    expect(DOMupdates.displayFeedback).to.have.been.called(1)
   });
 
   it('should splice the answers array in Round', () => {
     regularTurn.spliceAnswers('wrong');
     expect(regularRound.answers.length).to.equal(3)
-    regularTurn.spliceAnswers(regularRound.answers[0].answer);
-    expect(regularRound.answers.length).to.equal(2)
-    regularTurn.spliceAnswers(regularRound.answers[0].answer);
-    expect(regularRound.answers.length).to.equal(1)
-    regularTurn.spliceAnswers(regularRound.answers[0].answer);
   });
 
 }); // <------ end of describe block
