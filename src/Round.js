@@ -1,7 +1,4 @@
-import Game from '../src/Game';
-import Turn from "./Turn";
 import DOMupdates from "./DOMupdates";
-
 
 class Round {
   constructor(game) {

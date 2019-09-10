@@ -1,4 +1,3 @@
-import Round from "./Round";
 import DOMupdates from "./DOMupdates";
 import Turn from "./Turn"
 
@@ -9,30 +8,10 @@ class RegularTurn extends Turn {
     this.currentPlayer = currentRound.currentPlayer;
   }
 
-  identifyQuestion() {
-    return this.currentRound.survey[0].id
-  }
-
-  capitalizeGuess(guess) {
-    return guess.toUpperCase();
-  }
-
-  checkGuess(guess) {
-    return this.currentRound.answerStrings.includes(guess.toUpperCase());
-  }
-
   spliceAnswers(guess) {
-    let i = this.currentRound.answerStrings.findIndex(answer => answer === this.capitalizeGuess(guess))
+    let i = this.currentRound.answerStrings.findIndex(answer => answer === guess.toUpperCase())
     this.currentRound.answerStrings[i] = 'false';
     this.currentRound.endRound();
-  }
-
-  countRespondents(guess) {
-    let answerInfo = this.currentRound.answers.find(answer => {
-      let textAnswer = answer.answer.toUpperCase();
-      return textAnswer.includes(this.capitalizeGuess(guess))
-    })
-    return answerInfo.respondents;
   }
 
   updateScore(guess) {

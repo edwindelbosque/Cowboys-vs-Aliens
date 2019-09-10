@@ -1,6 +1,4 @@
 import $ from 'jquery';
-import Turn from './Turn';
-
 
 const DOMupdates = {
   showWinner(player) {
@@ -51,11 +49,7 @@ const DOMupdates = {
   },
 
   submitMultiplierInput() {
-    $('#multiplier-input-btn').click(appendGoButton());
-  },
-
-  appendGoButton() {
-    $('#go-btn').show();
+    $('#multiplier-input-btn').click($('#go-btn').show());
   },
 
   clickGoBtn() {
@@ -81,7 +75,5 @@ const DOMupdates = {
     }
   }
 }
-
-
 
 export default DOMupdates;
