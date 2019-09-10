@@ -16,16 +16,13 @@ import './images/favicon-16x16.png';
 import './images/grainy-filter.jpg'
 import './images/grainy-filter-2.png'
 import Game from './Game';
-import Round from './Round';
-import Turn from './Turn';
-import RegularRound from './RegularRound'
-import RegularTurn from './RegularTurn'
-import DominationRound from './DominationRound'
-import DominationTurn from './DominationTurn'
-import DOMupdates from './DOMupdates'
-import data from '../data/surveys'
+import RegularRound from './RegularRound';
+import RegularTurn from './RegularTurn';
+import DominationRound from './DominationRound';
+import DominationTurn from './DominationTurn';
+import DOMupdates from './DOMupdates';
 
-let game, regularRound, regularTurn, dominationRound, dominationTurn;
+let game, regularRound, regularTurn, dominationRound, dominationTurn, store;
 let timeLeft = 30;
 let counter = 0;
 
@@ -43,11 +40,23 @@ const cowboyImage = $('#cowboy-image');
 const alienImage = $('#alien-image');
 const timer = $('#timer');
 
+$('#multiplier').fadeOut();
+
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
 
-$('#multiplier').fadeOut();
+fetch('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    store = data.data;
+
+  })
+  .catch(function (err) {
+    console.log('Unable to fetch the data', err);
+  });
 
 cowboyInput.on('keyup', () => {
   displayStartButton();
@@ -71,14 +80,6 @@ startGameButton.on('click', () => {
   $("html").delay(250).animate({ scrollTop: main.offset().top }, 1000)
 })
 
-
-
-// const getData = async (url) => (await fetch(url).then(data => data.json()).then(data => data.data));
-
-// (async () => {
-//   let fetchedData = await getData('https://fe-apps.herokuapp.com/api/v1/gametime/1903/family-feud/data');
-
-
 function instantiateRoundAndTurn() {
   if (game.roundCount < 3) {
     regularRound = new RegularRound(game);
@@ -89,13 +90,9 @@ function instantiateRoundAndTurn() {
     multiplier.show();
   }
 }
-//   }})();
-// }).on('click', () => {
-//   startGameButton.animate({ opacity: '0' }, 60);
-// })
 
 startGameButton.on('click', () => {
-  game = new Game(data, cowboyInput.val().toUpperCase(), alienInput.val().toUpperCase());
+  game = new Game(store, cowboyInput.val().toUpperCase(), alienInput.val().toUpperCase());
   game.chooseSurvey();
   instantiateRoundAndTurn();
   startGameButton.animate({ opacity: '0' }, 60);
@@ -103,15 +100,14 @@ startGameButton.on('click', () => {
   $('.section--scoreboard').css({ fontSize: '25px' });
   $('.header__h1--display').css({ fontSize: '30px' });
   $('#section-players').show();
-
-
-})
+});
 
 exitButton.on('click', () => {
   $("html").delay(250).animate({ scrollTop: 0 }, 1000);
   startGameButton.css('opacity', '0');
   cowboyInput.val('');
   alienInput.val('');
+  location.reload();
 });
 
 function displayStartButton() {
