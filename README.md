@@ -39,5 +39,5 @@ For this exciting project we wanted to mainly solidify our understanding of obje
 2. In your Terminal, access the directory of this repository
 3. Run `npm install` to install the webpack dependencies
 4. Once it has finished installing, run `npm start`
-5. Copy the localhost url in your Terminal and paste it into your browser
+5. Copy the localhost address `ex. http://localhost:8080/` in your Terminal and paste it into your browser
 6. Play some Cowboys vs Aliens (OR visit our GitHub pages site here to play the game now!)
