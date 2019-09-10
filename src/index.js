@@ -156,6 +156,7 @@ multiplier.on('keydown', () => {
 })
 
 goButton.on('click', () => {
+  timer.fadeIn();
   timeLeft = 30;
   dominationRound = new DominationRound(game);
   dominationRound.beginTurn();
@@ -172,6 +173,7 @@ const startTimer = () => {
 
     if (timeLeft < 0) {
       clearInterval(counter);
+      timer.fadeOut();
       makeMultiplierAppear();
       dominationRound.endDominationRound();
       dominationRound.beginTurn();

@@ -5,7 +5,7 @@ import Turn from './Turn';
 const DOMupdates = {
   showWinner(player) {
     $('.section--scoreboard').text(player.score).css({ fontSize: '80px' });
-    $('.header__h1--display').text(`${player.name} WINS!`).css({ fontSize: '100px' });
+    $('.header__h1--display').text(`${player.name} WINS!`).css({ fontSize: '100px' }).addClass('winner-text')
     $('#section-players').hide();
     $('#multiplier').hide();
   },
