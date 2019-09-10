@@ -20,7 +20,7 @@ describe('DominationTurn', () => {
     game = new Game(data, 'Erick', 'Jeannie');
     dominationRound = new DominationRound(game, 3);
     dominationTurn = new DominationTurn(dominationRound)
-    game.startDominationRound();
+    game.startRound();
   });
   
   afterEach(function () {
@@ -34,11 +34,6 @@ describe('DominationTurn', () => {
 
   it('should be an instance of DominationRound', () => {
     expect(dominationTurn).to.be.an.instanceOf(DominationTurn);
-  });
-
-  it('should save guess', () => {
-    dominationTurn.saveGuess('wrong')
-    expect(dominationRound.dominationGuesses).to.eql(['wrong'])
   });
 
 }); // <------ end of describe block

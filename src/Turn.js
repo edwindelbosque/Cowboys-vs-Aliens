@@ -19,7 +19,7 @@ class Turn {
         let textAnswer = answer.answer.toUpperCase();
         return textAnswer.includes(guess.toUpperCase());
       })
-    
+    console.log('in countRespondents', answerInfo)
     return answerInfo.respondents;
   }
 }

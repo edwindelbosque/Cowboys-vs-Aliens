@@ -9,13 +9,13 @@ import spies from 'chai-spies'
 const expect = chai.expect;
 chai.use(spies);
 
-describe.only('Round', () => {
+describe('Round', () => {
   
   let game, round, regularRound;
   beforeEach(function () {
     chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'appendQuestion'], () => true);
     game = new Game(data);
-    game.startRegularRound();
+    game.startRound();
     round = new Round(game);
     regularRound = new RegularRound(game)
   });
