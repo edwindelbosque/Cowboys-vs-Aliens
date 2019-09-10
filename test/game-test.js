@@ -29,8 +29,6 @@ describe('Game', () => {
     expect(game).to.be.an.instanceOf(Game);
   });
 
-  // test all initial properties.
-
   it('should hold all survey data', () => {
     expect(game.data).to.deep.equal(data);
   });
@@ -56,7 +54,7 @@ describe('Game', () => {
   });
 
   it('should call clearAnswers and chooseSurvey upon startRegularRound', () => {
-    game.startRegularRound()
+    game.startRound()
     expect(DOMupdates.clearAnswers).to.have.been.called(1);
     // console.log(game.currentSurvey);
     // expect(game.currentSurvey).to.eql([])
@@ -64,7 +62,7 @@ describe('Game', () => {
   });
 
   it('should call clearAnswers and chooseSurvey upon startDominationRound', () => {
-    game.startDominationRound()
+    game.startRound()
     expect(DOMupdates.clearAnswers).to.have.been.called(1);
     // expect(game.currentSurvey).to.eql([])
     // expect(game.chooseSurvey).to.have.been.called(1);
@@ -102,12 +100,8 @@ describe('Game', () => {
 
   it('after 2 regular rounds, it should switch to fast round', () => {  
     game.roundCount = 3;
-    expect(game.chooseRound()).to.equal(game.startDominationRound())
+    expect(game.chooseRound()).to.equal(game.startRound())
   });
-
-
-
-
 
 }); // <------ end of describe block
 

@@ -20,6 +20,7 @@ describe('Turn', () => {
   beforeEach(function () {
     chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'displayFeedback'], () => true);
     game = new Game(data, 'playerone', 'playertwo')
+    game.chooseSurvey()
     player1 = new Player('Cowboy');
     player2 = new Player('Alien');
     round = new Round(game);
@@ -38,14 +39,6 @@ describe('Turn', () => {
 
   it('should be an instance of Turn', () => {
     expect(regularTurn).to.be.an.instanceOf(RegularTurn);
-  });
-
-  it('should know ID of survey question', () => {
-    expect(regularTurn.identifyQuestion()).to.eql(regularRound.survey[0].id)
-  });
-
-  it('should capitalize guesses', () => {
-    expect(regularTurn.capitalizeGuess('bOwLiNg BaLL')).to.equal('BOWLING BALL')
   });
 
   it('should check to see if guess was incorrect', () => {
@@ -67,27 +60,13 @@ describe('Turn', () => {
   });
 
   it('should give feedback', () => {
-    expect(regularTurn.giveFeedback('wrong guess')).to.equal('Incorrect!')
-    expect(regularTurn.giveFeedback(regularRound.answers[0].answer)).to.equal('Correct!')
+    regularTurn.giveFeedback('wrong guess');
+    expect(DOMupdates.displayFeedback).to.have.been.called(1)
   });
 
   it('should splice the answers array in Round', () => {
     regularTurn.spliceAnswers('wrong');
     expect(regularRound.answers.length).to.equal(3)
-    regularTurn.spliceAnswers(regularRound.answers[0].answer);
-    expect(regularRound.answers.length).to.equal(2)
-    regularTurn.spliceAnswers(regularRound.answers[0].answer);
-    expect(regularRound.answers.length).to.equal(1)
-    regularTurn.spliceAnswers(regularRound.answers[0].answer);
   });
-
-  describe('appendAnswer', function () {
-    it('should call appendAnswer', () => {
-      regularTurn.updateScore(regularRound.answers[0].answer);
-      expect(DOMupdates.appendAnswer).to.have.been.called(1)
-    })
-  })
-
-
 
 }); // <------ end of describe block
