@@ -63,6 +63,13 @@ describe.only('Game', () => {
     // expect(game.chooseSurvey).to.have.been.called(1);
   });
 
+  it('should call clearAnswers and chooseSurvey upon startDominationRound', () => {
+    game.startDominationRound()
+    expect(DOMupdates.clearAnswers).to.have.been.called(1);
+    // expect(game.currentSurvey).to.eql([])
+    // expect(game.chooseSurvey).to.have.been.called(1);
+  });
+
   it('should only pick a survey that has not been used', () => {
     game.usedSurveys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     game.chooseSurvey();
