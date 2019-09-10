@@ -37,6 +37,13 @@ describe('DominationTurn', () => {
     expect(dominationTurn).to.be.an.instanceOf(DominationTurn);
   });
 
+  it('should update available answers based on guesses', () => {
+    dominationTurn.spliceAnswers(dominationRound.answerStrings[0]);
+    dominationTurn.spliceAnswers(dominationRound.answerStrings[1]);
+    dominationTurn.spliceAnswers(dominationRound.answerStrings[2]);
+    expect(dominationRound.answerStrings).to.eql(['false', 'false', 'false'])
+  });
+
   it('should update player answer and score to DOM', () => {
     dominationTurn.updateScore(dominationRound.answerStrings[0])
     expect(DOMupdates.appendAnswer).to.have.been.called(1);

@@ -32,6 +32,12 @@ describe('Round', () => {
     expect(round).to.be.an.instanceOf(Round);
   });
 
+  it('should organize survey', () => {
+    expect(round.answers.length).to.eql(0);
+    round.organizeSurvey();
+    expect(round.answers.length).to.eql(3);
+  });
+
   it('should begin turn while invoking appendCurrentPlayerName and appendQuestion', () => {
     round.beginTurn();
     expect(DOMupdates.appendCurrentPlayerName).to.have.been.called(1);

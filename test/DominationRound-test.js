@@ -14,7 +14,7 @@ describe('DominationRound', () => {
   
   let  game, dominationRound;
   beforeEach(() => {
-    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers'], () => true);
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendPlayerScore'], () => true);
     game = new Game(data)
     dominationRound = new DominationRound(game, 3);
   });
@@ -31,17 +31,8 @@ describe('DominationRound', () => {
     expect(dominationRound).to.be.an.instanceOf(DominationRound);
   });
 
-
-  //temporary solution???????
-
-
-
-  // it('should instantiate a new Domination turn', () => {
-  //   dominationRound.startDominationRound()
-
-  // })
-
-
-
-
+  it('should end domination round', () => {
+    dominationRound.endDominationRound();
+    expect(DOMupdates.appendPlayerScore).to.have.been.called(1)
+  });
 }); // <------ end of describe block

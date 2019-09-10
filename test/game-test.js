@@ -34,18 +34,16 @@ describe('Game', () => {
   });
 
   it('should select a random survey', () => {
-    game.chooseSurvey(3)
-    expect(game.currentSurvey.length).to.equal(4);
+    expect(game.chooseSurvey().length).to.equal(4);
   });
 
   it('should sort the answers from highest respondents to lowest', () => {
-    game.chooseSurvey(3)
-    expect(game.currentSurvey).to.eql([
+    expect(game.chooseSurvey(3)).to.eql([
       { id: 3, question: 'Name A Good Gift For Someone Who Is Always Late.' },
       { answer: 'Watch', respondents: 58, surveyId: 3 },
       { answer: 'Alarm Clock', respondents: 34, surveyId: 3 },
       { answer: 'Calendar', respondents: 3, surveyId: 3 },
-    ])
+    ]);
   });
 
   it('should keep track of the previous surveys', () => {
@@ -56,16 +54,11 @@ describe('Game', () => {
   it('should call clearAnswers and chooseSurvey upon startRegularRound', () => {
     game.startRound()
     expect(DOMupdates.clearAnswers).to.have.been.called(1);
-    // console.log(game.currentSurvey);
-    // expect(game.currentSurvey).to.eql([])
-    // expect(game.chooseSurvey).to.have.been.called(1);
   });
 
   it('should call clearAnswers and chooseSurvey upon startDominationRound', () => {
     game.startRound()
     expect(DOMupdates.clearAnswers).to.have.been.called(1);
-    // expect(game.currentSurvey).to.eql([])
-    // expect(game.chooseSurvey).to.have.been.called(1);
   });
 
   it('should only pick a survey that has not been used', () => {
@@ -102,6 +95,12 @@ describe('Game', () => {
     game.roundCount = 3;
     expect(game.chooseRound()).to.equal(game.startRound())
   });
+
+  it('should display winner after domination round', () => {  
+    game.roundCount = 5;
+    expect(game.chooseRound()).to.equal(game.getWinner())
+  });
+
 
 }); // <------ end of describe block
 

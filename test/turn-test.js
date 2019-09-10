@@ -42,6 +42,7 @@ describe('Turn', () => {
   });
 
   it('should check to see if guess was incorrect', () => {
+    expect(regularTurn.checkGuess(regularRound.answers[0].answer)).to.equal(true);
     expect(regularTurn.checkGuess('Wrong Answer')).to.equal(false);
   });
 
