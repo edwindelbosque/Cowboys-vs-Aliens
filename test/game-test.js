@@ -9,7 +9,7 @@ const expect = chai.expect;
 chai.use(spies);
 
 
-describe('Game', () => {
+describe.only('Game', () => {
   
   let game;
   beforeEach(function () {
@@ -28,6 +28,8 @@ describe('Game', () => {
   it('should be an instance of Game', () => {
     expect(game).to.be.an.instanceOf(Game);
   });
+
+  // test all initial properties.
 
   it('should hold all survey data', () => {
     expect(game.data).to.deep.equal(data);
@@ -51,6 +53,14 @@ describe('Game', () => {
   it('should keep track of the previous surveys', () => {
     game.chooseSurvey();
     expect(game.usedSurveys.length).to.equal(1);
+  });
+
+  it('should call clearAnswers and chooseSurvey upon startRegularRound', () => {
+    game.startRegularRound()
+    expect(DOMupdates.clearAnswers).to.have.been.called(1);
+    // console.log(game.currentSurvey);
+    // expect(game.currentSurvey).to.eql([])
+    // expect(game.chooseSurvey).to.have.been.called(1);
   });
 
   it('should only pick a survey that has not been used', () => {
@@ -79,7 +89,6 @@ describe('Game', () => {
   })
 
   it('should call function to show the winner of the game', () => {
-    // const game = new Game(data, 'playerone', 'playertwo')
     
     game.getWinner()
     expect(DOMupdates.showWinner).to.have.been.called(1)
