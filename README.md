@@ -11,6 +11,8 @@ For this exciting project we wanted to mainly solidify our understanding of obje
 
 <img width="1428" alt="Screen Shot 2019-09-08 at 5 29 45 PM" src="https://user-images.githubusercontent.com/48811985/64496065-aeb91700-d290-11e9-9640-475a01cac456.png">
 
+## Play the game on GitHub Pages [here!](https://edwindelbosque.github.io/Cowboys-vs-Aliens/)
+
 ## Goals
 
 - Write a program and UI/UX from scratch
@@ -40,4 +42,4 @@ For this exciting project we wanted to mainly solidify our understanding of obje
 3. Run `npm install` to install the webpack dependencies
 4. Once it has finished installing, run `npm start`
 5. Copy the localhost address `ex. http://localhost:8080/` in your Terminal and paste it into your browser
-6. Play some Cowboys vs Aliens (OR visit our GitHub pages site here to play the game now!)
+6. Play some Cowboys vs Aliens (OR visit our GitHub pages site [here](https://edwindelbosque.github.io/Cowboys-vs-Aliens/) to play the game now!)
