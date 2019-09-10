@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>Cowboys vs. Aliens: The Feud</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body scroll="no" style="overflow: hidden">
+  <div class="body--startpage" id="start-page">
+    <header class="startpage__header">
+      <h1>COWBOYS <span>VS</span> ALIENS</h1>
+      <p>-The Feud-</p>
+    </header>
+    <div class="startpage--players--container">
+      <div>
+        <img src="./images/cowboy-icon.png" id="cowboy-image" class="startpage--character--icon">
+        <input placeholder="P1 NAME" style="text-transform:uppercase" class="startpage__input--player"
+          id="cowboy-name-input">
+      </div>
+      <div>
+        <img src="./images/alien-icon.png" id="alien-image" class="startpage--character--icon">
+        <input placeholder="P2 NAME" style="text-transform:uppercase" class="startpage__input--player"
+          id="alien-name-input">
+      </div>
+    </div>
+    <footer>
+      <button class="startpage__footer--button" id="start-game-button"><span>START GAME</span></button>
+    </footer>
+  </div>
+  <main>
+    <nav>
+      <p id="exit-button">X</p>
+      <h5 role="timer" id="timer" style="display: none">:30</h5>
+    </nav>
+    <header>
+      <h1 class="header__h1--display" id="current-question">WHAT IS MY FAVORITE COLOR?</h1>
+    </header>
+    <section class="section--scoreboard">
+      <div class="section__div--pts-cowboy">
+        <h2>
+          <span id="player-1-score">00</span>
+        </h2>
+        <img>
+        <h3 id="cowboy-name">YOSEMITE</h3>
+      </div>
+      <div class="section__div--answer-board">
+        <section class="div__section--answer-row">
+          <div>
+            <h2>1</h2>
+          </div>
+          <div class="section__div--answer">
+            <h4 id="answer-1">---</h4>
+          </div>
+          <div class="card--points">
+            <h2><span id="answer-pts-1">00</span></h2>
+          </div>
+        </section>
+        <section class="div__section--answer-row div__section--middle-row">
+          <div>
+            <h2>2</h2>
+          </div>
+          <div class="section__div--answer">
+            <h4 id="answer-2">---</h4>
+          </div>
+          <div class="card--points">
+            <h2><span id="answer-pts-2">00</span></h2>
+          </div>
+        </section>
+        <section class="div__section--answer-row">
+          <div>
+            <h2>3</h2>
+          </div>
+          <div class="section__div--answer">
+            <h4 id="answer-3">---</h4>
+          </div>
+          <div class="card--points">
+            <h2><span id="answer-pts-3">00</span></h2>
+          </div>
+        </section>
+      </div>
+      <div class="section__div--pts-alien">
+        <h2><span id="player-2-score">00</span></h2>
+        <img>
+        <h3 id="alien-name">MARVIN</h3>
+      </div>
+    </section>
+    <section class="section--players">
+      <div class="section__div--turn">
+        <h5><span id="players-turn">MARVIN</span>, your turn</h5>
+        <input style="text-transform:uppercase" class="bring-front" type="text" id="guess-input"
+          placeholder="Enter Guess">
+        <button class="bring-front" id="guess-button">SUBMIT</button>
+      </div>
+      <section id="multiplier" style="display: none">
+        <label for="multiplier-input">Multiplier!</label>
+        <input type="number" id="multiplier-input" placeholder="Enter a number 1-5" min="1" max="5">
+        <button id="go-btn" style="display: none">GO!</button>
+      </section>
+    </section>
+  </main>
+  <section id="winner-screen">
+
+  </section>
+  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+<script type="text/javascript" src="main.bundle.js"></script></body>
+
+</html>
