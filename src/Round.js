@@ -12,7 +12,7 @@ class Round {
 
   beginTurn() {
     this.organizeSurvey();
-    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name);
+    DOMupdates.appendCurrentPlayerName(this.currentPlayer.name, this);
     DOMupdates.appendQuestion(this.question.question);
   }
 
@@ -21,6 +21,6 @@ class Round {
     this.answers = this.survey;
     this.answerStrings = this.answers.map(answer => answer.answer.toUpperCase());
   }
-}  
+}
 
 export default Round;
