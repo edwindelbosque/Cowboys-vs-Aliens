@@ -16,9 +16,10 @@ class Turn {
 
   countRespondents(guess) {
     let answerInfo = this.currentRound.answers.find(answer => {
-      let textAnswer = answer.answer.toUpperCase();
-      return textAnswer.includes(guess.toUpperCase())
-    })
+        let textAnswer = answer.answer.toUpperCase();
+        return textAnswer.includes(guess.toUpperCase());
+      })
+    
     return answerInfo.respondents;
   }
 }

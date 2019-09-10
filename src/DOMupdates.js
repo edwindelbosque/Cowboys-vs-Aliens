@@ -50,10 +50,6 @@ const DOMupdates = {
     $('#multiplier-input-btn').click($('#go-btn').show());
   },
 
-  appendGoButton() {
-    $('#go-btn').show();
-  },
-
   clickGoBtn() {
     $('#multiplier').fadeOut();
     $('.section__div--turn').css({ zIndex: '1', opacity: '1' });
