@@ -10,7 +10,7 @@ import RegularTurn from '../src/RegularTurn'
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
-chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => true);
+chai.spy.on(DOMupdates, ['appendAnswer'], () => true);
 
 
 

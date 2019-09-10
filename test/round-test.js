@@ -9,11 +9,11 @@ import spies from 'chai-spies'
 const expect = chai.expect;
 chai.use(spies);
 
-describe('Round', () => {
+describe.only('Round', () => {
   
   let game, round, regularRound;
-  beforeEach(() => {
-    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers'], () => true);
+  beforeEach(function () {
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'appendQuestion'], () => true);
     game = new Game(data);
     game.startRegularRound();
     round = new Round(game);
@@ -32,6 +32,13 @@ describe('Round', () => {
     expect(round).to.be.an.instanceOf(Round);
   });
 
+  it('should begin turn while invoking appendCurrentPlayerName and appendQuestion', () => {
+    round.beginTurn();
+    expect(DOMupdates.appendCurrentPlayerName).to.have.been.called(1);
+    expect(DOMupdates.appendQuestion).to.have.been.called(1);
+
+  });
+
   it('should update roundCounter in game class', () => {
     regularRound.answers = [];
     regularRound.endRound(game);
@@ -40,11 +47,6 @@ describe('Round', () => {
     expect(game.roundCount).to.equal(3);
   });
 
-  // it('should get just the answers from the survey array', () => {
-  //   regularRound.organizeSurvey();
-  //   expect(regularRound.answers).to.include(game.currentSurvey[0]);
-  //   expect(regularRound.answers).to.include(game.currentSurvey[1]);
-  //   expect(regularRound.answers).to.include(game.currentSurvey[2]);
-  // });
+
 
 });// <------ end of describe block

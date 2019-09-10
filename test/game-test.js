@@ -9,7 +9,7 @@ const expect = chai.expect;
 chai.use(spies);
 
 
-describe.only('Game', () => {
+describe('Game', () => {
   
   let game;
   beforeEach(function () {
@@ -96,7 +96,6 @@ describe.only('Game', () => {
   })
 
   it('should call function to show the winner of the game', () => {
-    
     game.getWinner()
     expect(DOMupdates.showWinner).to.have.been.called(1)
   });
