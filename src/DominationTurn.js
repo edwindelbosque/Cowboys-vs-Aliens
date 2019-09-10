@@ -60,6 +60,7 @@ class DominationTurn extends Turn {
   }
 
   updateScore(guess) {
+    this.giveFeedback(guess)
     if (this.checkGuess(guess)) {
       let upperCaseGuess = guess.toUpperCase()
       let index = this.currentRound.answerStrings.findIndex(answer => answer === upperCaseGuess) + 1;
@@ -76,25 +77,25 @@ class DominationTurn extends Turn {
   }
 
 
-//   continueDominationRound() {
-//     if (this.currentPlayer === player2) {
-//       game.getWinner()
-//     } else {
-//       this.changeDominationTurn()
-//     }
-//   }
+  //   continueDominationRound() {
+  //     if (this.currentPlayer === player2) {
+  //       game.getWinner()
+  //     } else {
+  //       this.changeDominationTurn()
+  //     }
+  //   }
 
-//   changeDominationTurn() {
-//     this.guesses = [];
-//     this.seconds = 30;
-//     game.selectSurvey();
-//   }
+  //   changeDominationTurn() {
+  //     this.guesses = [];
+  //     this.seconds = 30;
+  //     game.selectSurvey();
+  //   }
 
 
-// }
+  // }
 
-// //Extend from round
-// //Keep track of timer
+  // //Extend from round
+  // //Keep track of timer
 }
 
 export default DominationTurn;
