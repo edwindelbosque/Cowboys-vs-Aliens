@@ -8,21 +8,9 @@ class DominationTurn extends Turn {
     this.multiplier = multiplier;
   }
 
-  checkGuess(guess) {
-    return this.currentRound.answerStrings.includes(guess.toUpperCase());
-  }
-
   spliceAnswers(guess) {
     let i = this.currentRound.answerStrings.findIndex(answer => answer === guess.toUpperCase())
     this.currentRound.answerStrings[i] = 'false';
-  }
-
-  countRespondents(guess) {
-    let answerInfo = this.currentRound.answers.find(answer => {
-      let textAnswer = answer.answer.toUpperCase();
-      return textAnswer.includes(guess.toUpperCase())
-    })
-    return answerInfo.respondents;
   }
 
   updateScore(guess) {
@@ -39,4 +27,3 @@ class DominationTurn extends Turn {
 }
 
 export default DominationTurn;
-import Game from './Game.js';

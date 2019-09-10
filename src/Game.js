@@ -1,11 +1,5 @@
-import Round from "./Round";
-import RegularRound from "./RegularRound"
-import RegularTurn from "./RegularTurn"
 import Player from "./Player";
-import DominationRound from "./DominationRound";
 import DOMupdates from "./DOMupdates";
-import data from '../data/surveys'
-
 
 class Game {
   constructor(data, playerOne, playerTwo) {
@@ -32,14 +26,8 @@ class Game {
   }
 
   chooseRound() {
-    if (this.roundCount < 3) {
-      this.startRegularRound();
-    }
-    if (this.roundCount === 3) {
-      this.startDominationRound();
-    }
-    if (this.roundCount === 4) {
-      this.startDominationRound();
+    if (this.roundCount <= 4) {
+      this.startRound();
     }
     if (this.roundCount > 4) {
       this.getWinner();
@@ -53,19 +41,6 @@ class Game {
       return this.player1
     }
   }
-
-  // startRegularRound() {
-  //   DOMupdates.clearAnswers();
-  //   this.currentSurvey = [];
-  //   // clearAnswers() is stuff being cleared?
-  //   this.chooseSurvey();
-  // }
-
-  // startDominationRound() {
-  //   DOMupdates.clearAnswers();
-  //   this.currentSurvey = [];
-  //   this.chooseSurvey();
-  // }
 
   startRound() {
     DOMupdates.clearAnswers();
@@ -82,7 +57,6 @@ class Game {
       DOMupdates.showWinner('TIE!')
     }
   }
-
 }
 
 export default Game;

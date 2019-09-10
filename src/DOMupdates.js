@@ -1,6 +1,4 @@
 import $ from 'jquery';
-import Turn from './Turn';
-
 
 const DOMupdates = {
   showWinner(player) {
@@ -79,7 +77,5 @@ const DOMupdates = {
     }
   }
 }
-
-
 
 export default DOMupdates;

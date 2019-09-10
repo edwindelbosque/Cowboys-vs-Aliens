@@ -1,14 +1,8 @@
-
-import Game from '../src/Game';
-import Round from '../src/Round'
-import Turn from "./Turn";
-import DOMupdates from "./DOMupdates";
-import RegularTurn from "./RegularTurn"
-
+import Round from '../src/Round';
 
 class RegularRound extends Round  {
   constructor(game) {
-    super(game)
+    super(game);
   }
 
   endRound() {
