@@ -63,19 +63,19 @@ const DOMupdates = {
 
   displayFeedback(checkedGuess) {
     if (checkedGuess) {
-      $('.section__div--answer-board').css({ borderColor: 'green' })
-      $('.div__section--middle-row').css({ borderTopColor: 'green', borderBottomColor: 'green' })
+      $('.section__div--answer-board').css({ borderColor: '#00ff00', transition: '.3s' })
+      $('.div__section--middle-row').css({ borderTopColor: '#00ff00', borderBottomColor: '#00ff00', transition: '.3s' })
       setTimeout(function () {
-        $('.section__div--answer-board').css({ borderColor: 'white' })
-        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white' })
-      }, 500);
+        $('.section__div--answer-board').css({ borderColor: 'white', transition: '.3s' })
+        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white', transition: '.3s' })
+      }, 600);
     } else {
-      $('.section__div--answer-board').css({ borderColor: 'red' })
-      $('.div__section--middle-row').css({ borderTopColor: 'red', borderBottomColor: 'red' })
+      $('.section__div--answer-board').css({ borderColor: '#ff5050', transition: '.3s' })
+      $('.div__section--middle-row').css({ borderTopColor: '#ff5050', borderBottomColor: '#ff5050', transition: '.3s' })
       setTimeout(function () {
-        $('.section__div--answer-board').css({ borderColor: 'white' })
-        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white' })
-      }, 500);
+        $('.section__div--answer-board').css({ borderColor: 'white', transition: '.3s' })
+        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white', transition: '.3s' })
+      }, 600);
     }
   }
 }
