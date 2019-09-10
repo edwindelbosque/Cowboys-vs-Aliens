@@ -1,9 +1,5 @@
 import chai from 'chai';
 import Player from '../src/Player';
-import Turn from '../src/Turn';
-import Round from '../src/Round';
-import Game from '../src/Game';
-import data from '../data/surveys.js';
 import DOMupdates from '../src/DOMupdates.js'
 import spies from 'chai-spies'
 const expect = chai.expect;
@@ -11,13 +7,11 @@ chai.use(spies);
 
 
 describe('Player', () => {
-  let player1, player2, round, game;
+  let player1, player2;
   beforeEach(function () {
     chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers'], () => true);
     player1 = new Player('Cowboy');
     player2 = new Player('Alien');
-    game = new Game(data, 'playerone', 'playertwo')
-    round = new Round(game);
   });
   
   afterEach(function () {

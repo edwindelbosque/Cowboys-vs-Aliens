@@ -1,7 +1,4 @@
 import chai from 'chai';
-import Player from '../src/Player';
-import Turn from '../src/Turn';
-import Round from '../src/Round';
 import Game from '../src/Game';
 import data from '../data/surveys.js'
 import DOMupdates from '../src/DOMupdates.js';
@@ -16,14 +13,11 @@ chai.spy.on(DOMupdates, ['appendAnswer'], () => true);
 
 describe('Turn', () => {
   
-  let player1, player2, round, game, regularRound, regularTurn;
+  let game, regularRound, regularTurn;
   beforeEach(function () {
     chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'displayFeedback'], () => true);
     game = new Game(data, 'playerone', 'playertwo')
     game.chooseSurvey()
-    player1 = new Player('Cowboy');
-    player2 = new Player('Alien');
-    round = new Round(game);
     regularRound = new RegularRound(game);
     regularRound.organizeSurvey();
     regularTurn = new RegularTurn(regularRound);
