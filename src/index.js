@@ -161,7 +161,7 @@ const startTimer = () => {
   const counter = setInterval(countdown, 1000);
 
   function countdown() {
-    timeLeft -= 1;
+    timeLeft--;
 
     if (timeLeft < 0) {
       clearInterval(counter);
@@ -171,7 +171,8 @@ const startTimer = () => {
       dominationRound.beginTurn();
       return;
     }
-
-    timer.text(`:${timeLeft}`);
+    timeLeft > 9
+      ? timer.text(`:${timeLeft}`)
+      : timer.text(`:0${timeLeft}`)
   }
 }
