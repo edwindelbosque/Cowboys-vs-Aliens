@@ -1,4 +1,5 @@
 import chai from 'chai';
+import Player from '../src/Player';
 import Turn from '../src/Turn';
 import Round from '../src/Round';
 import Game from '../src/Game';
@@ -9,18 +10,27 @@ import RegularTurn from '../src/RegularTurn'
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
-chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => { });
+chai.spy.on(DOMupdates, ['appendAnswer', 'appendQuestion'], () => true);
 
-let game, regularRound, regularTurn;
-beforeEach(() => {
-  game = new Game(data, 'Erick', 'Jeannie');
-  // game.startGame();
-  regularRound = new RegularRound(game);
-  regularRound.organizeSurvey();
-  regularTurn = new RegularTurn(regularRound);
-});
+
 
 describe('Turn', () => {
+  
+  let player1, player2, round, game, regularRound, regularTurn;
+  beforeEach(function () {
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'displayFeedback'], () => true);
+    game = new Game(data, 'playerone', 'playertwo')
+    player1 = new Player('Cowboy');
+    player2 = new Player('Alien');
+    round = new Round(game);
+    regularRound = new RegularRound(game);
+    regularRound.organizeSurvey();
+    regularTurn = new RegularTurn(regularRound);
+  });
+  
+  afterEach(function () {
+    chai.spy.restore(DOMupdates)
+  });
 
   it('should be a function', () => {
     expect(RegularTurn).to.be.a('function');
@@ -78,12 +88,6 @@ describe('Turn', () => {
     })
   })
 
-  // it('should end round when all correct guesses have been made', () => {
-
-  //chai.spy.on (?????????????) 
-
-  //   expect()
-  // }); 
 
 
 }); // <------ end of describe block

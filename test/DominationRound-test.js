@@ -1,25 +1,33 @@
 import chai from 'chai';
 import data from '../data/surveys.js'
 import Game from '../src/Game';
-// import Round from '../src/Round';
 import DominationRound from '../src/DominationRound';
 import DominationTurn from '../src/DominationTurn';
 
+import DOMupdates from '../src/DOMupdates.js'
+import spies from 'chai-spies'
 const expect = chai.expect;
+chai.use(spies);
 
-let  game, dominationRound;
-beforeEach(() => {
-  game = new Game(data)
-  dominationRound = new DominationRound(game, 3);
-});
 
 describe('DominationRound', () => {
+  
+  let  game, dominationRound;
+  beforeEach(() => {
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers'], () => true);
+    game = new Game(data)
+    dominationRound = new DominationRound(game, 3);
+  });
+  
+  afterEach(function () {
+    chai.spy.restore(DOMupdates)
+  })
 
-  it.only('should be a function', () => {
+  it('should be a function', () => {
     expect(DominationRound).to.be.a('function');
   });
 
-  it.only('should be an instance of DominationRound', () => {
+  it('should be an instance of DominationRound', () => {
     expect(dominationRound).to.be.an.instanceOf(DominationRound);
   });
 
@@ -28,7 +36,7 @@ describe('DominationRound', () => {
 
 
 
-  // it.only('should instantiate a new Domination turn', () => {
+  // it('should instantiate a new Domination turn', () => {
   //   dominationRound.startDominationRound()
 
   // })

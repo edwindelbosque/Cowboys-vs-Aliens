@@ -1,20 +1,25 @@
 import chai from 'chai';
 import Game from '../src/Game';
 import data from '../data/surveys.js'
-import DOMupdates from '../src/DOMupdates.js'
 import Player from '../src/Player';
 import RegularRound from '../src/RegularRound';
-const spies = require('chai-spies');
+import DOMupdates from '../src/DOMupdates.js'
+import spies from 'chai-spies'
 const expect = chai.expect;
 chai.use(spies);
-chai.spy.on(DOMupdates, ['showWinner'], () => { });
 
-let game;
-beforeEach(() => {
-  game = new Game(data, 'playerone', 'playertwo');
-});
 
 describe('Game', () => {
+  
+  let game;
+  beforeEach(function () {
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers'], () => true);
+    game = new Game(data, 'playerone', 'playertwo')
+  });
+
+  afterEach(function () {
+    chai.spy.restore(DOMupdates)
+  })
 
   it('should be a function', () => {
     expect(Game).to.be.a('function');
@@ -74,16 +79,11 @@ describe('Game', () => {
   })
 
   it('should call function to show the winner of the game', () => {
+    // const game = new Game(data, 'playerone', 'playertwo')
+    
     game.getWinner()
     expect(DOMupdates.showWinner).to.have.been.called(1)
-  })
-
-  // it('should create a regular round', () => {
-  //   game.startGame();
-  //   game.roundCount = 1;
-  //   chai.spy.on(game.startRegularRound(), 'beginRound', () => true)
-  //   expect(game.).to.be.called(1);
-  // });
+  });
 
   it('after 2 regular rounds, it should switch to fast round', () => {  
     game.roundCount = 3;
