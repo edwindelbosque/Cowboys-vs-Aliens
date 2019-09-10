@@ -49,7 +49,7 @@ const DOMupdates = {
   },
 
   submitMultiplierInput() {
-    $('#multiplier-input-btn').click(appendGoButton());
+    $('#multiplier-input-btn').click($('#go-btn').show());
   },
 
   appendGoButton() {

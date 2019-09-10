@@ -54,14 +54,20 @@ class Game {
     }
   }
 
-  startRegularRound() {
-    DOMupdates.clearAnswers();
-    this.currentSurvey = [];
-    // clearAnswers() is stuff being cleared?
-    this.chooseSurvey();
-  }
+  // startRegularRound() {
+  //   DOMupdates.clearAnswers();
+  //   this.currentSurvey = [];
+  //   // clearAnswers() is stuff being cleared?
+  //   this.chooseSurvey();
+  // }
 
-  startDominationRound() {
+  // startDominationRound() {
+  //   DOMupdates.clearAnswers();
+  //   this.currentSurvey = [];
+  //   this.chooseSurvey();
+  // }
+
+  startRound() {
     DOMupdates.clearAnswers();
     this.currentSurvey = [];
     this.chooseSurvey();
