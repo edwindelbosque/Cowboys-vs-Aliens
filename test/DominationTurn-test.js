@@ -1,12 +1,9 @@
 import chai from 'chai';
-import data from '../data/surveys.js'
+import data from '../data/surveys.js';
 import Game from '../src/Game';
-// import Round from '../src/Round';
 import DominationRound from '../src/DominationRound';
 import DominationTurn from '../src/DominationTurn';
 import DOMupdates from '../src/DOMupdates';
-import Player from '../src/Player.js';
-import Turn from '../src/Turn.js';
 import spies from 'chai-spies';
 chai.use(spies);
 const expect = chai.expect;
