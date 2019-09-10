@@ -4,16 +4,24 @@ import Round from '../src/Round';
 import RegularRound from '../src/RegularRound'
 import Game from '../src/Game';
 import data from '../data/surveys'
+import DOMupdates from '../src/DOMupdates.js'
+import spies from 'chai-spies'
 const expect = chai.expect;
+chai.use(spies);
 
-let game, round, regularRound;
-describe('Round', () => {
-  beforeEach(() => {
+describe.only('Round', () => {
+  
+  let game, round, regularRound;
+  beforeEach(function () {
+    chai.spy.on(DOMupdates, ['showWinner', 'clearAnswers', 'appendCurrentPlayerName', 'appendQuestion'], () => true);
     game = new Game(data);
     game.startRegularRound();
     round = new Round(game);
     regularRound = new RegularRound(game)
-    // turn = new Turn(round)
+  });
+
+  afterEach(function () {
+    chai.spy.restore(DOMupdates)
   });
 
   it('should be a function', () => {
@@ -24,9 +32,12 @@ describe('Round', () => {
     expect(round).to.be.an.instanceOf(Round);
   });
 
-  // it('should end round when all players guess all correct answers', () => {
-  //  expect(game.roundCount).to.equal(2)
-  // });
+  it('should begin turn while invoking appendCurrentPlayerName and appendQuestion', () => {
+    round.beginTurn();
+    expect(DOMupdates.appendCurrentPlayerName).to.have.been.called(1);
+    expect(DOMupdates.appendQuestion).to.have.been.called(1);
+
+  });
 
   it('should update roundCounter in game class', () => {
     regularRound.answers = [];
@@ -36,11 +47,6 @@ describe('Round', () => {
     expect(game.roundCount).to.equal(3);
   });
 
-  // it('should get just the answers from the survey array', () => {
-  //   regularRound.organizeSurvey();
-  //   expect(regularRound.answers).to.include(game.currentSurvey[0]);
-  //   expect(regularRound.answers).to.include(game.currentSurvey[1]);
-  //   expect(regularRound.answers).to.include(game.currentSurvey[2]);
-  // });
+
 
 });// <------ end of describe block

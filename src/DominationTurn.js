@@ -8,11 +8,6 @@ class DominationTurn extends Turn {
     this.multiplier = multiplier;
   }
 
-  getQuestion() {
-    //returns STRING of actual survey question
-    return this.currentRound.survey[0].question
-  }
-
   organizeRespondents() {
     let answerInfo = this.currentRound.survey.filter(obj => {
       return obj.answer
