@@ -2,7 +2,7 @@
 
   &:after {
     animation: grain 15s ease-in-out infinite;
-    background-image: url('/images/grainy-filter.jpg');
+    background-image: url(../images/grainy-filter.jpg);
     content: "";
     height: 300%;
     left: -50%;
@@ -13,7 +13,7 @@
   }
 
   align-items: center;
-  background-image: url('/images/start-page.gif');
+  background-image: url(../images/start-page.gif);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -86,7 +86,7 @@
   padding-left: 10px;
   padding-top: 4px;
   text-align: center;
-  width: 285px;
+  width: 320px;
   z-index: 1;
   box-shadow: 0 0 2px #f877ff;
   transition: 0.25s;
@@ -96,7 +96,7 @@
   color: $alien-accent;
 
   &:focus {
-    box-shadow: 0 0 20px #0bff3c;
+    box-shadow: 0 0 20px #0a7cff;
     transition: 0.25s;
     border-color: rgb(191, 191, 191);
     outline: none;
@@ -114,7 +114,7 @@
   color: $cowboy-name;
 
   &:focus {
-    box-shadow: 0 0 20px #ff2a26;
+    box-shadow: 0 0 20px $cowboy-name;
     transition: 0.25s;
     border-color: white;
     outline: none;
