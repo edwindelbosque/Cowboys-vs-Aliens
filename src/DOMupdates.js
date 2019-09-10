@@ -40,8 +40,8 @@ const DOMupdates = {
 
   appendCurrentPlayerName(name, round) {
     name === round.game.player1.name
-      ? $('#players-turn').text(name).css({ color: '#f54747' })
-      : $('#players-turn').text(name).css({ color: '#91D631' })
+      ? $('#players-turn').text(`${name}`).css({ color: '#ff0084' })
+      : $('#players-turn').text(`${name}`).css({ color: '#0a7cff' })
   },
 
   appendMultiplierInput() {
@@ -62,15 +62,15 @@ const DOMupdates = {
       $('.section__div--answer-board').css({ borderColor: '#00ff00', transition: '.3s' })
       $('.div__section--middle-row').css({ borderTopColor: '#00ff00', borderBottomColor: '#00ff00', transition: '.3s' })
       setTimeout(function () {
-        $('.section__div--answer-board').css({ borderColor: 'white', transition: '.3s' })
-        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white', transition: '.3s' })
+        $('.section__div--answer-board').css({ borderColor: '#8f8f8f', transition: '.3s' })
+        $('.div__section--middle-row').css({ borderTopColor: '#8f8f8f', borderBottomColor: '#8f8f8f', transition: '.3s' })
       }, 600);
     } else {
       $('.section__div--answer-board').css({ borderColor: '#ff5050', transition: '.3s' })
       $('.div__section--middle-row').css({ borderTopColor: '#ff5050', borderBottomColor: '#ff5050', transition: '.3s' })
       setTimeout(function () {
-        $('.section__div--answer-board').css({ borderColor: 'white', transition: '.3s' })
-        $('.div__section--middle-row').css({ borderTopColor: 'white', borderBottomColor: 'white', transition: '.3s' })
+        $('.section__div--answer-board').css({ borderColor: '#8f8f8f', transition: '.3s' })
+        $('.div__section--middle-row').css({ borderTopColor: '#8f8f8f', borderBottomColor: '#8f8f8f', transition: '.3s' })
       }, 600);
     }
   }

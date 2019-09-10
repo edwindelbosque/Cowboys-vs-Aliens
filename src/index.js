@@ -117,6 +117,19 @@ function submitRegular() {
   }
 }
 
+guessInput.on('keypress', function (e) {
+  if (e.which === 13) {
+
+    if (game.roundCount < 3) {
+      submitRegular();
+    }
+    if (game.roundCount >= 3) {
+      domRoundSubmit();
+      makeMultiplierAppear();
+    }
+  }
+});
+
 function domRoundSubmit() {
   if ($('#current-question').text()) {
     dominationTurn.updateScore(guessInput.val());
@@ -140,7 +153,7 @@ guessButton.on('click', () => {
     domRoundSubmit();
     makeMultiplierAppear();
   }
-});
+})
 
 multiplier.on('keydown', () => {
   timer.show();
@@ -161,7 +174,7 @@ const startTimer = () => {
   const counter = setInterval(countdown, 1000);
 
   function countdown() {
-    timeLeft -= 1;
+    timeLeft--;
 
     if (timeLeft < 0) {
       clearInterval(counter);
@@ -171,7 +184,8 @@ const startTimer = () => {
       dominationRound.beginTurn();
       return;
     }
-
-    timer.text(`:${timeLeft}`);
+    timeLeft > 9
+      ? timer.text(`:${timeLeft}`)
+      : timer.text(`:0${timeLeft}`)
   }
 }
