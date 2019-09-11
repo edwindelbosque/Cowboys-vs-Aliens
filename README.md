@@ -7,9 +7,9 @@ For this exciting project we wanted to mainly solidify our understanding of obje
 
 ## Screenshots
 
-<img width="1428" alt="Screen Shot 2019-09-08 at 5 26 02 PM" src="https://user-images.githubusercontent.com/48811985/64496063-a8c33600-d290-11e9-87e6-dda79ee64d2b.png">
+<img width="1430" src="https://user-images.githubusercontent.com/48811985/64658681-d1c9ff00-d427-11e9-8bcd-fe65784a6d86.png">
 
-<img width="1428" alt="Screen Shot 2019-09-08 at 5 29 45 PM" src="https://user-images.githubusercontent.com/48811985/64496065-aeb91700-d290-11e9-9640-475a01cac456.png">
+<img width="1430" src="https://user-images.githubusercontent.com/48811985/64658604-97606200-d427-11e9-93a0-f3e3a1e4b41d.png">
 
 ## Play the game on GitHub Pages [here!](https://edwindelbosque.github.io/Cowboys-vs-Aliens/)
 
