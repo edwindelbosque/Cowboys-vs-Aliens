@@ -1,5 +1,9 @@
 # COWBOYS vs ALIENS: The Feud
-### Developers: [@ZoeKHarvey](https://github.com/ZoeKHarvey), [@jmevans0211](https://github.com/jmevans0211), [@ericwm76](https://github.com/ericwm76) & [@edwindelbosque](https://github.com/edwindelbosque)
+### Developers: 
+- Zoë Harvey - [@ZoeKHarvey](https://github.com/ZoeKHarvey)
+- Jeannie Evans - [@jmevans0211](https://github.com/jmevans0211)
+- Eric Meldrum - [@ericwm76](https://github.com/ericwm76)
+- Edwin Del Bosque - [@edwindelbosque](https://github.com/edwindelbosque)
 
 ## Summary
 
